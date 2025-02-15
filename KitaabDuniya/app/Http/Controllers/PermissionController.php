@@ -13,7 +13,10 @@ class PermissionController extends Controller
      */
     public function index()
     {
-        return view("permissions.index");
+        $permissions = Permission::orderBy('created_at', 'ASC')->paginate(25);
+        return view("permissions.index", [
+            "permissions" => $permissions,
+        ]);
     }
 
     /**
@@ -30,12 +33,12 @@ class PermissionController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name'=> 'required|unique:permissions|min:3',
+            'name' => 'required|unique:permissions|min:3',
         ]);
 
         if ($validator->passes()) {
-            Permission::create(['name'=>$request->name]);
-            return redirect()->route('permissions.index')->with('success','Permission created successfully...');
+            Permission::create(['name' => $request->name]);
+            return redirect()->route('permissions.index')->with('success', 'Permission created successfully...');
         } else {
             return redirect()->route('permissions.create')->withInput()->withErrors($validator);
         }
@@ -54,7 +57,10 @@ class PermissionController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $permission = Permission::findOrFail($id);
+        return view('permissions.edit', [
+            'permission' => $permission,
+        ]);
     }
 
     /**
@@ -62,14 +68,39 @@ class PermissionController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $permission = Permission::findOrFail($id);
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|min:3|unique:permissions,name,' . $id . ',id',
+        ]);
+
+        if ($validator->passes()) {
+            $permission->name = $request->name;
+            $permission->save();
+            return redirect()->route('permissions.index')->with('success', 'Permission updated successfully...');
+        } else {
+            return redirect()->route('permissions.edit', $id)->withInput()->withErrors($validator);
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request, string $id)
     {
-        //
+        $id = $request->id;
+        $permission = Permission::findOrFail($id);
+
+        if ($permission == null) {
+            session()->flash('error', 'Permission not found');
+            return response()->json([
+                'status' => false
+            ]);
+        }
+
+        $permission->delete();
+        session()->flash('success', 'Permission deleted successfully');
+        return response()->json([
+            'status' => true
+        ]);
     }
 }
