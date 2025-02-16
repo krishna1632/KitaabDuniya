@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kitabi dunia</title>
-    <link rel="stylesheet" href="welcome.css">
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
@@ -13,182 +13,11 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
-    <style>
-        .footer {
-            margin-top: 50px;
-            background-color: #f8f9fa;
-            padding: 20px 0;
-            text-align: center;
-            line-height: 50px;
-        }
-
-        .footer .line {
-            width: 100%;
-            height: 2px;
-            background-color: #ccc;
-            margin: 10px 0;
-        }
-
-        .footer .title-line {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        .footer .title-line::before,
-        .footer .title-line::after {
-            content: "";
-            flex: 1;
-            height: 2px;
-            background-color: #ccc;
-        }
-
-        .footer h5 {
-            margin: 0;
-            font-weight: bold;
-        }
-
-        .footer .social-icons a {
-            color: #000;
-            margin: 10px 15px;
-            text-decoration: none;
-            font-size: 20px;
-        }
-
-        .footer .social-icons a:hover {
-            color: #007bff;
-        }
-
-        .footer-bottom {
-            margin-top: 30px;
-            font-size: 15px;
-            color: #777;
-        }
-
-        .footer-bottom a {
-            text-decoration: none;
-            color: black;
-        }
-
-        body {
-            overflow-x: hidden;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        /* --------------------Main Section (Catagories)------------------------*/
-        .category-card {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            transition: 0.3s;
-
-            &:hover {
-                box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-                transform: translateY(-5px);
-            }
-        }
-
-        .category-card img {
-            width: 50px;
-            height: auto;
-        }
-
-        .category-card h5 {
-            margin: 0;
-            font-weight: bold;
-        }
-
-        .category-card p {
-            margin: 0;
-            color: gray;
-        }
-
-        .custom-btn {
-            background-color: orange !important;
-            border-color: orange !important;
-            color: white !important;
-            transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
-
-            &:hover {
-                background-color: #ffcc80 !important;
-                border-color: #ffcc80 !important;
-                transform: scale(1.05);
-            }
-        }
-
-        /* --------------------(FAQ) -------------------------- */
-
-        .faq-card {
-            border-radius: 10px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            background-color: white;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .faq-question {
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            padding: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #f5f5f5;
-            border-radius: 10px;
-        }
-
-        .faq-answer {
-            padding: 15px;
-            font-size: 15px;
-            color: #555;
-            display: none;
-        }
-
-        .social-icons a {
-            text-decoration: none;
-            margin: 0 10px;
-            color: #444;
-            /* Default icon color */
-            transition: color 0.3s ease-in-out;
-        }
-
-        /* Hover Effects */
-        .social-icons a.facebook:hover {
-            color: #1877F2;
-        }
-
-        /* Facebook Blue */
-        .social-icons a.twitter:hover {
-            color: #000;
-        }
-
-        /* Twitter Blue */
-        .social-icons a.instagram:hover {
-            color: #E1306C;
-        }
-
-        /* Instagram Pink */
-        .social-icons a.linkedin:hover {
-            color: #0077B5;
-        }
-
-        /* LinkedIn Blue */
-        .social-icons a.youtube:hover {
-            color: #FF0000;
-        }
-
-        /* YouTube Red */
-    </style>
+        
 </head>
 
 <body>
@@ -252,7 +81,7 @@
             <!-- Search Bar -->
             <div class="col-md-6">
                 <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <input class="form-control me-2 rounded-3" type="search" id="searchBox" placeholder="Search Ex.... 'Delhi'" aria-label="Search">
                     <button class="btn btn-outline-primary" type="submit">Search</button>
                 </form>
             </div>
@@ -274,8 +103,8 @@
 
     <!-- *************** Main Section ******************-->
     <main class="">
-        <div class="container mt-5">
-            <h2 class="text-center text-warning fw-bold mb-4">Categories</h2>
+        <div class="container mt-4">
+            <h2 class="text-center text-warning fw-bold mb-4 fs-1">Categories</h2>
 
             <div class="row row-cols-1 row-cols-md-2 g-4">
                 <!-- School Category -->
@@ -325,647 +154,98 @@
         </div>
 
         <!-- *************** Books Collections*************** -->
-        <div classs="">
-            <div class="container mt-4">
-                <h2 class="text-center mb-4 mt-5 text-danger">Book Collection</h2>
+        <!-- *************** Books Collections*************** -->
+<div class="mt-5">
+  <div class="container mt-4">
+    <h2 class="text-center mb-4 mt-5 text-danger fs-1 fw-bold">📚 Book Collection</h2>
 
-                <!-- Sections 1 -->
-                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
-                    <!-- Book Card 1 -->
-                    <div class="col">
-                        <div class="card h-100 shadow">
-                            <img src="assets/Book4.jpg" class="card-img-top" alt="Book Image">
-                            <div class="card-body text-center">
-                                <h5 class="card-title">NCERT Anand Book for Balvatika ( Activity Book & Worksheets )
-                                </h5>
-                                <div>
-                                    <span class="price">
-                                        <span class="sale-price">
-                                            <span class="woocommerce-Price-amount amount">
-                                                <bdi>
-                                                    <span class="woocommerce-Price-currencySymbol"></span>
-                                                </bdi>
-                                            </span>
-                                            <del aria-hidden="true"></del>
-                                            <span class="screen-reader-text"></span>
-                                            <ins aria-hidden="true">
-                                                <span class="woocommerce-Price-amount amount">
-                                                    <bdi>
-                                                        <span class="woocommerce-Price-currencySymbol"></span>
+    <!-- New Books Section -->
+    <div class="section-header">
+      <h4 class="mb-3 text-primary fw-bold">🔥 New Books</h4>
+    </div>
+    <div class="container mt-4">
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4" id="newBooksContainer"></div>
+    </div>
 
-                                                    </bdi>
-                                                </span>
-                                            </ins>
-                                            <span class="screen-reader-text"></span>
-                                        </span>
-                                    </span>
-                                </div>
-                                <button class="btn btn-primary custom-btn mt-2" data-bs-toggle="tooltip"
-                                    data-bs-placement="top" title="Click to add this item to cart">ADD TO
-                                    CART</button>
-                            </div>
-                        </div>
-                    </div>
+    <!-- Most Readable Books -->
+    <div class="section-header mt-5">
+      <h4 class="mb-3 text-success fw-bold">📖 Most Readable Books</h4>
+    </div>
+    <div class="container mt-4">
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4" id="oldBooksContainer"></div>
+    </div>
+  </div>
+</div>
 
-                    <!-- Book Card 2 -->
-                    <div class="col">
-                        <div class="card h-100 shadow">
-                            <img src="assets/Book4.jpg" class="card-img-top" alt="Book Image">
-                            <div class="card-body text-center">
-                                <h5 class="card-title">NCERT Class -1 Mridang ( English Book )</h5>
-                                <div>
-                                    <span class="price">
-                                        <span class="sale-price">
-                                            <span class="woocommerce-Price-amount amount">
-                                                <bdi>
-                                                    <span class="woocommerce-Price-currencySymbol"></span>
-                                                </bdi>
-                                            </span>
-                                            <del aria-hidden="true"></del>
-                                            <span class="screen-reader-text"></span>
-                                            <ins aria-hidden="true">
-                                                <span class="woocommerce-Price-amount amount">
-                                                    <bdi>
-                                                        <span class="woocommerce-Price-currencySymbol"></span>
-                                                    </bdi>
-                                                </span>
-                                            </ins>
-                                            <span class="screen-reader-text"></span>
-                                        </span>
-                                    </span>
-                                </div>
-                                <button class="btn btn-primary custom-btn" data-bs-toggle="tooltip"
-                                    data-bs-placement="top" title="Click to add this item to cart">ADD TO
-                                    CART</button>
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- Book Card 3 -->
-                    <div class="col">
-                        <div class="card h-100 shadow">
-                            <img src="assets/Book4.jpg" class="card-img-top" alt="Book Image">
-                            <div class="card-body text-center">
-                                <h5 class="card-title">NCERT Class - 2 Joyful ( Math Book )</h5>
 
-                                <div>
-                                    <span class="price">
-                                        <span class="sale-price">
-                                            <span class="woocommerce-Price-amount amount">
-                                                <bdi>
-                                                    <span class="woocommerce-Price-currencySymbol"></span>
-                                                </bdi>
-                                            </span>
-                                            <del aria-hidden="true"></del>
-                                            <span class="screen-reader-text"></span>
-                                            <ins aria-hidden="true">
-                                                <span class="woocommerce-Price-amount amount">
-                                                    <bdi>
-                                                        <span class="woocommerce-Price-currencySymbol"></span>
-                                                    </bdi>
-                                                </span>
-                                            </ins>
-                                            <span class="screen-reader-text"></span>
-                                        </span>
-                                    </span>
-                                </div>
 
-                                <button class="btn btn-primary custom-btn" data-bs-toggle="tooltip"
-                                    data-bs-placement="top" title="Click to add this item to cart">ADD TO
-                                    CART</button>
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- Book Card 4 -->
-                    <div class="col">
-                        <div class="card h-100 shadow">
-                            <img src="assets/Book4.jpg" class="card-img-top" alt="Book Image">
-                            <div class="card-body text-center">
-                                <h5 class="card-title">NCERT Class - 2 Mridang ( English Book )</h5>
-                                <div>
-                                    <span class="price">
-                                        <span class="sale-price">
-                                            <span class="woocommerce-Price-amount amount">
-                                                <bdi>
-                                                    <span class="woocommerce-Price-currencySymbol"></span>
-                                                </bdi>
-                                            </span>
-                                            <del aria-hidden="true"></del>
-                                            <span class="screen-reader-text"></span>
-                                            <ins aria-hidden="true">
-                                                <span class="woocommerce-Price-amount amount">
-                                                    <bdi>
-                                                        <span class="woocommerce-Price-currencySymbol"></span>
-                                                    </bdi>
-                                                </span>
-                                            </ins>
-                                            <span class="screen-reader-text"></span>
-                                        </span>
-                                    </span>
-                                </div>
-                                <button class="btn btn-primary custom-btn" data-bs-toggle="tooltip"
-                                    data-bs-placement="top" title="Click to add this item to cart">ADD TO
-                                    CART</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <div class="container mt-4">
-                <!-- Sections 2 -->
-                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
-                    <!-- Book Card 1 -->
-                    <div class="col">
-                        <div class="card h-100 shadow">
-                            <img src="assets/Book4.jpg" class="card-img-top" alt="Book Image">
-                            <div class="card-body text-center">
-                                <h5 class="card-title">NCERT Class - 2 Mridang ( English Book )</h5>
-                                <div>
-                                    <span class="price">
-                                        <span class="sale-price">
-                                            <span class="woocommerce-Price-amount amount">
-                                                <bdi>
-                                                    <span class="woocommerce-Price-currencySymbol"></span>
-                                                </bdi>
-                                            </span>
-                                            <del aria-hidden="true"></del>
-                                            <span class="screen-reader-text"></span>
-                                            <ins aria-hidden="true">
-                                                <span class="woocommerce-Price-amount amount">
-                                                    <bdi>
-                                                        <span class="woocommerce-Price-currencySymbol"></span>
-                                                    </bdi>
-                                                </span>
-                                            </ins>
-                                            <span class="screen-reader-text"></span>
-                                        </span>
-                                    </span>
-                                </div>
-                                <button class="btn btn-primary custom-btn" data-bs-toggle="tooltip"
-                                    data-bs-placement="top" title="Click to add this item to cart">ADD TO
-                                    CART</button>
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- Book Card 2 -->
-                    <div class="col">
-                        <div class="card h-100 shadow">
-                            <img src="assets/Book4.jpg" class="card-img-top" alt="Book Image">
-                            <div class="card-body text-center">
-                                <h5 class="card-title">NCERT Class - 2 Joyful ( Math Book )</h5>
-                                <div>
-                                    <span class="price">
-                                        <span class="sale-price">
-                                            <span class="woocommerce-Price-amount amount">
-                                                <bdi>
-                                                    <span class="woocommerce-Price-currencySymbol"></span>
-                                                </bdi>
-                                            </span>
-                                            <del aria-hidden="true"></del>
-                                            <span class="screen-reader-text"></span>
-                                            <ins aria-hidden="true">
-                                                <span class="woocommerce-Price-amount amount">
-                                                    <bdi>
-                                                        <span class="woocommerce-Price-currencySymbol"></span>
-
-                                                    </bdi>
-                                                </span>
-                                            </ins>
-                                            <span class="screen-reader-text"></span>
-                                        </span>
-                                    </span>
-                                </div>
-                                <button class="btn btn-primary custom-btn" data-bs-toggle="tooltip"
-                                    data-bs-placement="top" title="Click to add this item to cart">ADD TO
-                                    CART</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Book Card 3 -->
-                    <div class="col">
-                        <div class="card h-100 shadow">
-                            <img src="assets/Book4.jpg" class="card-img-top" alt="Book Image">
-                            <div class="card-body text-center">
-                                <h5 class="card-title">NCERT Anand Book for Balvatika ( Activity Book & Worksheets )
-                                </h5>
-                                <div>
-                                    <span class="price">
-                                        <span class="sale-price">
-                                            <span class="woocommerce-Price-amount amount">
-                                                <bdi>
-                                                    <span class="woocommerce-Price-currencySymbol"></span>
-                                                </bdi>
-                                            </span>
-                                            <del aria-hidden="true"></del>
-                                            <span class="screen-reader-text"></span>
-                                            <ins aria-hidden="true">
-                                                <span class="woocommerce-Price-amount amount">
-                                                    <bdi>
-                                                        <span class="woocommerce-Price-currencySymbol"></span>
-                                                    </bdi>
-                                                </span>
-                                            </ins>
-                                            <span class="screen-reader-text"></span>
-                                        </span>
-                                    </span>
-                                </div>
-                                <button class="btn btn-primary custom-btn" data-bs-toggle="tooltip"
-                                    data-bs-placement="top" title="Click to add this item to cart">ADD TO
-                                    CART</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Book Card 4 -->
-                    <div class="col">
-                        <div class="card h-100 shadow">
-                            <img src="assets/Book4.jpg" class="card-img-top" alt="Book Image">
-                            <div class="card-body text-center">
-                                <h5 class="card-title">NCERT Class 2 Combo Set ( English Medium )</h5>
-                                <div>
-                                    <span class="price">
-                                        <span class="sale-price">
-                                            <span class="woocommerce-Price-amount amount">
-                                                <bdi>
-                                                    <span class="woocommerce-Price-currencySymbol"></span>
-                                                </bdi>
-                                            </span>
-                                            <del aria-hidden="true"></del>
-                                            <span class="screen-reader-text"></span>
-                                            <ins aria-hidden="true">
-                                                <span class="woocommerce-Price-amount amount">
-                                                    <bdi>
-                                                        <span class="woocommerce-Price-currencySymbol"></span>
-                                                    </bdi>
-                                                </span>
-                                            </ins>
-                                            <span class="screen-reader-text"></span>
-                                        </span>
-                                    </span>
-                                </div>
-                                <button class="btn btn-primary custom-btn" data-bs-toggle="tooltip"
-                                    data-bs-placement="top" title="Click to add this item to cart">ADD TO
-                                    CART</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="container mt-4">
-                <!-- Sections 3 -->
-                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
-                    <!-- Book Card 1 -->
-                    <div class="col">
-                        <div class="card h-100 shadow">
-                            <img src="assets/Book4.jpg" class="card-img-top" alt="Book Image">
-                            <div class="card-body text-center">
-                                <h5 class="card-title">NCERT Class - 2 Mridang ( English Book )</h5>
-                                <div>
-                                    <span class="price">
-                                        <span class="sale-price">
-                                            <span class="woocommerce-Price-amount amount">
-                                                <bdi>
-                                                    <span class="woocommerce-Price-currencySymbol"></span>
-                                                </bdi>
-                                            </span>
-                                            <del aria-hidden="true"></del>
-                                            <span class="screen-reader-text"></span>
-                                            <ins aria-hidden="true">
-                                                <span class="woocommerce-Price-amount amount">
-                                                    <bdi>
-                                                        <span class="woocommerce-Price-currencySymbol"></span>
-                                                    </bdi>
-                                                </span>
-                                            </ins>
-                                            <span class="screen-reader-text"></span>
-                                        </span>
-                                    </span>
-                                </div>
-                                <button class="btn btn-primary custom-btn" data-bs-toggle="tooltip"
-                                    data-bs-placement="top" title="Click to add this item to cart">ADD TO
-                                    CART</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Book Card 2 -->
-                    <div class="col">
-                        <div class="card h-100 shadow">
-                            <img src="assets/Book4.jpg" class="card-img-top" alt="Book Image">
-                            <div class="card-body text-center">
-                                <h5 class="card-title">NCERT Class - 2 Joyful ( Math Book )</h5>
-                                <div>
-                                    <span class="price">
-                                        <span class="sale-price">
-                                            <span class="woocommerce-Price-amount amount">
-                                                <bdi>
-                                                    <span class="woocommerce-Price-currencySymbol"></span>
-                                                </bdi>
-                                            </span>
-                                            <del aria-hidden="true"></del>
-                                            <span class="screen-reader-text"></span>
-                                            <ins aria-hidden="true">
-                                                <span class="woocommerce-Price-amount amount">
-                                                    <bdi>
-                                                        <span class="woocommerce-Price-currencySymbol"></span>
-
-                                                    </bdi>
-                                                </span>
-                                            </ins>
-                                            <span class="screen-reader-text"></span>
-                                        </span>
-                                    </span>
-                                </div>
-                                <button class="btn btn-primary custom-btn" data-bs-toggle="tooltip"
-                                    data-bs-placement="top" title="Click to add this item to cart">ADD TO
-                                    CART</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Book Card 3 -->
-                    <div class="col">
-                        <div class="card h-100 shadow">
-                            <img src="assets/Book4.jpg" class="card-img-top" alt="Book Image">
-                            <div class="card-body text-center">
-                                <h5 class="card-title">NCERT Anand Book for Balvatika ( Activity Book & Worksheets )
-                                </h5>
-                                <div>
-                                    <span class="price">
-                                        <span class="sale-price">
-                                            <span class="woocommerce-Price-amount amount">
-                                                <bdi>
-                                                    <span class="woocommerce-Price-currencySymbol"></span>
-                                                </bdi>
-                                            </span>
-                                            <del aria-hidden="true"></del>
-                                            <span class="screen-reader-text"></span>
-                                            <ins aria-hidden="true">
-                                                <span class="woocommerce-Price-amount amount">
-                                                    <bdi>
-                                                        <span class="woocommerce-Price-currencySymbol"></span>
-                                                    </bdi>
-                                                </span>
-                                            </ins>
-                                            <span class="screen-reader-text"></span>
-                                        </span>
-                                    </span>
-                                </div>
-                                <button class="btn btn-primary custom-btn" data-bs-toggle="tooltip"
-                                    data-bs-placement="top" title="Click to add this item to cart">ADD TO
-                                    CART</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Book Card 4 -->
-                    <div class="col">
-                        <div class="card h-100 shadow">
-                            <img src="assets/Book4.jpg" class="card-img-top" alt="Book Image">
-                            <div class="card-body text-center">
-                                <h5 class="card-title">NCERT Class 2 Combo Set ( English Medium )</h5>
-                                <div>
-                                    <span class="price">
-                                        <span class="sale-price">
-                                            <span class="woocommerce-Price-amount amount">
-                                                <bdi>
-                                                    <span class="woocommerce-Price-currencySymbol"></span>
-                                                </bdi>
-                                            </span>
-                                            <del aria-hidden="true"></del>
-                                            <span class="screen-reader-text"></span>
-                                            <ins aria-hidden="true">
-                                                <span class="woocommerce-Price-amount amount">
-                                                    <bdi>
-                                                        <span class="woocommerce-Price-currencySymbol"></span>
-                                                    </bdi>
-                                                </span>
-                                            </ins>
-                                            <span class="screen-reader-text"></span>
-                                        </span>
-                                    </span>
-                                </div>
-                                <button class="btn btn-primary custom-btn" data-bs-toggle="tooltip"
-                                    data-bs-placement="top" title="Click to add this item to cart">ADD TO
-                                    CART</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="container mt-4">
-                <!-- Sections 4 -->
-                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
-                    <!-- Book Card 1 -->
-                    <div class="col">
-                        <div class="card h-100 shadow">
-                            <img src="assets/Book4.jpg" class="card-img-top" alt="Book Image">
-                            <div class="card-body text-center">
-                                <h5 class="card-title">NCERT Class - 2 Mridang ( English Book )</h5>
-                                <div>
-                                    <span class="price">
-                                        <span class="sale-price">
-                                            <span class="woocommerce-Price-amount amount">
-                                                <bdi>
-                                                    <span class="woocommerce-Price-currencySymbol"></span>
-                                                </bdi>
-                                            </span>
-                                            <del aria-hidden="true"></del>
-                                            <span class="screen-reader-text"></span>
-                                            <ins aria-hidden="true">
-                                                <span class="woocommerce-Price-amount amount">
-                                                    <bdi>
-                                                        <span class="woocommerce-Price-currencySymbol"></span>
-                                                    </bdi>
-                                                </span>
-                                            </ins>
-                                            <span class="screen-reader-text"></span>
-                                        </span>
-                                    </span>
-                                </div>
-                                <button class="btn btn-primary custom-btn" data-bs-toggle="tooltip"
-                                    data-bs-placement="top" title="Click to add this item to cart">ADD TO
-                                    CART</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Book Card 2 -->
-                    <div class="col">
-                        <div class="card h-100 shadow">
-                            <img src="assets/Book4.jpg" class="card-img-top" alt="Book Image">
-                            <div class="card-body text-center">
-                                <h5 class="card-title">NCERT Class - 2 Joyful ( Math Book )</h5>
-                                <div>
-                                    <span class="price">
-                                        <span class="sale-price">
-                                            <span class="woocommerce-Price-amount amount">
-                                                <bdi>
-                                                    <span class="woocommerce-Price-currencySymbol"></span>
-                                                </bdi>
-                                            </span>
-                                            <del aria-hidden="true"></del>
-                                            <span class="screen-reader-text"></span>
-                                            <ins aria-hidden="true">
-                                                <span class="woocommerce-Price-amount amount">
-                                                    <bdi>
-                                                        <span class="woocommerce-Price-currencySymbol"></span>
-
-                                                    </bdi>
-                                                </span>
-                                            </ins>
-                                            <span class="screen-reader-text"></span>
-                                        </span>
-                                    </span>
-                                </div>
-                                <button class="btn btn-primary custom-btn" data-bs-toggle="tooltip"
-                                    data-bs-placement="top" title="Click to add this item to cart">ADD TO
-                                    CART</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Book Card 3 -->
-                    <div class="col">
-                        <div class="card h-100 shadow">
-                            <img src="assets/Book4.jpg" class="card-img-top" alt="Book Image">
-                            <div class="card-body text-center">
-                                <h5 class="card-title">NCERT Anand Book for Balvatika ( Activity Book & Worksheets )
-                                </h5>
-                                <div>
-                                    <span class="price">
-                                        <span class="sale-price">
-                                            <span class="woocommerce-Price-amount amount">
-                                                <bdi>
-                                                    <span class="woocommerce-Price-currencySymbol"></span>
-                                                </bdi>
-                                            </span>
-                                            <del aria-hidden="true"></del>
-                                            <span class="screen-reader-text"></span>
-                                            <ins aria-hidden="true">
-                                                <span class="woocommerce-Price-amount amount">
-                                                    <bdi>
-                                                        <span class="woocommerce-Price-currencySymbol"></span>
-                                                    </bdi>
-                                                </span>
-                                            </ins>
-                                            <span class="screen-reader-text"></span>
-                                        </span>
-                                    </span>
-                                </div>
-                                <button class="btn btn-primary custom-btn" data-bs-toggle="tooltip"
-                                    data-bs-placement="top" title="Click to add this item to cart">ADD TO
-                                    CART</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Book Card 4 -->
-                    <div class="col">
-                        <div class="card h-100 shadow">
-                            <img src="assets/Book4.jpg" class="card-img-top" alt="Book Image">
-                            <div class="card-body text-center">
-                                <h5 class="card-title">NCERT Class 2 Combo Set ( English Medium )</h5>
-                                <div>
-                                    <span class="price">
-                                        <span class="sale-price">
-                                            <span class="woocommerce-Price-amount amount">
-                                                <bdi>
-                                                    <span class="woocommerce-Price-currencySymbol"></span>
-                                                </bdi>
-                                            </span>
-                                            <del aria-hidden="true"></del>
-                                            <span class="screen-reader-text"></span>
-                                            <ins aria-hidden="true">
-                                                <span class="woocommerce-Price-amount amount">
-                                                    <bdi>
-                                                        <span class="woocommerce-Price-currencySymbol"></span>
-                                                    </bdi>
-                                                </span>
-                                            </ins>
-                                            <span class="screen-reader-text"></span>
-                                        </span>
-                                    </span>
-                                </div>
-                                <button class="btn btn-primary custom-btn" data-bs-toggle="tooltip"
-                                    data-bs-placement="top" title="Click to add this item to cart">ADD TO
-                                    CART</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <!-- ----------------FAQ------------------- -->
         <div class="container mt-5">
-            <h2 class="text-center text-primary fw-bold mb-4">Frequently Asked Questions</h2>
-            <div class="accordion" id="faqAccordion">
-                <!-- FAQ Item 1 -->
-                <div class="faq-card mb-3">
-                    <div class="faq-question d-flex justify-content-between" onclick="toggleFAQ(1)">
-                        <span>What is the purpose of the SAMIP Software?</span>
-                        <i id="icon1" class="bi bi-plus-lg text-primary faq-icon"></i>
-                    </div>
-                    <div id="faq1" class="faq-answer">
-                        The app is designed to simplify communication, management, and daily operations for residents,
-                        RWAs
-                        (Resident Welfare Associations), and staff.
-                    </div>
-                </div>
+  <h2 class="text-center text-primary fw-bold mb-4 fs-1">❓ Frequently Asked Questions</h2>
 
-                <!-- FAQ Item 2 -->
-                <div class="faq-card mb-3">
-                    <div class="faq-question d-flex justify-content-between" onclick="toggleFAQ(2)">
-                        <span>How do I register on the app?</span>
-                        <i id="icon2" class="bi bi-plus-lg text-primary faq-icon"></i>
-                    </div>
-                    <div id="faq2" class="faq-answer">
-                        You can register by downloading the app and following the on-screen instructions.
-                    </div>
-                </div>
+  <div class="accordion" id="faqAccordion">
+    <!-- FAQ Item 1 -->
+    <div class="faq-card">
+      <div class="faq-question" onclick="toggleFAQ(1)">
+        <span>What is the purpose of the SAMIP Software?</span>
+        <i id="icon1" class="bi bi-plus-lg faq-icon"></i>
+      </div>
+      <div id="faq1" class="faq-answer">
+        The app simplifies communication, management, and daily operations for residents, RWAs, and staff.
+      </div>
+    </div>
 
-                <!-- FAQ Item 3 -->
-                <div class="faq-card mb-3">
-                    <div class="faq-question d-flex justify-content-between" onclick="toggleFAQ(3)">
-                        <span>Can workers and staff use the app?</span>
-                        <i id="icon3" class="bi bi-plus-lg text-primary faq-icon"></i>
-                    </div>
-                    <div id="faq3" class="faq-answer">
-                        Yes, workers and staff can use the app to manage their tasks, view schedules, and update their
-                        work status.
-                    </div>
-                </div>
+    <!-- FAQ Item 2 -->
+    <div class="faq-card">
+      <div class="faq-question" onclick="toggleFAQ(2)">
+        <span>How do I register on the app?</span>
+        <i id="icon2" class="bi bi-plus-lg faq-icon"></i>
+      </div>
+      <div id="faq2" class="faq-answer">
+        You can register by downloading the app and following the on-screen instructions.
+      </div>
+    </div>
 
-                <!-- FAQ Item 4 -->
-                <div class="faq-card mb-3">
-                    <div class="faq-question d-flex justify-content-between" onclick="toggleFAQ(4)">
-                        <span>How secure is the app?</span>
-                        <i id="icon4" class="bi bi-plus-lg text-primary faq-icon"></i>
-                    </div>
-                    <div id="faq4" class="faq-answer">
-                        The app ensures data security with encryption protocols and secure login features.
-                    </div>
-                </div>
+    <!-- FAQ Item 3 -->
+    <div class="faq-card">
+      <div class="faq-question" onclick="toggleFAQ(3)">
+        <span>Can workers and staff use the app?</span>
+        <i id="icon3" class="bi bi-plus-lg faq-icon"></i>
+      </div>
+      <div id="faq3" class="faq-answer">
+        Yes, workers and staff can use the app to manage tasks, view schedules, and update work status.
+      </div>
+    </div>
 
-                <!-- FAQ Item 5 -->
-                <div class="faq-card mb-3">
-                    <div class="faq-question d-flex justify-content-between" onclick="toggleFAQ(5)">
-                        <span>Can I pay my society maintenance through the app?</span>
-                        <i id="icon5" class="bi bi-plus-lg text-primary faq-icon"></i>
-                    </div>
-                    <div id="faq5" class="faq-answer">
-                        Yes, the app provides a secure payment gateway for paying society maintenance fees.
-                    </div>
-                </div>
-            </div>
-        </div>
+    <!-- FAQ Item 4 -->
+    <div class="faq-card">
+      <div class="faq-question" onclick="toggleFAQ(4)">
+        <span>How secure is the app?</span>
+        <i id="icon4" class="bi bi-plus-lg faq-icon"></i>
+      </div>
+      <div id="faq4" class="faq-answer">
+        The app ensures data security with encryption protocols and secure login features.
+      </div>
+    </div>
+
+    <!-- FAQ Item 5 -->
+    <div class="faq-card">
+      <div class="faq-question" onclick="toggleFAQ(5)">
+        <span>Can I pay my society maintenance through the app?</span>
+        <i id="icon5" class="bi bi-plus-lg faq-icon"></i>
+      </div>
+      <div id="faq5" class="faq-answer">
+        Yes, the app provides a secure payment gateway for paying society maintenance fees.
+      </div>
+    </div>
+  </div>
+</div>
+
 
     </main>
 
@@ -1115,6 +395,7 @@
             });
         });
     </script>
+    
     <script>
         document.getElementById('individualRegister').addEventListener('click', function(event) {
             event.preventDefault();
@@ -1123,123 +404,22 @@
         });
     </script>
     <script>
-        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-        var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
-            return new bootstrap.Tooltip(tooltipTriggerEl)
-        })
-
         function toggleFAQ(index) {
-            var answer = document.getElementById('faq' + index);
-            var icon = document.getElementById('icon' + index);
-
-            if (answer.style.display === 'none' || answer.style.display === '') {
-                answer.style.display = 'block';
-                icon.classList.remove('bi-plus-lg');
-                icon.classList.add('bi-dash-lg');
-            } else {
-                answer.style.display = 'none';
-                icon.classList.remove('bi-dash-lg');
-                icon.classList.add('bi-plus-lg');
-            }
-        }
-
-        document.addEventListener("DOMContentLoaded", function() {
-            // Price data in an array (original price and discounted price for each book)
-            let books = [{
-                    original: 492.00,
-                    discount: 410.00
-                },
-                {
-                    original: 140.00,
-                    discount: 70.00
-                },
-                {
-                    original: 250.00,
-                    discount: 200.00
-                },
-                {
-                    original: 300.00,
-                    discount: 100.00
-                },
-                {
-                    original: 1000.00,
-                    discount: 460.00
-                },
-                {
-                    original: 826.00,
-                    discount: 700.00
-                },
-                {
-                    original: 600.00,
-                    discount: 240.00
-                },
-                {
-                    original: 520.00,
-                    discount: 499.00
-                },
-                {
-                    original: 492.00,
-                    discount: 410.00
-                },
-                {
-                    original: 140.00,
-                    discount: 70.00
-                },
-                {
-                    original: 250.00,
-                    discount: 200.00
-                },
-                {
-                    original: 300.00,
-                    discount: 100.00
-                },
-                {
-                    original: 1000.00,
-                    discount: 460.00
-                },
-                {
-                    original: 826.00,
-                    discount: 700.00
-                },
-                {
-                    original: 600.00,
-                    discount: 240.00
-                },
-                {
-                    original: 520.00,
-                    discount: 499.00
-                }
-            ];
-
-            // Select all book price sections
-            let bookPriceElements = document.querySelectorAll(".sale-price");
-
-            // Loop through each book and update the price
-            bookPriceElements.forEach((priceElement, index) => {
-                if (books[index]) {
-                    let originalPriceElement = priceElement.querySelector("del");
-                    let discountedPriceElement = priceElement.querySelector("ins bdi");
-
-                    if (originalPriceElement) {
-                        originalPriceElement.innerHTML = `<span class="woocommerce-Price-amount amount">
-          <bdi><span class="woocommerce-Price-currencySymbol">₹</span>${books[index].original.toFixed(2)}</bdi>
-        </span>`;
-                    }
-
-                    if (discountedPriceElement) {
-                        discountedPriceElement.innerHTML = < span class =
-                            "woocommerce-Price-currencySymbol" > ₹ <
-                            /span>${books[index].discount.toFixed(2)};
-                    }
-                }
-            });
-
-            // Remove extra quotes from price display
-            document.querySelectorAll(".woocommerce-Price-amount bdi").forEach(el => {
-                el.innerHTML = el.innerHTML.replace(/["']/g, ''); // Remove quotes
-            });
-        });
+    var answer = document.getElementById('faq' + index);
+    var icon = document.getElementById('icon' + index);
+  
+    if (answer.style.display === 'none' || answer.style.display === '') {
+      answer.style.display = 'block';
+      icon.classList.remove('bi-plus-lg');
+      icon.classList.add('bi-dash-lg');
+    } else {
+      answer.style.display = 'none';
+      icon.classList.remove('bi-dash-lg');
+      icon.classList.add('bi-plus-lg');
+    }
+  }
     </script>
+   
 </body>
 
 </html>
