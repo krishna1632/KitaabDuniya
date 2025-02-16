@@ -157,7 +157,7 @@
         <!-- *************** Books Collections*************** -->
 <div class="mt-5">
   <div class="container mt-4">
-    <h2 class="text-center mb-4 mt-5 text-danger fs-1 fw-bold">📚 Book Collection</h2>
+    <h2 class="text-center mb-4 mt-5 text-danger fs-1 fw-bold">📚 Books Collection</h2>
 
     <!-- New Books Section -->
     <div class="section-header">
