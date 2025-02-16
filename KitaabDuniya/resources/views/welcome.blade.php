@@ -8,17 +8,14 @@
     <link rel="stylesheet" href="welcome.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
-
     <style>
         .footer {
             margin-top: 50px;
@@ -115,19 +112,16 @@
             color: gray;
         }
 
-
         .custom-btn {
             background-color: orange !important;
             border-color: orange !important;
             color: white !important;
             transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
 
-
             &:hover {
                 background-color: #ffcc80 !important;
                 border-color: #ffcc80 !important;
                 transform: scale(1.05);
-
             }
         }
 
@@ -159,13 +153,6 @@
             color: #555;
             display: none;
         }
-
-        /* .faq-icon {
-  font-size: 20px;
-  transition: transform 0.3s ease-in-out;
-} */
-
-
 
         .social-icons a {
             text-decoration: none;
@@ -202,12 +189,9 @@
 
         /* YouTube Red */
     </style>
-
 </head>
 
 <body>
-
-
     <!-- *************** Header Section **************** -->
     <nav class="navbar navbar-expand-lg bg-dark py-0">
         <div class="container-fluid">
@@ -276,7 +260,6 @@
             <div class="col-md-3 text-end">
                 <a href="#" class="btn btn-outline-secondary text-dark">
                     <i class="bi bi-cart"></i> Cart
-
                 </a>
             </div>
         </div>
@@ -289,13 +272,8 @@
         </div>
     </div>
 
-
-
-
     <!-- *************** Main Section ******************-->
-
     <main class="">
-
         <div class="container mt-5">
             <h2 class="text-center text-warning fw-bold mb-4">Categories</h2>
 
@@ -347,7 +325,6 @@
         </div>
 
         <!-- *************** Books Collections*************** -->
-
         <div classs="">
             <div class="container mt-4">
                 <h2 class="text-center mb-4 mt-5 text-danger">Book Collection</h2>
@@ -361,7 +338,6 @@
                             <div class="card-body text-center">
                                 <h5 class="card-title">NCERT Anand Book for Balvatika ( Activity Book & Worksheets )
                                 </h5>
-
                                 <div>
                                     <span class="price">
                                         <span class="sale-price">
@@ -384,7 +360,6 @@
                                         </span>
                                     </span>
                                 </div>
-
                                 <button class="btn btn-primary custom-btn mt-2" data-bs-toggle="tooltip"
                                     data-bs-placement="top" title="Click to add this item to cart">ADD TO
                                     CART</button>
@@ -498,10 +473,7 @@
                 </div>
             </div>
 
-
-
             <div class="container mt-4">
-
                 <!-- Sections 2 -->
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
                     <!-- Book Card 1 -->
@@ -643,7 +615,6 @@
                     </div>
                 </div>
             </div>
-
 
             <div class="container mt-4">
                 <!-- Sections 3 -->
@@ -788,10 +759,7 @@
                 </div>
             </div>
 
-
-
             <div class="container mt-4">
-
                 <!-- Sections 4 -->
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
                     <!-- Book Card 1 -->
@@ -936,10 +904,8 @@
         </div>
 
         <!-- ----------------FAQ------------------- -->
-
         <div class="container mt-5">
             <h2 class="text-center text-primary fw-bold mb-4">Frequently Asked Questions</h2>
-
             <div class="accordion" id="faqAccordion">
                 <!-- FAQ Item 1 -->
                 <div class="faq-card mb-3">
@@ -1003,13 +969,7 @@
 
     </main>
 
-
-
-
-
     <!-- *************** Footer Section ****************** -->
-
-
     <footer class="footer">
         <div class="title-line">
             <h5>Kittabi Duniya</h5>
@@ -1036,6 +996,7 @@
             </div>
         </div>
     </footer>
+
     <!-- Bootstrap Modal -->
     <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel"
         aria-hidden="true">
@@ -1048,7 +1009,6 @@
                 <div class="modal-body">
                     <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                         @csrf
-
                         <div class="mb-3">
                             <label for="name" class="form-label">Full Name</label>
                             <input type="text" class="form-control" id="name" name="name" required>
@@ -1089,7 +1049,6 @@
                                 </div>
                             </div>
                         </div>
-
 
                         <div class="mb-3">
                             <label for="password" class="form-label">Password</label>
@@ -1168,8 +1127,6 @@
         var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
             return new bootstrap.Tooltip(tooltipTriggerEl)
         })
-
-
 
         function toggleFAQ(index) {
             var answer = document.getElementById('faq' + index);

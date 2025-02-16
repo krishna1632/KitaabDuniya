@@ -24,11 +24,32 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
-        $request->authenticate();
+        $request->validate([
+            'email' => 'required|string|email',
+            'password' => 'required|string',
+        ]);
 
-        $request->session()->regenerate();
+        if (Auth::attempt($request->only('email', 'password'))) {
+            $request->session()->regenerate();
 
-        return redirect()->intended(route('dashboard', absolute: false));
+            // Get the authenticated user
+            $user = Auth::user();
+
+            // Fetch the role using Spatie's getRoleNames method
+            $role = $user->getRoleNames()->first(); // Get the first role of the user
+
+            // Check if the user is SuperAdmin
+            if ($role == 'SuperAdmin') { // Ensure the role name matches
+                return redirect()->route('superadmin.dashboard'); // Redirect to Superadmin dashboard
+            }
+
+            // Default redirection for other roles
+            return redirect('/welcome'); // Redirect all other users to welcome page
+        }
+
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ]);
     }
 
     /**

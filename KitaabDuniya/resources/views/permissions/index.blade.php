@@ -1,76 +1,87 @@
 @extends('layouts.admin')
 
+@section('title', 'Permission Management')
+
 @section('content')
-    <div class="flex justify-between items-center mb-6">
-        <h2 class="text-2xl font-semibold text-gray-800">
-            {{ __('Permissions') }}
-        </h2>
-        <a href="{{ route('permissions.create') }}"
-            class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-500 transition">
-            + Create Permission
-        </a>
-    </div>
+    <h1 class="mt-4">Permission Management</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}">Dashboard</a></li>
+        <li class="breadcrumb-item active">Permissions</li>
+    </ol>
 
-    <div class="bg-white rounded-lg shadow overflow-hidden">
-        <table class="w-full">
-            <thead class="bg-gray-50">
-                <tr>
-                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase">Sl No.</th>
-                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase">Name</th>
-                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase">Created At</th>
-                    <th class="px-6 py-3 text-center text-sm font-medium text-gray-500 uppercase">Action</th>
-                </tr>
-            </thead>
-            <tbody class="divide-y divide-gray-200">
-                @foreach ($permissions as $index => $permission)
-                    <tr class="hover:bg-gray-50 transition">
-                        <td class="px-6 py-4 text-sm text-gray-700">{{ $index + 1 }}</td>
-                        <td class="px-6 py-4 text-sm text-gray-700">{{ $permission->name }}</td>
-                        <td class="px-6 py-4 text-sm text-gray-700">
-                            {{ \Carbon\Carbon::parse($permission->created_at)->format('d M, Y') }}</td>
-                        <td class="px-6 py-4 text-center">
-                            <a href="{{ route('permissions.edit', $permission->id) }}"
-                                class="text-blue-600 hover:text-blue-500 mr-3">Edit</a>
-                            <button onclick="confirmDelete({{ $permission->id }})"
-                                class="text-red-600 hover:text-red-500">Delete</button>
-                        </td>
+    <div class="card mb-4">
+        <div class="card-header d-flex justify-between items-center">
+            <span>
+                <i class="fas fa-table me-1"></i>
+                Permissions List
+            </span>
+            <a href="{{ route('permissions.create') }}" class="btn btn-primary btn-sm">
+                <i class="fas fa-plus"></i> Add Permission
+            </a>
+        </div>
+        <div class="card-body">
+            <table id="datatablesSimple" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Created At</th>
+                        <th class="text-center">Actions</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach ($permissions as $permission)
+                        <tr>
+                            <td>{{ $permission->id }}</td>
+                            <td>{{ $permission->name }}</td>
+                            <td>{{ $permission->created_at->format('d M, Y') }}</td>
+                            <td class="text-center">
+                                <a href="{{ route('permissions.edit', $permission->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                                <form action="{{ route('permissions.destroy', $permission->id) }}" method="POST" class="d-inline" id="delete-form-{{ $permission->id }}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete({{ $permission->id }})">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
 
-    <div class="mt-6">
-        {{ $permissions->links() }}
-    </div>
-@endsection
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-@section('script')
-    <script type="text/javascript">
-        function confirmDelete(id) {
-            if (confirm('Are you sure you want to delete this permission? This action cannot be undone.')) {
-                fetch(`{{ route('permissions.destroy', ':id') }}`.replace(':id', id), {
-                        method: 'POST',
-                        headers: {
-                            'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                            'Content-Type': 'application/json',
-                            'Accept': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            _method: 'DELETE'
-                        })
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.status) {
-                            alert('Permission deleted successfully');
-                            location.reload();
-                        } else {
-                            alert('Error: Permission not found!');
-                        }
-                    })
-                    .catch(() => alert('Error deleting permission. Please try again.'));
+    @if (session('success'))
+        <script>
+            window.onload = function() {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success!',
+                    text: "{{ session('success') }}",
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                });
             }
+        </script>
+    @endif
+
+    <script>
+        function confirmDelete(permissionId) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Yes, delete it!',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('delete-form-' + permissionId).submit();
+                }
+            });
         }
     </script>
 @endsection

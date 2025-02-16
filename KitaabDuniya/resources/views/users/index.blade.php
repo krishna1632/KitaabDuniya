@@ -1,81 +1,92 @@
-<x-app-layout>
-    <x-slot name="header">
-        <div class="flex justify-between">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('Users') }}
-            </h2>
-            <a href="{{ route('roles.create') }}" class="bg-slate-700 text-sm rounded-md text-white px-3 py-3">Create</a>
+@extends('layouts.admin')
+
+@section('title', 'User Management')
+
+@section('content')
+    <h1 class="mt-4 text-primary">User Management</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a href="{{ url('dashboard') }}">Dashboard</a></li>
+        <li class="breadcrumb-item active">Users</li>
+    </ol>
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-users me-1"></i>
+            User List
         </div>
-    </x-slot>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <x-message></x-message>
-
-            <table class="w-full">
-                <thead class="bg-gray-50">
-                    <tr class="border-b">
-                        <th class="px-6 py-3 text-left" width='120'>Sl No.</th>
-                        <th class="px-6 py-3 text-left">Name</th>
-                        <th class="px-6 py-3 text-left">Email</th>
-                        <th class="px-6 py-3 text-left" width='180'>Created At</th>
-                        <th class="px-6 py-3 text-center" width='180'>Action</th>
+        <div class="card-body">
+            <table id="datatablesSimple" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>S.N.</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Created At</th>
+                        <th class="text-center">Actions</th>
                     </tr>
                 </thead>
-                <tbody class="bg-white">
+                <tbody>
                     @if ($users->isNotEmpty())
                         @foreach ($users as $index => $user)
-                            <tr class="border-b">
-                                <td class="px-6 py-3 text-left">{{ $index + 1 }}</td>
-                                <td class="px-6 py-3 text-left">{{ $user->name }}</td>
-                                <td class="px-6 py-3 text-left">
-                                    {{ $user->email }}
-                                </td>
-                                <td class="px-6 py-3 text-left">
-                                    {{ \Carbon\Carbon::parse($user->created_at)->format('d M, Y') }}
-                                </td>
-                                <td class="px-6 py-3 text-center">
-                                    <a href="{{ route('users.edit', $user->id) }}"
-                                        class="bg-slate-700 text-sm rounded-md text-white px-3 py-2 hover:bg-slate-600">Edit</a>
-                                    {{-- <a href="javascript:void(0)" onclick="deleteUser({{ $user->id }})"
-                                        class="bg-red-700 text-sm rounded-md text-white px-3 py-2 hover:bg-red-600">Delete</a> --}}
+                            <tr>
+                                <td>{{ $index + 1 }}</td>
+                                <td>{{ $user->name }}</td>
+                                <td>{{ $user->email }}</td>
+                                <td>{{ $user->created_at->format('d M, Y') }}</td>
+                                <td class="text-center">
+                                    <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                                    <button type="button" class="btn btn-danger btn-sm"
+                                        onclick="confirmDelete('{{ $user->id }}')">Delete</button>
+                                    <form id="delete-form-{{ $user->id }}"
+                                        action="{{ route('users.destroy', $user->id) }}" method="POST"
+                                        style="display:none;">
+                                        @csrf
+                                        @method('DELETE')
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
+                    @else
+                        <tr>
+                            <td colspan="5" class="text-center text-muted">No users found</td>
+                        </tr>
                     @endif
                 </tbody>
             </table>
-            {{-- <div class="my-3">{{ $users->links() }}</div> --}}
-
         </div>
     </div>
-    {{-- <x-slot name="script">
-        <script type="text/javascript">
-            function deleteUser(id) {
-                if (confirm('Are you sure you want to delete?')) {
-                    $.ajax({
-                        url: '{{ route("users.destroy", ":id") }}'.replace(':id', id),
-                        type: 'POST', // Laravel DELETE request ke liye POST + _method use hota hai
-                        data: {
-                            _method: 'DELETE', // DELETE request ko spoof karne ke liye
-                            _token: $('meta[name="csrf-token"]').attr('content') // Meta tag se CSRF token le rahe hain
-                        },
-                        dataType: 'json',
-                        success: function(response) {
-                            if (response.status) {
-                                alert('Role deleted successfully');
-                                location.reload(); // Page reload karega
-                            } else {
-                                alert('Error: Role not found!');
-                            }
-                        },
-                        error: function(xhr) {
-                            alert('Error deleting role. Please try again.');
-                        }
-                    });
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function confirmDelete(userId) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "This action cannot be undone!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('delete-form-' + userId).submit();
                 }
+            });
+        }
+    </script>
+
+    @if (session('success'))
+        <script>
+            window.onload = function() {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success!',
+                    text: "{{ session('success') }}",
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                });
             }
         </script>
-        
-    </x-slot> --}}
-</x-app-layout>
+    @endif
+@endsection

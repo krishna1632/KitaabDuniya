@@ -65,6 +65,13 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
+        // Assign the "Individual" role to the user
+        $individualRole = Role::where('name', 'Individual')->first();
+        if ($individualRole) {
+            $user->assignRole($individualRole);
+        }
+
+        event(new Registered($user));
 
         Auth::login($user);
 

@@ -2,11 +2,14 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-book"></i>
+    <a class="sidebar-brand d-flex align-items-center justify-content-between" href="{{ route('dashboard') }}">
+        <div class="d-flex align-items-center">
+            <div class="sidebar-brand-icon rotate-n-15">
+                <i class="fas fa-book"></i>
+            </div>
+            <div class="sidebar-brand-text mx-3">KitaabDuniya</div>
         </div>
-        <div class="sidebar-brand-text mx-3">KitaabDuniya</div>
+
     </a>
 
     <!-- Divider -->
@@ -14,7 +17,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{ route('dashboard') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -23,23 +26,24 @@
     <hr class="sidebar-divider">
 
     <!-- Nav Item - Users Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseUsers"
-            aria-expanded="false" aria-controls="collapseUsers">
+    @can('view users')
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseUsers"
+                aria-expanded="false" aria-controls="collapseUsers">
 
-            <i class="fas fa-fw fa-users"></i>
-            <span>Users</span>
-        </a>
-        <div id="collapseUsers" class="collapse" aria-labelledby="headingUsers" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{ route('users.index') }}">All Users</a>
-                <a class="collapse-item" href="#">Superadmin</a>
-                <a class="collapse-item" href="#">Individual</a>
-                <a class="collapse-item" href="#">Organization</a>
+                <i class="fas fa-fw fa-users"></i>
+                <span>Users</span>
+            </a>
+            <div id="collapseUsers" class="collapse" aria-labelledby="headingUsers" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="{{ route('users.index') }}">All Users</a>
+                    <a class="collapse-item" href="#">Superadmin</a>
+                    <a class="collapse-item" href="#">Individual</a>
+                    <a class="collapse-item" href="#">Organization</a>
+                </div>
             </div>
-        </div>
-    </li>
-
+        </li>
+    @endcan
 
     <!-- Nav Item - Access Management Collapse Menu -->
     <li class="nav-item">
@@ -50,8 +54,12 @@
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{ route('permissions.index') }}">Permissions</a>
-                <a class="collapse-item" href="{{ route('roles.index') }}">Roles</a>
+                @can('view permissions')
+                    <a class="collapse-item" href="{{ route('permissions.index') }}">Permissions</a>
+                @endcan
+                @can('view roles')
+                    <a class="collapse-item" href="{{ route('roles.index') }}">Roles</a>
+                @endcan
             </div>
         </div>
     </li>
@@ -93,16 +101,6 @@
             <i class="fas fa-fw fa-table"></i>
             <span>Tables</span></a>
     </li>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider d-none d-md-block">
-
-    <!-- Sidebar Toggler (Sidebar) -->
-    <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle"></button>
-    </div>
-
-
 
 </ul>
 <!-- End of Sidebar -->
