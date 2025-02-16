@@ -40,7 +40,7 @@ class AuthenticatedSessionController extends Controller
 
             // Check if the user is SuperAdmin
             if ($role == 'SuperAdmin') { // Ensure the role name matches
-                return redirect()->route('superadmin.dashboard'); // Redirect to Superadmin dashboard
+                return redirect()->route('dashboard'); // Redirect to Superadmin dashboard
             }
 
             // Default redirection for other roles
