@@ -32,12 +32,34 @@ class RegisteredUserController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'phone' => ['required', 'string', 'max:20'],
+            'address' => ['required', 'string', 'max:255'],
+            'gender' => ['nullable', 'in:male,female,other'],
+            'profile_pic' => ['nullable', 'file', 'mimes:jpg,jpeg,png', 'max:2048'],
+            'org_licence' => ['nullable', 'file', 'mimes:jpg,jpeg,png,pdf', 'max:2048'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
+
+        // Handle file upload if provided
+        $orgLicencePath = null;
+        if ($request->hasFile('org_licence')) {
+            $orgLicencePath = $request->file('org_licence')->store('org_licences', 'public');
+        }
+
+        // Handle file upload if provided
+        $profilePicPath = null;
+        if ($request->hasFile('profile_pic')) {
+            $profilePicPath = $request->file('profile_pic')->store('profile_pics', 'public');
+        }
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'phone' => $request->phone,
+            'address' => $request->address,
+            'gender' => $request->gender,
+            'profile_pic' => $profilePicPath, // Store file path or null
+            'org_licence' => $orgLicencePath, // Store file path or null
             'password' => Hash::make($request->password),
         ]);
 
