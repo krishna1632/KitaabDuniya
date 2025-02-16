@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -33,6 +34,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/roles/{id}/edit', [RoleController::class, 'edit'])->name('roles.edit');
     Route::post('/roles/{id}', [RoleController::class, 'update'])->name('roles.update');
     Route::delete('/roles/{id}', [RoleController::class, 'destroy'])->name('roles.destroy');
+
+    // Users Routes
+    Route::get('/users', [UserController::class, 'index'])->name('users.index');
+    Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
+    Route::post('/users/{id}', [UserController::class, 'update'])->name('users.update');
+    Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
 });
 
 require __DIR__ . '/auth.php';
