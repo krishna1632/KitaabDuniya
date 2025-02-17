@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kitabi dunia</title>
-    
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
@@ -17,7 +17,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
-        
+
 </head>
 
 <body>
@@ -81,7 +81,8 @@
             <!-- Search Bar -->
             <div class="col-md-6">
                 <form class="d-flex">
-                <input class="form-control me-2 rounded-3" type="search" id="searchBox" placeholder="Search Ex.... 'Delhi'" aria-label="Search">
+                    <input class="form-control me-2 rounded-3" type="search" id="searchBox"
+                        placeholder="Search Ex.... 'Delhi'" aria-label="Search">
                     <button class="btn btn-outline-primary" type="submit">Search</button>
                 </form>
             </div>
@@ -155,27 +156,27 @@
 
         <!-- *************** Books Collections*************** -->
         <!-- *************** Books Collections*************** -->
-<div class="mt-5">
-  <div class="container mt-4">
-    <h2 class="text-center mb-4 mt-5 text-danger fs-1 fw-bold">📚 Books Collection</h2>
+        <div class="mt-5">
+            <div class="container mt-4">
+                <h2 class="text-center mb-4 mt-5 text-danger fs-1 fw-bold">📚 Books Collection</h2>
 
-    <!-- New Books Section -->
-    <div class="section-header">
-      <h4 class="mb-3 text-primary fw-bold">🔥 New Books</h4>
-    </div>
-    <div class="container mt-4">
-      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4" id="newBooksContainer"></div>
-    </div>
+                <!-- New Books Section -->
+                <div class="section-header">
+                    <h4 class="mb-3 text-primary fw-bold">🔥 New Books</h4>
+                </div>
+                <div class="container mt-4">
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4" id="newBooksContainer"></div>
+                </div>
 
-    <!-- Most Readable Books -->
-    <div class="section-header mt-5">
-      <h4 class="mb-3 text-success fw-bold">📖 Most Readable Books</h4>
-    </div>
-    <div class="container mt-4">
-      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4" id="oldBooksContainer"></div>
-    </div>
-  </div>
-</div>
+                <!-- Most Readable Books -->
+                <div class="section-header mt-5">
+                    <h4 class="mb-3 text-success fw-bold">📖 Most Readable Books</h4>
+                </div>
+                <div class="container mt-4">
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4" id="oldBooksContainer"></div>
+                </div>
+            </div>
+        </div>
 
 
 
@@ -186,65 +187,66 @@
 
         <!-- ----------------FAQ------------------- -->
         <div class="container mt-5">
-  <h2 class="text-center text-primary fw-bold mb-4 fs-1">❓ Frequently Asked Questions</h2>
+            <h2 class="text-center text-primary fw-bold mb-4 fs-1">❓ Frequently Asked Questions</h2>
 
-  <div class="accordion" id="faqAccordion">
-    <!-- FAQ Item 1 -->
-    <div class="faq-card">
-      <div class="faq-question" onclick="toggleFAQ(1)">
-        <span>What is the purpose of the SAMIP Software?</span>
-        <i id="icon1" class="bi bi-plus-lg faq-icon"></i>
-      </div>
-      <div id="faq1" class="faq-answer">
-        The app simplifies communication, management, and daily operations for residents, RWAs, and staff.
-      </div>
-    </div>
+            <div class="accordion" id="faqAccordion">
+                <!-- FAQ Item 1 -->
+                <div class="faq-card">
+                    <div class="faq-question" onclick="toggleFAQ(1)">
+                        <span>What is the purpose of the SAMIP Software?</span>
+                        <i id="icon1" class="bi bi-plus-lg faq-icon"></i>
+                    </div>
+                    <div id="faq1" class="faq-answer">
+                        The app simplifies communication, management, and daily operations for residents, RWAs, and
+                        staff.
+                    </div>
+                </div>
 
-    <!-- FAQ Item 2 -->
-    <div class="faq-card">
-      <div class="faq-question" onclick="toggleFAQ(2)">
-        <span>How do I register on the app?</span>
-        <i id="icon2" class="bi bi-plus-lg faq-icon"></i>
-      </div>
-      <div id="faq2" class="faq-answer">
-        You can register by downloading the app and following the on-screen instructions.
-      </div>
-    </div>
+                <!-- FAQ Item 2 -->
+                <div class="faq-card">
+                    <div class="faq-question" onclick="toggleFAQ(2)">
+                        <span>How do I register on the app?</span>
+                        <i id="icon2" class="bi bi-plus-lg faq-icon"></i>
+                    </div>
+                    <div id="faq2" class="faq-answer">
+                        You can register by downloading the app and following the on-screen instructions.
+                    </div>
+                </div>
 
-    <!-- FAQ Item 3 -->
-    <div class="faq-card">
-      <div class="faq-question" onclick="toggleFAQ(3)">
-        <span>Can workers and staff use the app?</span>
-        <i id="icon3" class="bi bi-plus-lg faq-icon"></i>
-      </div>
-      <div id="faq3" class="faq-answer">
-        Yes, workers and staff can use the app to manage tasks, view schedules, and update work status.
-      </div>
-    </div>
+                <!-- FAQ Item 3 -->
+                <div class="faq-card">
+                    <div class="faq-question" onclick="toggleFAQ(3)">
+                        <span>Can workers and staff use the app?</span>
+                        <i id="icon3" class="bi bi-plus-lg faq-icon"></i>
+                    </div>
+                    <div id="faq3" class="faq-answer">
+                        Yes, workers and staff can use the app to manage tasks, view schedules, and update work status.
+                    </div>
+                </div>
 
-    <!-- FAQ Item 4 -->
-    <div class="faq-card">
-      <div class="faq-question" onclick="toggleFAQ(4)">
-        <span>How secure is the app?</span>
-        <i id="icon4" class="bi bi-plus-lg faq-icon"></i>
-      </div>
-      <div id="faq4" class="faq-answer">
-        The app ensures data security with encryption protocols and secure login features.
-      </div>
-    </div>
+                <!-- FAQ Item 4 -->
+                <div class="faq-card">
+                    <div class="faq-question" onclick="toggleFAQ(4)">
+                        <span>How secure is the app?</span>
+                        <i id="icon4" class="bi bi-plus-lg faq-icon"></i>
+                    </div>
+                    <div id="faq4" class="faq-answer">
+                        The app ensures data security with encryption protocols and secure login features.
+                    </div>
+                </div>
 
-    <!-- FAQ Item 5 -->
-    <div class="faq-card">
-      <div class="faq-question" onclick="toggleFAQ(5)">
-        <span>Can I pay my society maintenance through the app?</span>
-        <i id="icon5" class="bi bi-plus-lg faq-icon"></i>
-      </div>
-      <div id="faq5" class="faq-answer">
-        Yes, the app provides a secure payment gateway for paying society maintenance fees.
-      </div>
-    </div>
-  </div>
-</div>
+                <!-- FAQ Item 5 -->
+                <div class="faq-card">
+                    <div class="faq-question" onclick="toggleFAQ(5)">
+                        <span>Can I pay my society maintenance through the app?</span>
+                        <i id="icon5" class="bi bi-plus-lg faq-icon"></i>
+                    </div>
+                    <div id="faq5" class="faq-answer">
+                        Yes, the app provides a secure payment gateway for paying society maintenance fees.
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
     </main>
@@ -395,7 +397,7 @@
             });
         });
     </script>
-    
+
     <script>
         document.getElementById('individualRegister').addEventListener('click', function(event) {
             event.preventDefault();
@@ -405,21 +407,21 @@
     </script>
     <script>
         function toggleFAQ(index) {
-    var answer = document.getElementById('faq' + index);
-    var icon = document.getElementById('icon' + index);
-  
-    if (answer.style.display === 'none' || answer.style.display === '') {
-      answer.style.display = 'block';
-      icon.classList.remove('bi-plus-lg');
-      icon.classList.add('bi-dash-lg');
-    } else {
-      answer.style.display = 'none';
-      icon.classList.remove('bi-dash-lg');
-      icon.classList.add('bi-plus-lg');
-    }
-  }
+            var answer = document.getElementById('faq' + index);
+            var icon = document.getElementById('icon' + index);
+
+            if (answer.style.display === 'none' || answer.style.display === '') {
+                answer.style.display = 'block';
+                icon.classList.remove('bi-plus-lg');
+                icon.classList.add('bi-dash-lg');
+            } else {
+                answer.style.display = 'none';
+                icon.classList.remove('bi-dash-lg');
+                icon.classList.add('bi-plus-lg');
+            }
+        }
     </script>
-   
+
 </body>
 
 </html>

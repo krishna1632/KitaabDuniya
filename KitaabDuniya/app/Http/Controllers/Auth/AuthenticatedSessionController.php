@@ -44,7 +44,7 @@ class AuthenticatedSessionController extends Controller
             }
 
             // Default redirection for other roles
-            return redirect('/welcome'); // Redirect all other users to welcome page
+            return redirect('/'); // Redirect all other users to welcome page
         }
 
         return back()->withErrors([
