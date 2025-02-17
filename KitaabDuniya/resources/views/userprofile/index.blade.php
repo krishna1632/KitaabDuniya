@@ -24,6 +24,8 @@
     border-radius: 50%; /* Makes the image circular */
     object-fit: cover; /* Ensures the image covers the area without stretching */
     border: 2px solid #ddd; /* Optional: Adds a border around the image */
+
+    
 }
 </style>
 </head>
@@ -129,24 +131,25 @@
     <div class="col-md-4 col-lg-3">
     <div class="card p-4 shadow-sm text-center">
         <div class="profile-section">
-            <div class="mt-2">
-                @if($user->profile_pic)
-                    <!-- If profile picture exists, show the image -->
-                    <img id="profile_preview" src="{{ asset('storage/'.$user->profile_pic) }}" alt="Profile Picture" class="profile-picture">
-                @else
-                    <!-- If no profile picture exists, show a placeholder icon inside a fixed-size circle -->
-                    <img id="profile_preview" src="{{ asset('path/to/placeholder-icon.png') }}" alt="Preview" class="profile-picture">
-                @endif
-            </div>
+        <div class="mt-2 d-flex justify-content-center align-items-center">
+    @if($user->profile_pic)
+        <!-- If profile picture exists, show the image -->
+        <img id="profile_preview" src="{{ asset('storage/'.$user->profile_pic) }}" alt="Profile Picture" class="profile-picture">
+    @else
+        <!-- If no profile picture exists, show a placeholder icon inside a fixed-size circle -->
+        <img id="profile_preview" src="{{ asset('path/to/placeholder-icon.png') }}" alt="Preview" class="profile-picture">
+    @endif
+</div>
             <h5 class="mt-3 fw-bold text-primary">Hello, {{$user->name}}</h5>
         </div>
         <hr>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item list-hover"><a href="#" class="text-decoration-none d-block">📦 My Orders</a></li>
-            <li class="list-group-item list-hover"><a href="#" class="text-decoration-none d-block">📦 Cart</a></li>
-            <li class="list-group-item list-hover"><a href="#" class="text-decoration-none d-block">🔑 Change Password</a></li>
-        </ul>
-        <hr>
+        <ul class="list-group list-group-flush text-start mb-3">
+    <li class="list-group-item list-hover"><a href="#" class="text-decoration-none d-block">📦 My Orders</a></li>
+    <li class="list-group-item list-hover"><a href="#" class="text-decoration-none d-block">🛒 Cart</a></li>
+    <li class="list-group-item list-hover"><a href="#" class="text-decoration-none d-block">❤️ Wishlist</a></li>
+    <li class="list-group-item list-hover"><a href="#" class="text-decoration-none d-block">🔑 Change Password</a></li>
+</ul>
+        
         <form method="POST" action="{{ route('logout') }}">
             @csrf
             <button type="submit" class="btn btn-danger w-100 rounded-pill">
