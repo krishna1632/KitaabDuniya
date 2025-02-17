@@ -40,10 +40,31 @@
             <div class="right">
                 <ul class="navbar-nav ms-auto mb-1 mb-lg-0">
                     @auth
+                        <!-- Dashboard and User Dropdown Menu for Logged-in Users -->
                         <li class="nav-item">
-                            <a class="nav-link text-light px-2" href="{{ url('/dashboard') }}">Dashboard</a>
+                            <a class="nav-link text-light px-2" href="#"><i class="bi bi-person-circle"></i></a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-light px-2" href="#" role="button"
+                                data-bs-toggle="dropdown">
+                                {{ Auth::user()->name }}
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{ url('/profile') }}">Profile</a></li>
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+
+                                    <x-dropdown-link :href="route('logout')"
+                                        onclick="event.preventDefault();
+                                                        this.closest('form').submit();">
+                                        {{ __('Log Out') }}
+                                    </x-dropdown-link>
+                                </form>
+                            </ul>
                         </li>
                     @else
+                        <!-- Login and Register Options for Guests -->
                         <li class="nav-item">
                             <a class="nav-link text-light px-2" href="#" data-bs-toggle="modal"
                                 data-bs-target="#loginModal">Login</a>
@@ -56,36 +77,16 @@
                                     Register
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li>
-                                        <a class="dropdown-item" href="#" id="individualRegister">Individual</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item"
-                                            href="{{ route('register') }}?type=organisation">Organisation</a>
-                                    </li>
+                                    <li><a class="dropdown-item" href="#" id="individualRegister">Individual</a></li>
+                                    <li><a class="dropdown-item"
+                                            href="{{ route('register') }}?type=organisation">Organisation</a></li>
                                 </ul>
                             </li>
                         @endif
                     @endauth
-                    @auth
-    <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle text-light px-2" href="#" role="button" data-bs-toggle="dropdown">
-            {{ Auth::user()->name }}
-        </a>
-        <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="{{ url('/profile') }}">Profile</a></li>
-            <li><a class="dropdown-item" href="{{ url('/logout') }}">Logout</a></li>
-        </ul>
-    </li>
-@else
-    <li class="nav-item">
-        <a class="nav-link text-light px-2" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
-    </li>
-@endauth
-
                 </ul>
             </div>
-        </div>
+
     </nav>
 
     <div class="container-fluid py-1 border-bottom bg-seceondary">
