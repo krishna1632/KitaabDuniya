@@ -1,81 +1,93 @@
-<x-app-layout>
-    <x-slot name="header">
-        <div class="flex justify-between">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('Roles') }}
-            </h2>
-            <a href="{{ route('roles.create') }}" class="bg-slate-700 text-sm rounded-md text-white px-3 py-3">Create</a>
+@extends('layouts.admin')
+
+@section('title', 'Role Management')
+
+@section('content')
+    <h1 class="mt-4" style="color: rgb(23, 47, 233) !important;">Role Management</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}">Dashboard</a></li>
+        <li class="breadcrumb-item active">Roles</li>
+    </ol>
+
+    <div class="card mb-4">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <span style="color: black !important">
+                <i class="fas fa-table me-1"></i>
+                Roles List
+            </span>
+            <a href="{{ route('roles.create') }}" class="btn btn-primary btn-sm" style="margin-left: auto;">
+                <i class="fas fa-plus"></i> Add Role
+            </a>
         </div>
-    </x-slot>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <x-message></x-message>
-
-            <table class="w-full">
-                <thead class="bg-gray-50">
-                    <tr class="border-b">
-                        <th class="px-6 py-3 text-left" width='120'>Sl No.</th>
-                        <th class="px-6 py-3 text-left">Name</th>
-                        <th class="px-6 py-3 text-left">Permissions</th>
-                        <th class="px-6 py-3 text-left" width='180'>Created At</th>
-                        <th class="px-6 py-3 text-center" width='180'>Action</th>
+        <div class="card-body">
+            <table id="datatablesSimple" class="table table-striped">
+                <thead style="color: rgb(23, 47, 233) !important;">
+                    <tr>
+                        <th style="width: 10%;">ID</th>
+                        <th style="width: 20%;">Name</th>
+                        <th style="width: 30%;">Permissions</th>
+                        <th style="width: 15%;">Created At</th>
+                        <th style="width: 20%;" class="text-center">Actions</th>
                     </tr>
+
                 </thead>
-                <tbody class="bg-white">
-                    @if ($roles->isNotEmpty())
-                        @foreach ($roles as $index => $role)
-                            <tr class="border-b">
-                                <td class="px-6 py-3 text-left">{{ $index + 1 }}</td>
-                                <td class="px-6 py-3 text-left">{{ $role->name }}</td>
-                                <td class="px-6 py-3 text-left">
-                                    {{ $role->permissions->pluck('name')->implode(', ') }}
-                                </td>
-                                <td class="px-6 py-3 text-left">
-                                    {{ \Carbon\Carbon::parse($role->created_at)->format('d M, Y') }}
-                                </td>
-                                <td class="px-6 py-3 text-center">
-                                    <a href="{{ route('roles.edit', $role->id) }}"
-                                        class="bg-slate-700 text-sm rounded-md text-white px-3 py-2 hover:bg-slate-600">Edit</a>
-                                    <a href="javascript:void(0)" onclick="deleteRole({{ $role->id }})"
-                                        class="bg-red-700 text-sm rounded-md text-white px-3 py-2 hover:bg-red-600">Delete</a>
-                                </td>
-                            </tr>
-                        @endforeach
-                    @endif
+                <tbody style="color: black !important">
+                    @foreach ($roles as $role)
+                        <tr>
+                            <td>{{ $role->id }}</td>
+                            <td>{{ $role->name }}</td>
+                            <td>{{ $role->permissions->pluck('name')->implode(', ') }}</td>
+                            <td>{{ $role->created_at->format('d M, Y') }}</td>
+                            <td class="text-center">
+                                <a href="{{ route('roles.edit', $role->id) }}"
+                                    class="btn btn-warning btn-sm">Edit</a>
+                                <form action="{{ route('roles.destroy', $role->id) }}" method="POST"
+                                    class="d-inline" id="delete-form-{{ $role->id }}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="button" class="btn btn-danger btn-sm"
+                                        onclick="confirmDelete({{ $role->id }})">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
-            <div class="my-3">{{ $roles->links() }}</div>
-
         </div>
     </div>
-    <x-slot name="script">
-        <script type="text/javascript">
-            function deleteRole(id) {
-                if (confirm('Are you sure you want to delete?')) {
-                    $.ajax({
-                        url: '{{ route("roles.destroy", ":id") }}'.replace(':id', id),
-                        type: 'POST', // Laravel DELETE request ke liye POST + _method use hota hai
-                        data: {
-                            _method: 'DELETE', // DELETE request ko spoof karne ke liye
-                            _token: $('meta[name="csrf-token"]').attr('content') // Meta tag se CSRF token le rahe hain
-                        },
-                        dataType: 'json',
-                        success: function(response) {
-                            if (response.status) {
-                                alert('Role deleted successfully');
-                                location.reload(); // Page reload karega
-                            } else {
-                                alert('Error: Role not found!');
-                            }
-                        },
-                        error: function(xhr) {
-                            alert('Error deleting role. Please try again.');
-                        }
-                    });
-                }
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    @if (session('success'))
+        <script>
+            window.onload = function() {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success!',
+                    text: "{{ session('success') }}",
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                });
             }
         </script>
-        
-    </x-slot>
-</x-app-layout>
+    @endif
+
+    <script>
+        function confirmDelete(roleId) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Yes, delete it!',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('delete-form-' + roleId).submit();
+                }
+            });
+        }
+    </script>
+@endsection

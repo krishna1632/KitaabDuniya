@@ -1,68 +1,61 @@
-<x-app-layout>
-    <x-slot name="header">
-        <div class="flex justify-between items-center">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Users/Edit
-            </h2>
-            <a href="{{ route('users.index') }}" class="bg-slate-700 text-sm rounded-md text-white px-4 py-2">Back</a>
+@extends('layouts.admin')
+
+@section('title', 'Edit User')
+
+@section('content')
+    <h1 class="mt-4" style="color: rgb(23, 47, 233) !important;">Edit User</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('users.index') }}">Users</a></li>
+        <li class="breadcrumb-item active">Edit</li>
+    </ol>
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <h5 style="color: black !important;"><i class="fas fa-edit me-2"></i>Edit User</h5>
         </div>
-    </x-slot>
+        <div class="card-body">
+            <form action="{{ route('users.update', $user->id) }}" method="POST">
+                @csrf
+                @method('POST')
 
-    <div class="py-12">
-        <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white shadow-sm sm:rounded-lg p-6">
-                <form action="{{ route('users.update', $user->id) }}" method="POST">
-                    @csrf
-                    @method('POST')
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror"
+                        value="{{ old('name', $user->name) }}" placeholder="Enter user's name">
+                    @error('name')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
 
-                    <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
-                        {{-- User Name --}}
-                        <div>
-                            <label for="name" class="block text-lg font-medium">Name</label>
-                            <input type="text" name="name" id="name" value="{{ old('name', $user->name) }}"
-                                class="border-gray-300 shadow-sm w-full rounded-lg p-2">
-                            @error('name')
-                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                            @enderror
-                        </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror"
+                        value="{{ old('email', $user->email) }}" placeholder="Enter user's email">
+                    @error('email')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
 
-                        {{-- User Email --}}
-                        <div>
-                            <label for="email" class="block text-lg font-medium">Email</label>
-                            <input type="text" name="email" id="email" value="{{ old('email', $user->email) }}"
-                                class="border-gray-300 shadow-sm w-full rounded-lg p-2">
-                            @error('email')
-                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                            @enderror
-                        </div>
+                <div class="mt-4">
+                    <label class="form-label">Roles</label>
+                    <div class="d-flex flex-wrap gap-4">
+                        @foreach ($roles as $role)
+                            <div class="form-check">
+                                <input {{ $hasRoles->contains($role->id) ? 'checked' : '' }} type="checkbox" name="role[]"
+                                    id="role-{{ $role->id }}" class="form-check-input" value="{{ $role->name }}">
+                                <label class="form-check-label" for="role-{{ $role->id }}">{{ $role->name }}</label>
+                            </div>
+                        @endforeach
                     </div>
+                </div>
 
-                    {{-- User Role --}}
-                    <div class="mt-4">
-                        <label class="block text-lg font-medium">Roles</label>
-                        <div class="flex flex-wrap gap-4 mt-2">
-                            @if ($roles->isNotEmpty())
-                                @foreach ($roles as $role)
-                                    <div class="flex items-center gap-2">
-                                        <input {{ $hasRoles->contains($role->id) ? 'checked' : '' }} type="checkbox"
-                                            name="role[]" id="role-{{ $role->id }}" class="rounded"
-                                            value="{{ $role->name }}">
-                                        <label for="role-{{ $role->id }}">{{ $role->name }}</label>
-                                    </div>
-                                @endforeach
-                            @endif
-                        </div>
-                    </div>
+                <div class="text-end mt-4">
+                    <a href="{{ route('users.index') }}" class="btn btn-secondary">Back</a>
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </div>
 
-                    {{-- Submit Button --}}
-                    <div class="mt-6">
-                        <button type="submit" class="bg-slate-700 text-sm rounded-md text-white px-6 py-3">
-                            Update
-                        </button>
-                    </div>
-
-                </form>
-            </div>
+            </form>
         </div>
     </div>
-</x-app-layout>
+@endsection

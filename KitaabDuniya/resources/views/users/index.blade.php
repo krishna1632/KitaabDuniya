@@ -3,21 +3,21 @@
 @section('title', 'User Management')
 
 @section('content')
-    <h1 class="mt-4 text-primary">User Management</h1>
+    <h1 class="mt-4 text-primary" style="color: rgb(23, 47, 233) !important;">User Management</h1>
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item"><a href="{{ url('dashboard') }}">Dashboard</a></li>
         <li class="breadcrumb-item active">Users</li>
     </ol>
 
     <div class="card mb-4">
-        <div class="card-header">
+        <div class="card-header" style="color: black">
             <i class="fas fa-users me-1"></i>
             User List
         </div>
         <div class="card-body">
             <table id="datatablesSimple" class="table table-striped">
                 <thead>
-                    <tr>
+                    <tr style="color: rgb(23, 47, 233) !important;">
                         <th>S.N.</th>
                         <th>Name</th>
                         <th>Email</th>
@@ -28,7 +28,7 @@
                 <tbody>
                     @if ($users->isNotEmpty())
                         @foreach ($users as $index => $user)
-                            <tr>
+                            <tr style="color: black">
                                 <td>{{ $index + 1 }}</td>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>

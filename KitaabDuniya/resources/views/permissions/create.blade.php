@@ -1,35 +1,36 @@
-<x-app-layout>
-    <x-slot name="header">
-        <div class="flex justify-between">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Permissions/Create
-            </h2>
-            <a href="{{ route('permissions.index') }}"
-                class="bg-slate-700 text-sm rounded-md text-white px-3 py-3">Back</a>
-        </div>
-    </x-slot>
+@extends('layouts.admin')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    <form action="{{route('permissions.store')}}" method="POST">
-                        @csrf
-                        @method('POST')
-                        <div>
-                            <label for="" class="text-lg font-medium">Name</label>
-                            <div class="my-3">
-                                <input type="text" name="name" id="" value="{{ old('name') }}"
-                                    class="border-gray-300 shadow-sm w-1/2 rounded-lg">
-                                @error('name')
-                                    <p class="text-danger font-medium">{{ $message }}</p>
-                                @enderror
-                            </div>
-                            <button class="bg-slate-700 text-sm rounded-md text-white px-5 py-3">Submit</button>
-                        </div>
-                    </form>
+@section('title', 'Create Permission')
+
+@section('content')
+    <h1 class="mt-4" style="color: rgb(23, 47, 233) !important;">Create Permission</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('permissions.index') }}">Permissions</a></li>
+        <li class="breadcrumb-item active">Create</li>
+    </ol>
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <h5 style="color: black !important;"><i class="fas fa-plus me-2"></i>Add New Permission</h5>
+        </div>
+        <div class="card-body">
+            <form action="{{ route('permissions.store') }}" method="POST">
+                @csrf
+                <div class="mb-3">
+                    <label for="name" class="form-label">Permission Name</label>
+                    <input type="text" name="name" id="name"
+                        class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}"
+                        placeholder="Enter permission name">
+                    @error('name')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
-            </div>
+                <div class="text-end">
+                    <a href="{{ route('permissions.index') }}" class="btn btn-secondary">Back</a>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
         </div>
     </div>
-</x-app-layout>
+@endsection
