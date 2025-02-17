@@ -38,15 +38,8 @@ class RegisteredUserController extends Controller
             'address' => ['required', 'string', 'max:255'],
             'gender' => ['nullable', 'in:male,female,other'],
             'profile_pic' => ['nullable', 'file', 'mimes:jpg,jpeg,png', 'max:2048'],
-            'org_licence' => ['nullable', 'file', 'mimes:jpg,jpeg,png,pdf', 'max:2048'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
-
-        // Handle file upload if provided
-        $orgLicencePath = null;
-        if ($request->hasFile('org_licence')) {
-            $orgLicencePath = $request->file('org_licence')->store('org_licences', 'public');
-        }
 
         // Handle file upload if provided
         $profilePicPath = null;
@@ -61,7 +54,6 @@ class RegisteredUserController extends Controller
             'address' => $request->address,
             'gender' => $request->gender,
             'profile_pic' => $profilePicPath, // Store file path or null
-            'org_licence' => $orgLicencePath, // Store file path or null
             'password' => Hash::make($request->password),
         ]);
 

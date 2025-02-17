@@ -78,8 +78,8 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item" href="#" id="individualRegister">Individual</a></li>
-                                    <li><a class="dropdown-item"
-                                            href="{{ route('register') }}?type=organisation">Organisation</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('org_request.create') }}">Organisation</a>
+                                    </li>
                                 </ul>
                             </li>
                         @endif

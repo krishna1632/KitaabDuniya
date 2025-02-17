@@ -75,9 +75,13 @@ class UserController extends Controller implements HasMiddleware
     public function update(Request $request, string $id)
     {
         $user = User::findOrFail($id);
+
         $validator = Validator::make($request->all(), [
             'name' => 'required|min:3',
-            'email' => 'required|email|unique:users,email,' . $id . 'id',
+            'email' => 'required|email|unique:users,email,' . $id,
+            'phone' => 'required|min:10|max:15',
+            'address' => 'required|string|max:255',
+            'gender' => 'required|in:male,female,other',
         ]);
 
         if ($validator->fails()) {
@@ -86,6 +90,9 @@ class UserController extends Controller implements HasMiddleware
 
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->address = $request->address;
+        $user->gender = $request->gender;
         $user->save();
 
         $user->syncRoles($request->role);

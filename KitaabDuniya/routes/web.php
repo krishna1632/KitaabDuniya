@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OrganisationRequestController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
@@ -40,6 +41,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
     Route::post('/users/{id}', [UserController::class, 'update'])->name('users.update');
     Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
+
+    // Orgainsation Request Routes
+    Route::get('/org_request', [OrganisationRequestController::class, 'index'])->name('org_request.index');
 });
 
 require __DIR__ . '/auth.php';

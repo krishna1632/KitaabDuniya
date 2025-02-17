@@ -37,12 +37,42 @@
                     @enderror
                 </div>
 
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Phone</label>
+                    <input type="text" name="phone" id="phone" class="form-control @error('phone') is-invalid @enderror"
+                        value="{{ old('phone', $user->phone) }}" placeholder="Enter user's phone">
+                    @error('phone')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <div class="mb-3">
+                    <label for="address" class="form-label">Address</label>
+                    <input type="text" name="address" id="address" class="form-control @error('address') is-invalid @enderror"
+                        value="{{ old('address', $user->address) }}" placeholder="Enter user's address">
+                    @error('address')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <div class="mb-3">
+                    <label for="gender" class="form-label">Gender</label>
+                    <select name="gender" id="gender" class="form-control @error('gender') is-invalid @enderror">
+                        <option value="male" {{ old('gender', $user->gender) == 'male' ? 'selected' : '' }}>Male</option>
+                        <option value="female" {{ old('gender', $user->gender) == 'female' ? 'selected' : '' }}>Female</option>
+                        <option value="other" {{ old('gender', $user->gender) == 'other' ? 'selected' : '' }}>Other</option>
+                    </select>
+                    @error('gender')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
                 <div class="mt-4">
                     <label class="form-label">Roles</label>
                     <div class="d-flex flex-wrap gap-4">
                         @foreach ($roles as $role)
                             <div class="form-check">
-                                <input {{ $hasRoles->contains($role->id) ? 'checked' : '' }} type="checkbox" name="role[]"
+                                <input {{ $user->hasRole($role->name) ? 'checked' : '' }} type="checkbox" name="role[]"
                                     id="role-{{ $role->id }}" class="form-check-input" value="{{ $role->name }}">
                                 <label class="form-check-label" for="role-{{ $role->id }}">{{ $role->name }}</label>
                             </div>
