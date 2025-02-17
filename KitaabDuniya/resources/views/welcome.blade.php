@@ -48,6 +48,7 @@
                             <a class="nav-link text-light px-2" href="#" data-bs-toggle="modal"
                                 data-bs-target="#loginModal">Login</a>
                         </li>
+
                         @if (Route::has('register'))
                             <li class="nav-item dropdown">
                                 <a class="nav-link text-light px-2 dropdown-toggle" href="#" id="navbarDropdown"
@@ -66,6 +67,22 @@
                             </li>
                         @endif
                     @endauth
+                    @auth
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-light px-2" href="#" role="button" data-bs-toggle="dropdown">
+            {{ Auth::user()->name }}
+        </a>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{{ url('/profile') }}">Profile</a></li>
+            <li><a class="dropdown-item" href="{{ url('/logout') }}">Logout</a></li>
+        </ul>
+    </li>
+@else
+    <li class="nav-item">
+        <a class="nav-link text-light px-2" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
+    </li>
+@endauth
+
                 </ul>
             </div>
         </div>
