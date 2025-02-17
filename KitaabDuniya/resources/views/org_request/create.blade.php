@@ -115,29 +115,6 @@
         </form>
     </div>
 
-    {{-- <script>
-        document.getElementById("registerForm").addEventListener("submit", function(event) {
-            event.preventDefault(); // Prevent the form from submitting immediately
-
-            // Show SweetAlert confirmation
-            Swal.fire({
-                title: "Registration Successful!",
-                text: "Your details will be verified and you will be given the login ID. Till then, please wait.",
-                icon: "success",
-                confirmButtonText: "OK",
-                allowOutsideClick: false
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // After clicking "OK", submit the form
-                    event.target.submit(); // Now the form is submitted
-
-                    // Redirect to homepage after form submission
-                    window.location.href = "http://127.0.0.1:8000";
-                }
-            });
-        });
-    </script> --}}
-
 </body>
 
 </html>

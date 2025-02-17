@@ -44,6 +44,7 @@ Route::middleware('auth')->group(function () {
 
     // Orgainsation Request Routes
     Route::get('/org_request', [OrganisationRequestController::class, 'index'])->name('org_request.index');
+    Route::get('/org_request/add-user/{id}', [OrganisationRequestController::class, 'addUser'])->name('org_request.addUser');
 });
 
 require __DIR__ . '/auth.php';

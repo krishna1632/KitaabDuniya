@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\OrganisationRequest;
+use App\Models\User;
+
 
 class OrganisationRequestController extends Controller
 {
@@ -62,6 +64,34 @@ class OrganisationRequestController extends Controller
         return redirect('/');
 
     }
+
+
+    public function addUser($id)
+    {
+        $organisationRequest = OrganisationRequest::find($id);
+
+        if (!$organisationRequest) {
+            return redirect()->back()->with('error', 'Organisation request not found');
+        }
+
+        // Create the user
+        User::create([
+            'name' => $organisationRequest->name,
+            'email' => $organisationRequest->email,
+            'phone' => $organisationRequest->phone,
+            'address' => $organisationRequest->address,
+            'gender' => $organisationRequest->gender,
+            'password' => Hash::make('default_password'),
+        ]);
+
+        // Optionally, delete the organisation request after adding the user
+        // $organisationRequest->delete();
+
+        // Flash success message
+        return redirect()->route('org_request.index')->with('success', 'Organisation added to users table successfully');
+    }
+
+
 
     /**
      * Display the specified resource.

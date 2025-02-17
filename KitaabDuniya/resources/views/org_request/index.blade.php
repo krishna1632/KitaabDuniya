@@ -30,12 +30,24 @@
                         @endif
                     </td>
                     <td>
-                        <!-- You can add edit and delete actions here -->
-                        <a href="#" class="btn btn-primary">Edit</a>
-                        <a href="#" class="btn btn-danger">Delete</a>
+                        <!-- Add User Button -->
+                        <a href="{{ route('org_request.addUser', $request->id) }}" class="btn btn-primary">Add User</a>
+                        <a href="#" class="btn btn-danger">Send Mail</a>
                     </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Success!',
+                text: '{{ session('success') }}',
+                confirmButtonText: 'OK'
+            });
+        </script>
+    @endif
 @endsection
