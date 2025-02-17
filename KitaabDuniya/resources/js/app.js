@@ -179,6 +179,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+// For faq toggle 
 
 function toggleFAQ(faqNumber) {
     let answer = document.getElementById("faq" + faqNumber);
@@ -201,3 +202,4 @@ function toggleFAQ(faqNumber) {
     }
   }
   
+//   end faq toggle
