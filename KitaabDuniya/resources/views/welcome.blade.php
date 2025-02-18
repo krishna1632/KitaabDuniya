@@ -102,7 +102,7 @@
                     <input class="form-control me-2 rounded-3" type="search" id="searchBox"
                         placeholder="Search Ex.... 'Delhi'" aria-label="Search">
                     <button class="btn btn-outline-primary" type="submit">Search</button>
-                    <button class="sell-btn">Sell</button>
+                    <a href="{{ route('sell.index') }}" class="sell-btn" >Sell</a>
 
                 </form>
 

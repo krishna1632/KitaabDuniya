@@ -4,6 +4,7 @@ use App\Http\Controllers\OrganisationRequestController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\SellController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -45,6 +46,9 @@ Route::middleware('auth')->group(function () {
     // Orgainsation Request Routes
     Route::get('/org_request', [OrganisationRequestController::class, 'index'])->name('org_request.index');
     Route::get('/org_request/add-user/{id}', [OrganisationRequestController::class, 'addUser'])->name('org_request.addUser');
+
+    // Sell Routes
+    Route::get('/sell', [SellController::class, 'index'])->name('sell.index');
 });
 
 require __DIR__ . '/auth.php';
