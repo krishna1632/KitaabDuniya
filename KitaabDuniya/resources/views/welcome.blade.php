@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kitabi dunia</title>
+    <title>Kitaabi dunia</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -55,7 +55,8 @@
                                 <li><a class="dropdown-item" href="{{ url('/profile') }}">Profile</a></li>
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
-                                    <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
+                                    <x-dropdown-link :href="route('logout')"
+                                        onclick="event.preventDefault();
                                                                             this.closest('form').submit();">
                                         {{ __('Log Out') }}
                                     </x-dropdown-link>
@@ -71,13 +72,14 @@
 
                         @if (Route::has('register'))
                             <li class="nav-item dropdown">
-                                <a class="nav-link text-light px-2 dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="nav-link text-light px-2 dropdown-toggle" href="#" id="navbarDropdown"
+                                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Register
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item" href="#" id="individualRegister">Individual</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('org_request.create') }}">Organisation</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('org_request.create') }}">Organisation</a>
+                                    </li>
                                 </ul>
                             </li>
                         @endif
@@ -91,8 +93,8 @@
         <div class="row align-items-center">
             <!-- Logo -->
             <div class="col-md-3 text-start">
-                <img src="https://tse3.mm.bing.net/th?id=OIP.5bMrEJU6YvsMumkmj4WpGgHaGH&pid=Api&P=0&h=180" alt="Logo"
-                    class="img-fluid" width="50px">
+                <img src="https://tse3.mm.bing.net/th?id=OIP.5bMrEJU6YvsMumkmj4WpGgHaGH&pid=Api&P=0&h=180"
+                    alt="Logo" class="img-fluid" width="50px">
             </div>
             <!-- Search Bar -->
             <div class="col-md-6">
@@ -268,7 +270,8 @@
         <div class="container">
             <!-- Title Line -->
             <div class="title-line text-center mb-4">
-                <h2 class="text-light" style="font-family: 'Merriweather', serif; font-weight: 700;">Kittabi Duniya</h2>
+                <h2 class="text-light" style="font-family: 'Merriweather', serif; font-weight: 700;">Kittabi Duniya
+                </h2>
                 <p class="text-muted" style="font-size: 1.1rem;">Your Gateway to a World of Books</p>
             </div>
 
@@ -324,15 +327,16 @@
                 <div class="footer-bottom row text-center py-3">
                     <div class="col-md-12">
                         <p class="text-muted mb-0">© 2025 Kittabi Duniya. All rights reserved.</p>
-                        <p class="text-muted mb-0"><a href="#" class="text-muted">Privacy Policy</a> | <a href="#"
-                                class="text-muted">Terms of Service</a></p>
+                        <p class="text-muted mb-0"><a href="#" class="text-muted">Privacy Policy</a> | <a
+                                href="#" class="text-muted">Terms of Service</a></p>
                     </div>
                 </div>
         </div>
     </footer>
 
     <!-- Bootstrap Modal -->
-    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -366,15 +370,18 @@
                             <label class="form-label">Gender</label>
                             <div class="d-flex gap-3">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="gender" value="male" required>
+                                    <input class="form-check-input" type="radio" name="gender" value="male"
+                                        required>
                                     <label class="form-check-label">Male</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="gender" value="female" required>
+                                    <input class="form-check-input" type="radio" name="gender" value="female"
+                                        required>
                                     <label class="form-check-label">Female</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="gender" value="other" required>
+                                    <input class="form-check-input" type="radio" name="gender" value="other"
+                                        required>
                                     <label class="form-check-label">Other</label>
                                 </div>
                             </div>
@@ -420,16 +427,16 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-        </script>
+    </script>
     <script>
-        $(document).ready(function () {
-            $('#loginForm').on('submit', function (e) {
+        $(document).ready(function() {
+            $('#loginForm').on('submit', function(e) {
                 e.preventDefault();
                 $.ajax({
                     url: $(this).attr('action'),
                     method: $(this).attr('method'),
                     data: $(this).serialize(),
-                    success: function (response) {
+                    success: function(response) {
                         // Handle success response
                         if (response.success) {
                             window.location.href = "{{ route('dashboard') }}";
@@ -437,7 +444,7 @@
                             alert('Login failed');
                         }
                     },
-                    error: function (xhr) {
+                    error: function(xhr) {
                         // Handle error
                         alert('An error occurred');
                     }
@@ -447,7 +454,7 @@
     </script>
 
     <script>
-        document.getElementById('individualRegister').addEventListener('click', function (event) {
+        document.getElementById('individualRegister').addEventListener('click', function(event) {
             event.preventDefault();
             var registerModal = new bootstrap.Modal(document.getElementById('registerModal'));
             registerModal.show();
