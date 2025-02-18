@@ -95,8 +95,6 @@
             <!-- Logo -->
             <div class="col-md-3 text-start">
                 <img src="/assets/nav_logo.png" alt="Logo" class="img-fluid" width="180px">
-                <img src="https://tse3.mm.bing.net/th?id=OIP.5bMrEJU6YvsMumkmj4WpGgHaGH&pid=Api&P=0&h=180" alt="Logo"
-                    class="img-fluid" width="50px">
             </div>
             <!-- Search Bar -->
             <div class="col-md-6">
@@ -272,12 +270,8 @@
         <div class="container">
             <!-- Title Line -->
             <div class="title-line text-center mb-4">
-                <<<<<<< HEAD <h2 class="text-light" style="font-family: 'Merriweather', serif; font-weight: 700;">
-                    Kitaabi Duniya</h2>
-                    =======
-                    <h2 class="text-light" style="font-family: 'Merriweather', serif; font-weight: 700;">Kittabi Duniya
+                    <h2 class="text-light" style="font-family: 'Merriweather', serif; font-weight: 700;">Kitaabi Duniya
                     </h2>
-                    >>>>>>> c8e34f85108b63a29f56128457edc0871cc90304
                     <p class="text-muted" style="font-size: 1.1rem;">Your Gateway to a World of Books</p>
             </div>
 
