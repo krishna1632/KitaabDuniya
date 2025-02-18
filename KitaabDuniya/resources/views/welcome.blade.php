@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kitabi dunia</title>
+    <title>Kitaabi dunia</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -57,7 +57,8 @@
                                     @csrf
                                     <x-dropdown-link :href="route('logout')"
                                         onclick="event.preventDefault();
-                                                                                                            this.closest('form').submit();">
+                                                                                                                        this.closest('form').submit();">
+                                        this.closest('form').submit();">
                                         {{ __('Log Out') }}
                                     </x-dropdown-link>
                                 </form>
@@ -78,7 +79,8 @@
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item" href="#" id="individualRegister">Individual</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('org_request.create') }}">Organisation</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('org_request.create') }}">Organisation</a>
+                                    </li>
                                 </ul>
                             </li>
                         @endif
@@ -93,6 +95,8 @@
             <!-- Logo -->
             <div class="col-md-3 text-start">
                 <img src="/assets/nav_logo.png" alt="Logo" class="img-fluid" width="180px">
+                <img src="https://tse3.mm.bing.net/th?id=OIP.5bMrEJU6YvsMumkmj4WpGgHaGH&pid=Api&P=0&h=180" alt="Logo"
+                    class="img-fluid" width="50px">
             </div>
             <!-- Search Bar -->
             <div class="col-md-6">
@@ -268,8 +272,13 @@
         <div class="container">
             <!-- Title Line -->
             <div class="title-line text-center mb-4">
-                <h2 class="text-light" style="font-family: 'Merriweather', serif; font-weight: 700;">Kitaabi Duniya</h2>
-                <p class="text-muted" style="font-size: 1.1rem;">Your Gateway to a World of Books</p>
+                <<<<<<< HEAD <h2 class="text-light" style="font-family: 'Merriweather', serif; font-weight: 700;">
+                    Kitaabi Duniya</h2>
+                    =======
+                    <h2 class="text-light" style="font-family: 'Merriweather', serif; font-weight: 700;">Kittabi Duniya
+                    </h2>
+                    >>>>>>> c8e34f85108b63a29f56128457edc0871cc90304
+                    <p class="text-muted" style="font-size: 1.1rem;">Your Gateway to a World of Books</p>
             </div>
 
             <!-- Social Icons -->
