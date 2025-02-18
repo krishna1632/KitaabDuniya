@@ -120,7 +120,9 @@ document.addEventListener("DOMContentLoaded", function () {
                         ${book.price.discounted < book.price.original ? '<div class="sale-badge">SALE</div>' : ""}
                         <img src="${book.imgSrc}" class="card-img-top book-image" alt="Book Image">
                         <div class="card-body text-center">
-                            <h5 class="book-title">${book.title}</h5>
+                            <h5 class="book-title" style="white-space: nowrap;
+                               overflow: hidden;
+                               text-overflow: ellipsis;">${book.title}</h5>
                             <div class="mb-2">
                                 <span class="text-danger fw-bold">₹${book.price.discounted.toFixed(2)}</span>
                                 <del class="text-muted">₹${book.price.original.toFixed(2)}</del>

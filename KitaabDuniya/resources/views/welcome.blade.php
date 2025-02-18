@@ -57,8 +57,8 @@
                                     @csrf
                                     <x-dropdown-link :href="route('logout')"
                                         onclick="event.preventDefault();
-                                                                                                                        this.closest('form').submit();">
-                                        this.closest('form').submit();">
+                                                                                                                                                                            this.closest('form').submit();">
+
                                         {{ __('Log Out') }}
                                     </x-dropdown-link>
                                 </form>
@@ -94,7 +94,7 @@
         <div class="row align-items-center">
             <!-- Logo -->
             <div class="col-md-3 text-start">
-                <img src="/assets/nav_logo.png" alt="Logo" class="img-fluid" width="180px">
+                <img src="/assets/nav_logo.png" alt="Logo" class="img-fluid ms-3" width="180px">
             </div>
             <!-- Search Bar -->
             <div class="col-md-6">
@@ -102,8 +102,12 @@
                     <input class="form-control me-2 rounded-3" type="search" id="searchBox"
                         placeholder="Search Ex.... 'Delhi'" aria-label="Search">
                     <button class="btn btn-outline-primary" type="submit">Search</button>
+                    <button class="sell-btn">Sell</button>
+
                 </form>
+
             </div>
+
             <!-- Cart -->
             <div class="col-md-3 text-end">
                 <a href="#" class="btn btn-outline-secondary text-dark">
@@ -270,9 +274,9 @@
         <div class="container">
             <!-- Title Line -->
             <div class="title-line text-center mb-4">
-                    <h2 class="text-light" style="font-family: 'Merriweather', serif; font-weight: 700;">Kitaabi Duniya
-                    </h2>
-                    <p class="text-muted" style="font-size: 1.1rem;">Your Gateway to a World of Books</p>
+                <h2 class="text-light" style="font-family: 'Merriweather', serif; font-weight: 700;">Kitaabi Duniya
+                </h2>
+                <p class="text-muted" style="font-size: 1.1rem;">Your Gateway to a World of Books</p>
             </div>
 
             <!-- Social Icons -->
