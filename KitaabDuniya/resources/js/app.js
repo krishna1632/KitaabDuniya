@@ -184,22 +184,28 @@ document.addEventListener("DOMContentLoaded", function () {
 function toggleFAQ(faqNumber) {
     let answer = document.getElementById("faq" + faqNumber);
     let icon = document.getElementById("icon" + faqNumber);
-  
+
     if (answer.style.display === "block") {
-      answer.style.display = "none";
-      icon.classList.remove("bi-dash-lg");
-      icon.classList.add("bi-plus-lg");
+        answer.style.display = "none";
+        icon.classList.remove("bi-dash-lg");
+        icon.classList.add("bi-plus-lg");
     } else {
-      document.querySelectorAll(".faq-answer").forEach(el => el.style.display = "none");
-      document.querySelectorAll(".faq-icon").forEach(el => {
-        el.classList.remove("bi-dash-lg");
-        el.classList.add("bi-plus-lg");
-      });
-  
-      answer.style.display = "block";
-      icon.classList.remove("bi-plus-lg");
-      icon.classList.add("bi-dash-lg");
+        document.querySelectorAll(".faq-answer").forEach(el => el.style.display = "none");
+        document.querySelectorAll(".faq-icon").forEach(el => {
+            el.classList.remove("bi-dash-lg");
+            el.classList.add("bi-plus-lg");
+        });
+
+        answer.style.display = "block";
+        icon.classList.remove("bi-plus-lg");
+        icon.classList.add("bi-dash-lg");
     }
-  }
-  
+}
+
 //   end faq toggle
+
+
+
+
+
+

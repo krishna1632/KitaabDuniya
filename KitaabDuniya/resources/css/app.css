@@ -4,354 +4,310 @@
 
 
 
-.footer {
-    margin-top: 50px;
-    background-color: #aeb7c0;
-    padding: 20px 0;
-    text-align: center;
-    line-height: 50px;
-}
+/* .nav-2 {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #fff;
+} */
 
-.footer .line {
-    width: 100%;
-    height: 2px;
-    background-color: #ccc;
-    margin: 10px 0;
-}
-
-.footer .title-line {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-}
-
-.footer .title-line::before,
-.footer .title-line::after {
-    content: "";
-    flex: 1;
-    height: 2px;
-    background-color: #ccc;
-}
-
-.footer h5 {
-    margin: 0;
-    font-weight: bold;
-}
-
-.footer .social-icons a {
-    color: #000;
-    margin: 10px 15px;
-    text-decoration: none;
-    font-size: 20px;
-}
-
-.footer .social-icons a:hover {
-    color: #007bff;
-}
-
-.footer-bottom {
-    margin-top: 30px;
-    font-size: 15px;
-    color: #777;
-}
-
-.footer-bottom a {
-    text-decoration: none;
-    color: black;
-}
 
 body {
-    overflow-x: hidden;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* --------------------Main Section (Catagories)------------------------*/
+/* -------------------- Main Section ------------------------*/
+
+/* ----------------------------- Start (Catagories) ---------------------------- */
+
+.categories-section {
+  padding: 60px 0;
+  background-color: #f8f9fa;
+}
+
 .category-card {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    transition: 0.3s;
+  background: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 
-    &:hover {
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-        transform: translateY(-5px);
-    }
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
 }
 
-.category-card img {
-    width: 50px;
-    height: auto;
+.category-card i {
+  transition: color 0.3s ease;
 }
 
-.category-card h5 {
-    margin: 0;
-    font-weight: bold;
+.category-card:hover i {
+  color: #007bff;
+
 }
 
-.category-card p {
-    margin: 0;
-    color: gray;
+/* ----------------------------- End (Catagories) ---------------------------- */
+
+
+
+/* -------------------------start Book Collection -------------------------*/
+
+
+/* .card-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+} */
+
+
+
+.book-card {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
 }
 
-.custom-btn {
-    background-color: orange !important;
-    border-color: orange !important;
-    color: white !important;
-    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
 
-    &:hover {
-        background-color: #ffcc80 !important;
-        border-color: #ffcc80 !important;
-        transform: scale(1.05);
-    }
+.book-image {
+  width: 100%;
+  height: auto;
 }
 
-/* Book Collection */
-.card-title{
-    white-space: nowrap;
-overflow: hidden;
-text-overflow: ellipsis;
+.sale-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #ff6600;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 5px;
 }
 
-/* --------------------(FAQ) -------------------------- */
-
-.faq-card {
-    border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    background-color: white;
-    overflow: hidden;
-    transition: all 0.3s ease;
+.book-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
 }
 
-.faq-question {
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    padding: 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #f5f5f5;
-    border-radius: 10px;
+.price {
+  font-size: 18px;
+  color: #ff6600;
+  font-weight: bold;
 }
 
-.faq-answer {
-    padding: 15px;
-    font-size: 15px;
-    color: #555;
-    display: none;
+.old-price {
+  font-size: 14px;
+  color: grey;
+  text-decoration: line-through;
 }
 
-.social-icons a {
-    text-decoration: none;
-    margin: 0 10px;
-    color: #444;
-    /* Default icon color */
-    transition: color 0.3s ease-in-out;
+.star-icons {
+  font-size: 16px;
 }
 
-/* Hover Effects */
-.social-icons a.facebook {
-    color: #1877F2;
+.btn-add {
+  background-color: #ff6600;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  transition: 0.3s ease-in-out;
 }
 
-/* Facebook Blue */
-.social-icons a.twitter{
-    color: #000;
+.btn-add:hover {
+  background-color: #e65c00;
 }
-
-/* Twitter Blue */
-.social-icons a.instagram {
-    color: #E1306C;
-}
-
-/* Instagram Pink */
-.social-icons a.linkedin {
-    color: #0077B5;
-}
-
-/* LinkedIn Blue */
-.social-icons a.youtube{
-    color: #FF0000;
-}
-
-/* YouTube Red */
 
 
 
 
 .book-card {
-    position: relative;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: 0.3s ease-in-out;
-  }
-  
-  .book-card:hover {
-    transform: scale(1.03);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  }
-  
-  .book-image {
-    width: 100%;
-    height: auto;
-  }
-  
-  .sale-badge {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background: #ff6600;
-    color: white;
-    font-size: 12px;
-    font-weight: bold;
-    padding: 5px 10px;
-    border-radius: 5px;
-  }
-  
-  .book-title {
-    font-size: 16px;
-    font-weight: bold;
-    color: #333;
-  }
-  
-  .price {
-    font-size: 18px;
-    color: #ff6600;
-    font-weight: bold;
-  }
-  
-  .old-price {
-    font-size: 14px;
-    color: grey;
-    text-decoration: line-through;
-  }
-  
-  .star-icons {
-    font-size: 16px;
-  }
-  
-  .btn-add {
-    background-color: #ff6600;
-    color: white;
-    font-size: 14px;
-    font-weight: bold;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    transition: 0.3s ease-in-out;
-  }
-  
-  .btn-add:hover {
-    background-color: #e65c00;
-  }
-  
-  
-  
-  
-  .book-card {
-    position: relative;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: 0.3s ease-in-out;
-  }
-  
-  .book-card:hover {
-    transform: scale(1.03);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  }
-  
-  .book-image {
-    width: 100%;
-    height: auto;
-  }
-  
-  .sale-badge {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background: #ff6600;
-    color: white;
-    font-size: 12px;
-    font-weight: bold;
-    padding: 5px 10px;
-    border-radius: 5px;
-  }
-  
-  .book-title {
-    font-size: 16px;
-    font-weight: bold;
-    color: #333;
-  }
-  
-  .star-icons {
-    font-size: 16px;
-  }
-  
-  .section-title {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 20px;
-    text-align: center;
-  }
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: 0.3s ease-in-out;
+}
+
+.book-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.book-image {
+  width: 100%;
+  height: auto;
+}
+
+.sale-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #ff6600;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.book-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+.star-icons {
+  font-size: 16px;
+}
+
+.section-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+
+/* -------------------------end Book Collection -------------------------*/
 
 
 
-  /* FAQ Section Styling */
+
+
+
+/* --------------------Start(FAQ) -------------------------- */
+
 .faq-card {
-    background: #fff;
-    border-radius: 10px;
-    overflow: hidden;
-    border: 1px solid #ddd;
-    margin-bottom: 12px;
-    transition: all 0.3s ease-in-out;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
-  }
-  
-  .faq-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* FAQ Question */
-  .faq-question {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #f8f9fa;
-    padding: 15px 20px;
-    font-weight: bold;
-    cursor: pointer;
-    font-size: 18px;
-    border-radius: 10px;
-  }
-  
-  .faq-question:hover {
-    background: #e9ecef;
-  }
-  
-  /* FAQ Answer */
-  .faq-answer {
-    display: none;
-    padding: 15px 20px;
-    font-size: 16px;
-    color: #555;
-    border-top: 1px solid #ddd;
-    background: #fff;
-  }
-  
-  /* FAQ Icons */
-  .faq-icon {
-    font-size: 20px;
-    transition: transform 0.3s ease-in-out;
-  }
-  
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.faq-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* FAQ Question */
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f8f9fa;
+  padding: 15px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 10px;
+}
+
+.faq-question:hover {
+  background: #e9ecef;
+}
+
+/* FAQ Answer */
+.faq-answer {
+  display: none;
+  padding: 15px 20px;
+  font-size: 16px;
+  color: #555;
+  border-top: 1px solid #ddd;
+  background: #fff;
+}
+
+/* FAQ Icons */
+.faq-icon {
+  font-size: 20px;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* --------------------End (FAQ) -------------------------- */
+
+
+/* ------------------------------- End Main Section -------------------------------- */
+
+
+
+
+
+/* -------------------------Start Footer Section-------------------------- */
+
+.footer {
+  background-color: #000000;
+  /* Dark blue background */
+  color: #fff;
+  padding: 40px 0;
+}
+
+.title-line h2 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.social-icons a {
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #3498db;
+  /* Change color on hover */
+}
+
+.footer-links a {
+  color: #bdc3c7;
+  /* Light gray for links */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #3498db;
+  /* Change color on hover */
+}
+
+.newsletter-form .form-control {
+  background-color: #34495e;
+  /* Slightly lighter dark blue */
+  border: none;
+  color: #fff;
+}
+
+.newsletter-form .btn {
+  background-color: #3498db;
+  /* Blue button */
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.newsletter-form .btn:hover {
+  background-color: #2980b9;
+  /* Darker blue on hover */
+}
+
+.footer-bottom {
+  border-top: 1px solid #34495e;
+  /* Divider line */
+  padding-top: 20px;
+}
+
+
+/* -------------------------End Footer Section-------------------------- */

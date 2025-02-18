@@ -37,6 +37,7 @@
                     </li>
                 </ul>
             </div>
+
             <div class="right">
                 <ul class="navbar-nav ms-auto mb-1 mb-lg-0">
                     @auth
@@ -50,14 +51,12 @@
                                 data-bs-toggle="dropdown">
                                 {{ Auth::user()->name }}
                             </a>
-                            <ul class="dropdown-menu">
+                            <ul class="dropdown-menu dropdown-menu-end">
                                 <li><a class="dropdown-item" href="{{ url('/profile') }}">Profile</a></li>
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
-
-                                    <x-dropdown-link :href="route('logout')"
-                                        onclick="event.preventDefault();
-                                                        this.closest('form').submit();">
+                                    <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
+                                                                        this.closest('form').submit();">
                                         {{ __('Log Out') }}
                                     </x-dropdown-link>
                                 </form>
@@ -72,14 +71,13 @@
 
                         @if (Route::has('register'))
                             <li class="nav-item dropdown">
-                                <a class="nav-link text-light px-2 dropdown-toggle" href="#" id="navbarDropdown"
-                                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="nav-link text-light px-2 dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
                                     Register
                                 </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item" href="#" id="individualRegister">Individual</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('org_request.create') }}">Organisation</a>
-                                    </li>
+                                    <li><a class="dropdown-item" href="{{ route('org_request.create') }}">Organisation</a></li>
                                 </ul>
                             </li>
                         @endif
@@ -89,12 +87,12 @@
 
     </nav>
 
-    <div class="container-fluid py-1 border-bottom bg-seceondary">
+    <div class="nav-2 container-fluid py-1 border-bottom bg-seceondary">
         <div class="row align-items-center">
             <!-- Logo -->
             <div class="col-md-3 text-start">
-                <img src="https://tse3.mm.bing.net/th?id=OIP.5bMrEJU6YvsMumkmj4WpGgHaGH&pid=Api&P=0&h=180"
-                    alt="Logo" class="img-fluid" width="50px">
+                <img src="https://tse3.mm.bing.net/th?id=OIP.5bMrEJU6YvsMumkmj4WpGgHaGH&pid=Api&P=0&h=180" alt="Logo"
+                    class="img-fluid" width="50px">
             </div>
             <!-- Search Bar -->
             <div class="col-md-6">
@@ -122,57 +120,47 @@
 
     <!-- *************** Main Section ******************-->
     <main class="">
-        <div class="container mt-4">
-            <h2 class="text-center text-warning fw-bold mb-4 fs-1">Categories</h2>
-
-            <div class="row row-cols-1 row-cols-md-2 g-4">
+        <div class="categories-section">
+            <h2 class="text-center mb-4 fw-bold fs-2" style="color: red;">Categories</h2>
+            <div class="row">
                 <!-- School Category -->
-                <div class="col">
-                    <div class="category-card">
-                        <img src="https://cdn-icons-png.flaticon.com/128/2232/2232688.png" alt="Books Icon">
-                        <div>
-                            <h5>School</h5>
-                            <p>All books of class 1st standard to 12th</p>
-                        </div>
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="category-card text-center p-4 shadow-sm rounded-lg">
+                        <i class="bi bi-book fs-1 text-primary mb-3"></i>
+                        <h4 class="mb-2">School</h4>
+                        <p class="text-muted">All books from 1st to 12th standard</p>
                     </div>
                 </div>
 
                 <!-- Graduation Category -->
-                <div class="col">
-                    <div class="category-card">
-                        <img src="https://cdn-icons-png.flaticon.com/128/2232/2232688.png" alt="Books Icon">
-                        <div>
-                            <h5>Graduation</h5>
-                            <p>All books</p>
-                        </div>
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="category-card text-center p-4 shadow-sm rounded-lg">
+                        <i class="bi bi-mortarboard fs-1 text-success mb-3"></i>
+                        <h4 class="mb-2">Graduation</h4>
+                        <p class="text-muted">All books for graduation courses</p>
                     </div>
                 </div>
 
                 <!-- General Category -->
-                <div class="col">
-                    <div class="category-card">
-                        <img src="https://cdn-icons-png.flaticon.com/128/2232/2232688.png" alt="Books Icon">
-                        <div>
-                            <h5>General</h5>
-                            <p>All books</p>
-                        </div>
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="category-card text-center p-4 shadow-sm rounded-lg">
+                        <i class="bi bi-globe fs-1 text-warning mb-3"></i>
+                        <h4 class="mb-2">General</h4>
+                        <p class="text-muted">All general books</p>
                     </div>
                 </div>
 
                 <!-- Competitive Category -->
-                <div class="col">
-                    <div class="category-card">
-                        <img src="https://cdn-icons-png.flaticon.com/128/2232/2232688.png" alt="Books Icon">
-                        <div>
-                            <h5>Competitive</h5>
-                            <p>All books</p>
-                        </div>
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="category-card text-center p-4 shadow-sm rounded-lg">
+                        <i class="bi bi-trophy fs-1 text-danger mb-3"></i>
+                        <h4 class="mb-2">Competitive</h4>
+                        <p class="text-muted">All books for competitive exams</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- *************** Books Collections*************** -->
         <!-- *************** Books Collections*************** -->
         <div class="mt-5">
             <div class="container mt-4">
@@ -271,35 +259,74 @@
 
     <!-- *************** Footer Section ****************** -->
     <footer class="footer">
-        <div class="title-line">
-            <h5>Kittabi Duniya</h5>
-        </div>
-
-        <div class="social-icons my-5">
-            <a href="#" class="facebook"><i class="fab fa-facebook fa-2x"></i></a>
-            <a href="#" class="twitter"><i class="fab fa-x-twitter fa-2x"></i></a>
-            <a href="#" class="instagram"><i class="fab fa-instagram fa-2x"></i></a>
-            <a href="#" class="linkedin"><i class="fab fa-linkedin fa-2x"></i></a>
-            <a href="#" class="youtube"><i class="fab fa-youtube fa-2x"></i></a>
-        </div>
-
-
-        <div class="footer-bottom row">
-            <div class="col-md-2">
-                <a href="#">Contact Us</a>
+        <div class="container">
+            <!-- Title Line -->
+            <div class="title-line text-center mb-4">
+                <h2 class="text-light" style="font-family: 'Merriweather', serif; font-weight: 700;">Kittabi Duniya</h2>
+                <p class="text-muted" style="font-size: 1.1rem;">Your Gateway to a World of Books</p>
             </div>
-            <div class="col-md-8">
-                <a href="#">© 2025 Kittabi Duniya . All rights and Reserve</a>
+
+            <!-- Social Icons -->
+            <div class="social-icons text-center my-5">
+                <a href="#" class="facebook mx-3"><i class="fab fa-facebook fa-2x"></i></a>
+                <a href="#" class="twitter mx-3"><i class="fab fa-x-twitter fa-2x"></i></a>
+                <a href="#" class="instagram mx-3"><i class="fab fa-instagram fa-2x"></i></a>
+                <a href="#" class="linkedin mx-3"><i class="fab fa-linkedin fa-2x"></i></a>
+                <a href="#" class="youtube mx-3"><i class="fab fa-youtube fa-2x"></i></a>
             </div>
-            <div class="col-md-2">
-                <a href="#">Privacy Policy</a>
-            </div>
+
+            <!-- Footer Links -->
+            <footer>
+                <div class="footer-links row text-center mb-4">
+                    <div class="col-md-3 mb-3">
+                        <h5 class="text-light mb-3">Quick Links</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="text-muted">Home</a></li>
+                            <li><a href="#" class="text-muted">Shop</a></li>
+                            <li><a href="#" class="text-muted">Categories</a></li>
+                            <li><a href="#" class="text-muted">Best Sellers</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <h5 class="text-light mb-3">Customer Care</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="text-muted">Contact Us</a></li>
+                            <li><a href="#" class="text-muted">FAQs</a></li>
+                            <li><a href="#" class="text-muted">Shipping Policy</a></li>
+                            <li><a href="#" class="text-muted">Returns & Refunds</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <h5 class="text-light mb-3">About Us</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="text-muted">Our Story</a></li>
+                            <li><a href="#" class="text-muted">Careers</a></li>
+                            <li><a href="#" class="text-muted">Blog</a></li>
+                            <li><a href="#" class="text-muted">Testimonials</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <h5 class="text-light mb-3">Newsletter</h5>
+                        <form class="newsletter-form">
+                            <input type="email" class="form-control mb-2" placeholder="Enter your email">
+                            <button type="submit" class="btn btn-primary w-100">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Footer Bottom -->
+                <div class="footer-bottom row text-center py-3">
+                    <div class="col-md-12">
+                        <p class="text-muted mb-0">© 2025 Kittabi Duniya. All rights reserved.</p>
+                        <p class="text-muted mb-0"><a href="#" class="text-muted">Privacy Policy</a> | <a href="#"
+                                class="text-muted">Terms of Service</a></p>
+                    </div>
+                </div>
         </div>
     </footer>
 
     <!-- Bootstrap Modal -->
-    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -333,18 +360,15 @@
                             <label class="form-label">Gender</label>
                             <div class="d-flex gap-3">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="gender" value="male"
-                                        required>
+                                    <input class="form-check-input" type="radio" name="gender" value="male" required>
                                     <label class="form-check-label">Male</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="gender" value="female"
-                                        required>
+                                    <input class="form-check-input" type="radio" name="gender" value="female" required>
                                     <label class="form-check-label">Female</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="gender" value="other"
-                                        required>
+                                    <input class="form-check-input" type="radio" name="gender" value="other" required>
                                     <label class="form-check-label">Other</label>
                                 </div>
                             </div>
@@ -390,16 +414,16 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-    </script>
+        </script>
     <script>
-        $(document).ready(function() {
-            $('#loginForm').on('submit', function(e) {
+        $(document).ready(function () {
+            $('#loginForm').on('submit', function (e) {
                 e.preventDefault();
                 $.ajax({
                     url: $(this).attr('action'),
                     method: $(this).attr('method'),
                     data: $(this).serialize(),
-                    success: function(response) {
+                    success: function (response) {
                         // Handle success response
                         if (response.success) {
                             window.location.href = "{{ route('dashboard') }}";
@@ -407,7 +431,7 @@
                             alert('Login failed');
                         }
                     },
-                    error: function(xhr) {
+                    error: function (xhr) {
                         // Handle error
                         alert('An error occurred');
                     }
@@ -417,7 +441,7 @@
     </script>
 
     <script>
-        document.getElementById('individualRegister').addEventListener('click', function(event) {
+        document.getElementById('individualRegister').addEventListener('click', function (event) {
             event.preventDefault();
             var registerModal = new bootstrap.Modal(document.getElementById('registerModal'));
             registerModal.show();
