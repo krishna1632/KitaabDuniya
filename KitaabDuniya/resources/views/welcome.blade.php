@@ -55,8 +55,9 @@
                                 <li><a class="dropdown-item" href="{{ url('/profile') }}">Profile</a></li>
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
-                                    <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
-                                                                            this.closest('form').submit();">
+                                    <x-dropdown-link :href="route('logout')"
+                                        onclick="event.preventDefault();
+                                                                                                            this.closest('form').submit();">
                                         {{ __('Log Out') }}
                                     </x-dropdown-link>
                                 </form>
@@ -91,8 +92,7 @@
         <div class="row align-items-center">
             <!-- Logo -->
             <div class="col-md-3 text-start">
-                <img src="https://tse3.mm.bing.net/th?id=OIP.5bMrEJU6YvsMumkmj4WpGgHaGH&pid=Api&P=0&h=180" alt="Logo"
-                    class="img-fluid" width="50px">
+                <img src="/assets/nav_logo.png" alt="Logo" class="img-fluid" width="180px">
             </div>
             <!-- Search Bar -->
             <div class="col-md-6">
@@ -268,13 +268,13 @@
         <div class="container">
             <!-- Title Line -->
             <div class="title-line text-center mb-4">
-                <h2 class="text-light" style="font-family: 'Merriweather', serif; font-weight: 700;">Kittabi Duniya</h2>
+                <h2 class="text-light" style="font-family: 'Merriweather', serif; font-weight: 700;">Kitaabi Duniya</h2>
                 <p class="text-muted" style="font-size: 1.1rem;">Your Gateway to a World of Books</p>
             </div>
 
             <!-- Social Icons -->
             <div class="social-icons text-center my-5">
-                <a href="#" class="facebook mx-3"><i class="fab fa-facebook fa-2x"></i></a>
+                <a href="#" class="facebook mx-3"><i class="fab fa-facebook fa-2x "></i></a>
                 <a href="#" class="twitter mx-3"><i class="fab fa-x-twitter fa-2x"></i></a>
                 <a href="#" class="instagram mx-3"><i class="fab fa-instagram fa-2x"></i></a>
                 <a href="#" class="linkedin mx-3"><i class="fab fa-linkedin fa-2x"></i></a>
