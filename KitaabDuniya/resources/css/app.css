@@ -251,7 +251,7 @@ body {
 /* -------------------------Start Footer Section-------------------------- */
 
 .footer {
-  background-color: #000000;
+  background-color: rgba(82, 85, 85, 0.544);
   /* Dark blue background */
   color: #fff;
   padding: 40px 0;
@@ -285,21 +285,21 @@ body {
 }
 
 .newsletter-form .form-control {
-  background-color: #34495e;
+  background-color: #f8f8f8;
   /* Slightly lighter dark blue */
   border: none;
   color: #fff;
 }
 
 .newsletter-form .btn {
-  background-color: #3498db;
+  background-color: #2e2e30;
   /* Blue button */
   border: none;
   transition: background-color 0.3s ease;
 }
 
 .newsletter-form .btn:hover {
-  background-color: #2980b9;
+  background-color: #111113;
   /* Darker blue on hover */
 }
 

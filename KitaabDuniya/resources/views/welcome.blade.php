@@ -56,7 +56,7 @@
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
                                     <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
-                                                                        this.closest('form').submit();">
+                                                                            this.closest('form').submit();">
                                         {{ __('Log Out') }}
                                     </x-dropdown-link>
                                 </form>
@@ -192,62 +192,68 @@
 
 
         <!-- ----------------FAQ------------------- -->
+
         <div class="container mt-5">
             <h2 class="text-center text-primary fw-bold mb-4 fs-1">❓ Frequently Asked Questions</h2>
 
-            <div class="accordion" id="faqAccordion">
+            <div class="accordion mx-auto" id="faqAccordion" style="max-width: 800px;">
                 <!-- FAQ Item 1 -->
-                <div class="faq-card">
-                    <div class="faq-question" onclick="toggleFAQ(1)">
-                        <span>What is the purpose of the SAMIP Software?</span>
-                        <i id="icon1" class="bi bi-plus-lg faq-icon"></i>
+                <div class="faq-card mb-3">
+                    <div class="faq-question p-3 d-flex justify-content-between align-items-center bg-light rounded-top"
+                        onclick="toggleFAQ(1)">
+                        <span class="fw-medium">What is the purpose of the SAMIP Software?</span>
+                        <i id="icon1" class="bi bi-plus-lg faq-icon fs-5"></i>
                     </div>
-                    <div id="faq1" class="faq-answer">
+                    <div id="faq1" class="faq-answer p-3 bg-white rounded-bottom" style="display: none;">
                         The app simplifies communication, management, and daily operations for residents, RWAs, and
                         staff.
                     </div>
                 </div>
 
                 <!-- FAQ Item 2 -->
-                <div class="faq-card">
-                    <div class="faq-question" onclick="toggleFAQ(2)">
-                        <span>How do I register on the app?</span>
-                        <i id="icon2" class="bi bi-plus-lg faq-icon"></i>
+                <div class="faq-card mb-3">
+                    <div class="faq-question p-3 d-flex justify-content-between align-items-center bg-light rounded-top"
+                        onclick="toggleFAQ(2)">
+                        <span class="fw-medium">How do I register on the app?</span>
+                        <i id="icon2" class="bi bi-plus-lg faq-icon fs-5"></i>
                     </div>
-                    <div id="faq2" class="faq-answer">
+                    <div id="faq2" class="faq-answer p-3 bg-white rounded-bottom" style="display: none;">
                         You can register by downloading the app and following the on-screen instructions.
                     </div>
                 </div>
 
                 <!-- FAQ Item 3 -->
-                <div class="faq-card">
-                    <div class="faq-question" onclick="toggleFAQ(3)">
-                        <span>Can workers and staff use the app?</span>
-                        <i id="icon3" class="bi bi-plus-lg faq-icon"></i>
+                <div class="faq-card mb-3">
+                    <div class="faq-question p-3 d-flex justify-content-between align-items-center bg-light rounded-top"
+                        onclick="toggleFAQ(3)">
+                        <span class="fw-medium">Can workers and staff use the app?</span>
+                        <i id="icon3" class="bi bi-plus-lg faq-icon fs-5"></i>
                     </div>
-                    <div id="faq3" class="faq-answer">
+                    <div id="faq3" class="faq-answer p-3 bg-white rounded-bottom" style="display: none;">
                         Yes, workers and staff can use the app to manage tasks, view schedules, and update work status.
                     </div>
                 </div>
 
                 <!-- FAQ Item 4 -->
-                <div class="faq-card">
-                    <div class="faq-question" onclick="toggleFAQ(4)">
-                        <span>How secure is the app?</span>
-                        <i id="icon4" class="bi bi-plus-lg faq-icon"></i>
+                <div class="faq-card mb-3">
+                    <div class="faq-question p-3 d-flex justify-content-between align-items-center bg-light rounded-top"
+                        onclick="toggleFAQ(4)">
+                        <span class="fw-medium">How secure is the app?</span>
+                        <i id="icon4" class="bi bi-plus-lg faq-icon fs-5"></i>
                     </div>
-                    <div id="faq4" class="faq-answer">
+                    <div id="faq4" class="faq-answer p-3 bg-white rounded-bottom" style="display: none;">
                         The app ensures data security with encryption protocols and secure login features.
                     </div>
                 </div>
 
                 <!-- FAQ Item 5 -->
-                <div class="faq-card">
-                    <div class="faq-question" onclick="toggleFAQ(5)">
-                        <span>Can I pay my society maintenance through the app?</span>
-                        <i id="icon5" class="bi bi-plus-lg faq-icon"></i>
+                <div class="faq-card mb-3">
+                    <div class="faq-question p-3 d-flex justify-content-between align-items-center bg-light rounded-top"
+                        onclick="toggleFAQ(5)">
+                        <span class="fw-medium">Can I pay my society maintenance through the app?</span>
+                        <i id="icon5" class="bi bi-plus-lg faq-icon fs-5"></i>
                     </div>
-                    <div id="faq5" class="faq-answer">
+                    <div id="faq5" class="faq-answer p-3 bg-white rounded-bottom" style="display: none;">
                         Yes, the app provides a secure payment gateway for paying society maintenance fees.
                     </div>
                 </div>

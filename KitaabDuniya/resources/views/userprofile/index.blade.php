@@ -17,17 +17,22 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
-<style>
-    .profile-section img {
-    width: 100px; /* Fixed width */
-    height: 100px; /* Fixed height */
-    border-radius: 50%; /* Makes the image circular */
-    object-fit: cover; /* Ensures the image covers the area without stretching */
-    border: 2px solid #ddd; /* Optional: Adds a border around the image */
+    <style>
+        .profile-section img {
+            width: 100px;
+            /* Fixed width */
+            height: 100px;
+            /* Fixed height */
+            border-radius: 50%;
+            /* Makes the image circular */
+            object-fit: cover;
+            /* Ensures the image covers the area without stretching */
+            border: 2px solid #ddd;
+            /* Optional: Adds a border around the image */
 
-    
-}
-</style>
+
+        }
+    </style>
 </head>
 
 
@@ -66,9 +71,8 @@
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
 
-                                    <x-dropdown-link :href="route('logout')"
-                                        onclick="event.preventDefault();
-                                                        this.closest('form').submit();">
+                                    <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
+                                                            this.closest('form').submit();">
                                         {{ __('Log Out') }}
                                     </x-dropdown-link>
                                 </form>
@@ -83,8 +87,8 @@
 
                         @if (Route::has('register'))
                             <li class="nav-item dropdown">
-                                <a class="nav-link text-light px-2 dropdown-toggle" href="#" id="navbarDropdown"
-                                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="nav-link text-light px-2 dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
                                     Register
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -104,8 +108,8 @@
         <div class="row align-items-center">
             <!-- Logo -->
             <div class="col-md-3 text-start">
-                <img src="https://tse3.mm.bing.net/th?id=OIP.5bMrEJU6YvsMumkmj4WpGgHaGH&pid=Api&P=0&h=180"
-                    alt="Logo" class="img-fluid" width="50px">
+                <img src="https://tse3.mm.bing.net/th?id=OIP.5bMrEJU6YvsMumkmj4WpGgHaGH&pid=Api&P=0&h=180" alt="Logo"
+                    class="img-fluid" width="50px">
             </div>
             <!-- Search Bar -->
             <div class="col-md-6">
@@ -124,119 +128,135 @@
         </div>
     </div>
 
-   
+
 
     <main class="container mt-4">
-    <div class="row">
-    <div class="col-md-4 col-lg-3">
-    <div class="card p-4 shadow-sm text-center">
-        <div class="profile-section">
-        <div class="mt-2 d-flex justify-content-center align-items-center">
-    @if($user->profile_pic)
-        <!-- If profile picture exists, show the image -->
-        <img id="profile_preview" src="{{ asset('storage/'.$user->profile_pic) }}" alt="Profile Picture" class="profile-picture">
-    @else
-        <!-- If no profile picture exists, show a placeholder icon inside a fixed-size circle -->
-        <img id="profile_preview" src="{{ asset('path/to/placeholder-icon.png') }}" alt="Preview" class="profile-picture">
-    @endif
-</div>
-            <h5 class="mt-3 fw-bold text-primary">Hello, {{$user->name}}</h5>
-        </div>
-        <hr>
-        <ul class="list-group list-group-flush text-start mb-3">
-    <li class="list-group-item list-hover"><a href="#" class="text-decoration-none d-block">📦 My Orders</a></li>
-    <li class="list-group-item list-hover"><a href="#" class="text-decoration-none d-block">🛒 Cart</a></li>
-    <li class="list-group-item list-hover"><a href="#" class="text-decoration-none d-block">❤️ Wishlist</a></li>
-    <li class="list-group-item list-hover"><a href="#" class="text-decoration-none d-block">🔑 Change Password</a></li>
-</ul>
-        
-        <form method="POST" action="{{ route('logout') }}">
-            @csrf
-            <button type="submit" class="btn btn-danger w-100 rounded-pill">
-                <i class="bi bi-box-arrow-right"></i> Logout
-            </button>
-        </form>
-        <form id="delete-form" method="POST" action="{{ route('profile.destroy') }}">
-            @csrf
-            @method('DELETE')
-            <button type="button" class="btn btn-secondary w-100 mt-2 rounded-pill" onclick="confirmDelete()">
-                <i class="bi bi-trash"></i> Delete Account
-            </button>
-        </form>
-    </div>
-</div>
-
-        <!-- Main Content (Personal Info) -->
-        <div class="col-md-8 col-lg-9">
-            <div class="card p-4 shadow-sm">
-                <h4 class="mb-3 text-primary"><i class="bi bi-person-circle"></i> Personal Info</h4>
-                <hr>
-                <form method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data">
-                    @csrf
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label for="name" class="form-label"><i class="bi bi-person"></i> Full Name</label>
-                            <input type="text" class="form-control rounded-md" id="name" name="name" value="{{ old('name', $user->name) }}" required>
+        <div class="row">
+            <div class="col-md-4 col-lg-3">
+                <div class="card p-4 shadow-sm text-center">
+                    <div class="profile-section">
+                        <div class="mt-2 d-flex justify-content-center align-items-center">
+                            @if($user->profile_pic)
+                                <!-- If profile picture exists, show the image -->
+                                <img id="profile_preview" src="{{ asset('storage/' . $user->profile_pic) }}"
+                                    alt="Profile Picture" class="profile-picture">
+                            @else
+                                <!-- If no profile picture exists, show a placeholder icon inside a fixed-size circle -->
+                                <img id="profile_preview" src="{{ asset('path/to/placeholder-icon.png') }}" alt="Preview"
+                                    class="profile-picture">
+                            @endif
                         </div>
-                        <div class="col-md-6">
-                            <label for="email" class="form-label"><i class="bi bi-envelope"></i> Email Address</label>
-                            <input type="email" class="form-control rounded-md" id="email" name="email" value="{{ old('email', $user->email) }}" required>
-                        </div>
+                        <h5 class="mt-3 fw-bold text-primary">Hello, {{$user->name}}</h5>
                     </div>
-                    
-                    <div class="row mt-3">
-                        <div class="col-md-6">
-                            <label for="phone" class="form-label"><i class="bi bi-telephone"></i> Phone Number</label>
-                            <input type="text" class="form-control rounded-md" id="phone" name="phone" value="{{ old('phone', $user->phone) }}">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="address" class="form-label"><i class="bi bi-house"></i> Address</label>
-                            <input type="text" class="form-control rounded-md" id="address" name="address" value="{{ old('address', $user->address) }}">
-                        </div>
-                    </div>
+                    <hr>
+                    <ul class="list-group list-group-flush text-start mb-3">
+                        <li class="list-group-item list-hover"><a href="#" class="text-decoration-none d-block">📦 My
+                                Orders</a></li>
+                        <li class="list-group-item list-hover"><a href="#" class="text-decoration-none d-block">🛒
+                                Cart</a></li>
+                        <li class="list-group-item list-hover"><a href="#" class="text-decoration-none d-block">❤️
+                                Wishlist</a></li>
+                        <li class="list-group-item list-hover"><a href="#" class="text-decoration-none d-block">🔑
+                                Change Password</a></li>
+                    </ul>
 
-                    <div class="mb-3 mt-3">
-                        <label class="form-label"><i class="bi bi-gender-ambiguous"></i> Gender</label>
-                        <div class="d-flex gap-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gender" value="male" {{ $user->gender == 'male' ? 'checked' : '' }}>
-                                <label class="form-check-label">Male</label>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" class="btn btn-danger w-100 rounded-pill">
+                            <i class="bi bi-box-arrow-right"></i> Logout
+                        </button>
+                    </form>
+                    <form id="delete-form" method="POST" action="{{ route('profile.destroy') }}">
+                        @csrf
+                        @method('DELETE')
+                        <button type="button" class="btn btn-secondary w-100 mt-2 rounded-pill"
+                            onclick="confirmDelete()">
+                            <i class="bi bi-trash"></i> Delete Account
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Main Content (Personal Info) -->
+            <div class="col-md-8 col-lg-9">
+                <div class="card p-4 shadow-sm">
+                    <h4 class="mb-3 text-primary"><i class="bi bi-person-circle"></i> Personal Info</h4>
+                    <hr>
+                    <form method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data">
+                        @csrf
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="name" class="form-label"><i class="bi bi-person"></i> Full Name</label>
+                                <input type="text" class="form-control rounded-md" id="name" name="name"
+                                    value="{{ old('name', $user->name) }}" required>
                             </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gender" value="female" {{ $user->gender == 'female' ? 'checked' : '' }}>
-                                <label class="form-check-label">Female</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gender" value="other" {{ $user->gender == 'other' ? 'checked' : '' }}>
-                                <label class="form-check-label">Other</label>
+                            <div class="col-md-6">
+                                <label for="email" class="form-label"><i class="bi bi-envelope"></i> Email
+                                    Address</label>
+                                <input type="email" class="form-control rounded-md" id="email" name="email"
+                                    value="{{ old('email', $user->email) }}" required>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="mb-3">
-                        <label for="profile_pic" class="form-label"><i class="bi bi-camera"></i> Profile Picture</label>
-                        <input type="file" class="form-control" id="profile_pic" name="profile_pic" onchange="previewImage(event)">
-                        
-                    </div>
+                        <div class="row mt-3">
+                            <div class="col-md-6">
+                                <label for="phone" class="form-label"><i class="bi bi-telephone"></i> Phone
+                                    Number</label>
+                                <input type="text" class="form-control rounded-md" id="phone" name="phone"
+                                    value="{{ old('phone', $user->phone) }}">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="address" class="form-label"><i class="bi bi-house"></i> Address</label>
+                                <input type="text" class="form-control rounded-md" id="address" name="address"
+                                    value="{{ old('address', $user->address) }}">
+                            </div>
+                        </div>
 
-                    <button type="submit" class="btn btn-primary w-100 rounded-md"><i class="bi bi-save"></i> Update Profile</button>
-                </form>
+                        <div class="mb-3 mt-3">
+                            <label class="form-label"><i class="bi bi-gender-ambiguous"></i> Gender</label>
+                            <div class="d-flex gap-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="gender" value="male" {{ $user->gender == 'male' ? 'checked' : '' }}>
+                                    <label class="form-check-label">Male</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="gender" value="female" {{ $user->gender == 'female' ? 'checked' : '' }}>
+                                    <label class="form-check-label">Female</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="gender" value="other" {{ $user->gender == 'other' ? 'checked' : '' }}>
+                                    <label class="form-check-label">Other</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="profile_pic" class="form-label"><i class="bi bi-camera"></i> Profile
+                                Picture</label>
+                            <input type="file" class="form-control" id="profile_pic" name="profile_pic"
+                                onchange="previewImage(event)">
+
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100 rounded-md"><i class="bi bi-save"></i> Update
+                            Profile</button>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-</main>
+    </main>
 
-<script>
-    function previewImage(event) {
-        var reader = new FileReader();
-        reader.onload = function () {
-            var output = document.getElementById('profile_preview');
-            output.src = reader.result;
-            output.classList.remove("d-none");
-        };
-        reader.readAsDataURL(event.target.files[0]);
-    }
-</script>
+    <script>
+        function previewImage(event) {
+            var reader = new FileReader();
+            reader.onload = function () {
+                var output = document.getElementById('profile_preview');
+                output.src = reader.result;
+                output.classList.remove("d-none");
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
 
 
     <!-- *************** Footer Section ****************** -->
@@ -268,8 +288,7 @@
     </footer>
 
     <!-- Bootstrap Modal -->
-    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -303,18 +322,15 @@
                             <label class="form-label">Gender</label>
                             <div class="d-flex gap-3">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="gender" value="male"
-                                        required>
+                                    <input class="form-check-input" type="radio" name="gender" value="male" required>
                                     <label class="form-check-label">Male</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="gender" value="female"
-                                        required>
+                                    <input class="form-check-input" type="radio" name="gender" value="female" required>
                                     <label class="form-check-label">Female</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="gender" value="other"
-                                        required>
+                                    <input class="form-check-input" type="radio" name="gender" value="other" required>
                                     <label class="form-check-label">Other</label>
                                 </div>
                             </div>
@@ -360,16 +376,16 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-    </script>
+        </script>
     <script>
-        $(document).ready(function() {
-            $('#loginForm').on('submit', function(e) {
+        $(document).ready(function () {
+            $('#loginForm').on('submit', function (e) {
                 e.preventDefault();
                 $.ajax({
                     url: $(this).attr('action'),
                     method: $(this).attr('method'),
                     data: $(this).serialize(),
-                    success: function(response) {
+                    success: function (response) {
                         // Handle success response
                         if (response.success) {
                             window.location.href = "{{ route('dashboard') }}";
@@ -377,7 +393,7 @@
                             alert('Login failed');
                         }
                     },
-                    error: function(xhr) {
+                    error: function (xhr) {
                         // Handle error
                         alert('An error occurred');
                     }
@@ -387,7 +403,7 @@
     </script>
 
     <script>
-        document.getElementById('individualRegister').addEventListener('click', function(event) {
+        document.getElementById('individualRegister').addEventListener('click', function (event) {
             event.preventDefault();
             var registerModal = new bootstrap.Modal(document.getElementById('registerModal'));
             registerModal.show();
@@ -410,24 +426,24 @@
         }
     </script>
     <!-- Include SweetAlert -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script>
-    function confirmDelete() {
-        Swal.fire({
-            title: "Are you sure?",
-            text: "This action cannot be undone!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#d33",
-            cancelButtonColor: "#6c757d",
-            confirmButtonText: "Yes, delete it!"
-        }).then((result) => {
-            if (result.isConfirmed) {
-                document.getElementById('delete-form').submit();
-            }
-        });
-    }
-</script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function confirmDelete() {
+            Swal.fire({
+                title: "Are you sure?",
+                text: "This action cannot be undone!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#d33",
+                cancelButtonColor: "#6c757d",
+                confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('delete-form').submit();
+                }
+            });
+        }
+    </script>
 
 
 </body>
