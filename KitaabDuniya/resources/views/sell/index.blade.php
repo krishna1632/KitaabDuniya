@@ -136,40 +136,44 @@
         <div class="py-5">
             <div class="row ">
                 <!-- School Category -->
-                <div class="col-md-3 col-sm-6 mb-4 cursor-pointer">
+                <a href="{{ route('sell.create_school') }}" class="col-md-3 col-sm-6 mb-4"
+                    style="text-decoration: none">
                     <div class="category-card text-center p-4 shadow-sm rounded-lg">
                         <i class="bi bi-book fs-1 text-primary mb-3"></i>
-                        <h4 class="mb-2">School</h4>
+                        <h4 class="mb-2 text-black">School</h4>
                         <p class="text-muted">All books from 1st to 12th standard</p>
                     </div>
-                </div>
+                </a>
 
                 <!-- Graduation Category -->
-                <div class="col-md-3 col-sm-6 mb-4 cursor-pointer">
+                <a href="{{ route('sell.create_graduation') }}" class="col-md-3 col-sm-6 mb-4 "
+                    style="text-decoration: none">
                     <div class="category-card text-center p-4 shadow-sm rounded-lg">
                         <i class="bi bi-mortarboard fs-1 text-success mb-3"></i>
-                        <h4 class="mb-2">Graduation</h4>
+                        <h4 class="mb-2 text-black">Graduation</h4>
                         <p class="text-muted">All books for graduation courses</p>
                     </div>
-                </div>
+                </a>
 
                 <!-- General Category -->
-                <div class="col-md-3 col-sm-6 mb-4 cursor-pointer">
+                <a href="{{ route('sell.create_general') }}" class="col-md-3 col-sm-6 mb-4 "
+                    style="text-decoration: none">
                     <div class="category-card text-center p-4 shadow-sm rounded-lg">
                         <i class="bi bi-globe fs-1 text-warning mb-3"></i>
-                        <h4 class="mb-2">General</h4>
+                        <h4 class="mb-2 text-black">General</h4>
                         <p class="text-muted">All general books</p>
                     </div>
-                </div>
+                </a>
 
                 <!-- Competitive Category -->
-                <div class="col-md-3 col-sm-6 mb-4 cursor-pointer">
+                <a href="{{ route('sell.create_competitive') }}" class="col-md-3 col-sm-6 mb-4 "
+                    style="text-decoration: none">
                     <div class="category-card text-center p-4 shadow-sm rounded-lg">
                         <i class="bi bi-trophy fs-1 text-danger mb-3"></i>
-                        <h4 class="mb-2">Competitive</h4>
+                        <h4 class="mb-2 text-black">Competitive</h4>
                         <p class="text-muted">All books for competitive exams</p>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </main>
