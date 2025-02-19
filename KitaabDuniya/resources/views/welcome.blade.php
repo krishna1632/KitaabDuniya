@@ -144,20 +144,23 @@
 
     {{-- Hero Section Starts --}}
     <div class="container-fluid p-0 position-relative" style="margin-bottom: 40px">
-        <div class="image">
+        <div class="image position-relative">
             <img src="assets/technological.jpg" class="img-fluid w-100" style="height: 80vh; object-fit: cover;"
                 alt="Technology Banner">
-            <!-- Overlay with Text and Button -->
-            <div class="position-absolute top-50 start-50 translate-middle text-center text-white">
-                <div class="hero-text">
-                    <h1 class="display-4 fw-bold">Welcome to Kitaabi Duniya</h1>
-                    <p class="fs-5">Your Gateway to a World of Books</p>
-                    <a href="#books-collection" class="btn btn-primary btn-lg mt-3">Explore Books</a>
-                </div>
+
+            <!-- Semi-transparent overlay -->
+            <div class="position-absolute top-0 start-0 w-100 h-100" style="background: rgba(0, 0, 0, 0.5);"></div>
+
+            <!-- Overlay with Text and Button (With Animation) -->
+            <div class="position-absolute top-50 start-50 translate-middle text-center text-white hero-text">
+                <h1 class="display-4 fw-bold">Welcome to Kitaabi Duniya</h1>
+                <p class="fs-5">Your Gateway to a World of Books</p>
+                <a href="#" class="btn btn-primary btn-lg mt-3">Explore Books</a>
             </div>
         </div>
     </div>
     {{-- Hero Section Ends --}}
+
 
     <!-- *************** Main Section ******************-->
     <main class="">
