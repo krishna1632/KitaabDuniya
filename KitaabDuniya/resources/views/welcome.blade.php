@@ -223,12 +223,14 @@
                 <div class="faq-card mb-3">
                     <div class="faq-question p-3 d-flex justify-content-between align-items-center bg-light rounded-top"
                         onclick="toggleFAQ(1)">
-                        <span class="fw-medium"> What is Kitabbi Duniya?</span>
+                        <span class="fw-medium">How can I sell or rent my books on Kitaab Duniya?</span>
                         <i id="icon1" class="bi bi-plus-lg faq-icon fs-5"></i>
                     </div>
                     <div id="faq1" class="faq-answer p-3 bg-white rounded-bottom" style="display: none;">
-                        💬Kitabbi Duniya is an online platform where users can buy, sell, and exchange books, including
-                        school books, college books, competitive exam guides, and general reading material.
+                        💬To sell or rent your books, you need to create an account on Kitaab Duniya. Once registered,
+                        you can list your books by providing details such as title, author, condition, and price. You
+                        can also specify if the book is available for rent. Buyers or renters will then be able to
+                        contact you directly through the platform.
                     </div>
                 </div>
 
@@ -236,13 +238,14 @@
                 <div class="faq-card mb-3">
                     <div class="faq-question p-3 d-flex justify-content-between align-items-center bg-light rounded-top"
                         onclick="toggleFAQ(2)">
-                        <span class="fw-medium">How does Kitabbi Duniya work?</span>
+                        <span class="fw-medium">How do I find and buy or rent books on Kitaab Duniya?</span>
                         <i id="icon2" class="bi bi-plus-lg faq-icon fs-5"></i>
                     </div>
                     <div id="faq2" class="faq-answer p-3 bg-white rounded-bottom" style="display: none;">
-                        💬Users can list their books by filling out a form with details like book name, category, price,
-                        and condition. Buyers can browse the listings, contact sellers, and purchase books at affordable
-                        prices
+                        💬You can search for books using the search bar by entering the title, author, or genre. The
+                        results will show you a list of available books along with seller details. The books will be
+                        sorted by proximity, so you can find the nearest sellers. You can then contact the seller
+                        directly to purchase or rent the book.
                     </div>
                 </div>
 
@@ -250,35 +253,44 @@
                 <div class="faq-card mb-3">
                     <div class="faq-question p-3 d-flex justify-content-between align-items-center bg-light rounded-top"
                         onclick="toggleFAQ(3)">
-                        <span class="fw-medium">How do I set a fair price for my book?</span>
+                        <span class="fw-medium">Can I borrow books from a library through Kitaab Duniya?</span>
                         <i id="icon3" class="bi bi-plus-lg faq-icon fs-5"></i>
                     </div>
                     <div id="faq3" class="faq-answer p-3 bg-white rounded-bottom" style="display: none;">
-                        💬Consider factors like book condition, edition, and current market price. You can check similar
-                        listings to get an idea </div>
+                        💬Yes, Kitaab Duniya also facilitates book borrowing from libraries. You can search for the book
+                        you need, and if it's available in a nearby library, you can issue it directly through the
+                        platform. The librarian will manage the issuance and return process.
+
+                    </div>
                 </div>
 
                 <!-- FAQ Item 4 -->
                 <div class="faq-card mb-3">
                     <div class="faq-question p-3 d-flex justify-content-between align-items-center bg-light rounded-top"
                         onclick="toggleFAQ(4)">
-                        <span class="fw-medium"> Does Kitabbi Duniya handle payments?</span>
+                        <span class="fw-medium">How are payments handled on Kitaab Duniya?
+                        </span>
                         <i id="icon4" class="bi bi-plus-lg faq-icon fs-5"></i>
                     </div>
                     <div id="faq4" class="faq-answer p-3 bg-white rounded-bottom" style="display: none;">
-                        💬No, payments are handled directly between the buyer and seller. We recommend using secure
-                        payment methods like UPI, cash on delivery, or online transfers. </div>
+                        💬Payments are handled directly between the buyer and the seller or the renter and the lender.
+                        Kitaab Duniya does not process payments but provides a platform for users to connect and
+                        negotiate terms. You can choose any payment method that is convenient for both parties, such as
+                        cash, bank transfer, or digital wallets. </div>
                 </div>
 
                 <!-- FAQ Item 5 -->
                 <div class="faq-card mb-3">
                     <div class="faq-question p-3 d-flex justify-content-between align-items-center bg-light rounded-top"
                         onclick="toggleFAQ(5)">
-                        <span class="fw-medium">How can I contact customer support?</span>
+                        <span class="fw-medium">What should I do if I have an issue with a seller or a rented
+                            book?</span>
                         <i id="icon5" class="bi bi-plus-lg faq-icon fs-5"></i>
                     </div>
                     <div id="faq5" class="faq-answer p-3 bg-white rounded-bottom" style="display: none;">
-                        💬You can reach us through the Contact Us page on our website or email us at <span
+                        💬If you encounter any issues with a seller or a rented book, you can report the problem through
+                        the Kitaab Duniya platform. The support team will assist in resolving the issue. It's also
+                        recommended to communicate clearly with the seller or renter to avoid misunderstandings.<span
                             style="color: blue;">support@kitabbiduniya.com</span>
                     </div>
                 </div>
