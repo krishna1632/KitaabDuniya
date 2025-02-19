@@ -24,19 +24,38 @@
     <!-- *************** Header Section **************** -->
     <nav class="navbar navbar-expand-lg py-0" style="background-color: #343a40;">
         <div class="container-fluid">
+
             <div class="left">
                 <ul class="navbar-nav me-auto mb-1 mb-lg-0">
                     <li class="nav-item">
                         <a id="locationLink" class="nav-link text-light px-2" href="#">📍Fetching location...</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link text-light px-2 dropdown-toggle" href="#" id="locationDropdown"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            🔍
+                            Location
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="locationDropdown" id="locationMenu">
+                            <li><a class="dropdown-item" href="#" id="useCurrentLocation">📍 Use Current
+                                    Location</a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#" id="popularCities">🏙️ Most Popular Cities</a>
+                            </li>
+                            <!-- Popular cities will be dynamically added here -->
+                        </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light px-2" href="#">📝About Us |</a>
+                        <a class="nav-link text-light px-2" href="#">📝About Us </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light px-2" href="#">📞Contact Us</a>
+                        <a class="nav-link text-light px-2" href="#foot">📞Contact Us</a>
                     </li>
                 </ul>
             </div>
+
 
             <div class="right">
                 <ul class="navbar-nav ms-auto mb-1 mb-lg-0">
@@ -57,8 +76,7 @@
                                     @csrf
                                     <x-dropdown-link :href="route('logout')"
                                         onclick="event.preventDefault();
-                                                                                                                                                                                                                                        this.closest('form').submit();">
-
+                                        this.closest('form').submit();">
                                         {{ __('Log Out') }}
                                     </x-dropdown-link>
                                 </form>
@@ -126,6 +144,9 @@
 
     <!-- *************** Main Section ******************-->
     <main class="">
+        <marquee behavior="scroll" direction="left" style="font-size: 30px; color: #007bff; font-weight: bold;">
+            📚 Order Starts from 1March 2025 ! Grab Your Favorite Books Now And Get Offer's! 🚀
+        </marquee>
         <div class="categories-section">
             <h2 class="text-center mb-4 fw-bold fs-2" style="color: red;">🏷️ Categories</h2>
             <div class="row">
@@ -195,19 +216,19 @@
         <!-- ----------------FAQ------------------- -->
 
         <div class="container mt-5">
-            <h2 class="text-center text-primary fw-bold mb-4 fs-1">❓ Frequently Asked Questions</h2>
+            <h2 class="text-center text-primary fw-bold mb-4 fs-1">📖Frequently Asked Questions</h2>
 
             <div class="accordion mx-auto" id="faqAccordion" style="max-width: 800px;">
                 <!-- FAQ Item 1 -->
                 <div class="faq-card mb-3">
                     <div class="faq-question p-3 d-flex justify-content-between align-items-center bg-light rounded-top"
                         onclick="toggleFAQ(1)">
-                        <span class="fw-medium">What is the purpose of the SAMIP Software?</span>
+                        <span class="fw-medium"> What is Kitabbi Duniya?</span>
                         <i id="icon1" class="bi bi-plus-lg faq-icon fs-5"></i>
                     </div>
                     <div id="faq1" class="faq-answer p-3 bg-white rounded-bottom" style="display: none;">
-                        The app simplifies communication, management, and daily operations for residents, RWAs, and
-                        staff.
+                        💬Kitabbi Duniya is an online platform where users can buy, sell, and exchange books, including
+                        school books, college books, competitive exam guides, and general reading material.
                     </div>
                 </div>
 
@@ -215,11 +236,13 @@
                 <div class="faq-card mb-3">
                     <div class="faq-question p-3 d-flex justify-content-between align-items-center bg-light rounded-top"
                         onclick="toggleFAQ(2)">
-                        <span class="fw-medium">How do I register on the app?</span>
+                        <span class="fw-medium">How does Kitabbi Duniya work?</span>
                         <i id="icon2" class="bi bi-plus-lg faq-icon fs-5"></i>
                     </div>
                     <div id="faq2" class="faq-answer p-3 bg-white rounded-bottom" style="display: none;">
-                        You can register by downloading the app and following the on-screen instructions.
+                        💬Users can list their books by filling out a form with details like book name, category, price,
+                        and condition. Buyers can browse the listings, contact sellers, and purchase books at affordable
+                        prices
                     </div>
                 </div>
 
@@ -227,35 +250,36 @@
                 <div class="faq-card mb-3">
                     <div class="faq-question p-3 d-flex justify-content-between align-items-center bg-light rounded-top"
                         onclick="toggleFAQ(3)">
-                        <span class="fw-medium">Can workers and staff use the app?</span>
+                        <span class="fw-medium">How do I set a fair price for my book?</span>
                         <i id="icon3" class="bi bi-plus-lg faq-icon fs-5"></i>
                     </div>
                     <div id="faq3" class="faq-answer p-3 bg-white rounded-bottom" style="display: none;">
-                        Yes, workers and staff can use the app to manage tasks, view schedules, and update work status.
-                    </div>
+                        💬Consider factors like book condition, edition, and current market price. You can check similar
+                        listings to get an idea </div>
                 </div>
 
                 <!-- FAQ Item 4 -->
                 <div class="faq-card mb-3">
                     <div class="faq-question p-3 d-flex justify-content-between align-items-center bg-light rounded-top"
                         onclick="toggleFAQ(4)">
-                        <span class="fw-medium">How secure is the app?</span>
+                        <span class="fw-medium"> Does Kitabbi Duniya handle payments?</span>
                         <i id="icon4" class="bi bi-plus-lg faq-icon fs-5"></i>
                     </div>
                     <div id="faq4" class="faq-answer p-3 bg-white rounded-bottom" style="display: none;">
-                        The app ensures data security with encryption protocols and secure login features.
-                    </div>
+                        💬No, payments are handled directly between the buyer and seller. We recommend using secure
+                        payment methods like UPI, cash on delivery, or online transfers. </div>
                 </div>
 
                 <!-- FAQ Item 5 -->
                 <div class="faq-card mb-3">
                     <div class="faq-question p-3 d-flex justify-content-between align-items-center bg-light rounded-top"
                         onclick="toggleFAQ(5)">
-                        <span class="fw-medium">Can I pay my society maintenance through the app?</span>
+                        <span class="fw-medium">How can I contact customer support?</span>
                         <i id="icon5" class="bi bi-plus-lg faq-icon fs-5"></i>
                     </div>
                     <div id="faq5" class="faq-answer p-3 bg-white rounded-bottom" style="display: none;">
-                        Yes, the app provides a secure payment gateway for paying society maintenance fees.
+                        💬You can reach us through the Contact Us page on our website or email us at <span
+                            style="color: blue;">support@kitabbiduniya.com</span>
                     </div>
                 </div>
             </div>
@@ -265,7 +289,7 @@
     </main>
 
     <!-- *************** Footer Section ****************** -->
-    <footer class="footer">
+    <footer class="footer" id="foot">
         <div class="container">
             <!-- Title Line -->
             <div class="title-line text-center mb-4">
