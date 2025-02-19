@@ -7,7 +7,7 @@ Alpine.start();
 // ---------------------- Dynamic Search Placeholder ----------------------
 
 document.addEventListener("DOMContentLoaded", function () {
-    const cities = ["Class 12 Ncert", "Godan", "Rich Dad Poor Dad", "DBMS", "C++"];
+    const cities = ["Class 12 Ncert", "The God of Small Things", "Rich Dad Poor Dad", "DBMS", "C++"];
     let index = 0;
     const searchBox = document.getElementById("searchBox");
 

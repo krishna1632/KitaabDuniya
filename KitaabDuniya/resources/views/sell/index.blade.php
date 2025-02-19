@@ -128,15 +128,125 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg custom-navbar py-0 px-10">
+    <!-- *************** Header Section **************** -->
+    <nav class="navbar navbar-expand-lg py-0" style="background-color: #343a40;">
         <div class="container-fluid">
-            <a href="/"><i class="bi bi-arrow-left"></i></a>
-        </div>
+
+            <div class="left">
+                <ul class="navbar-nav me-auto mb-1 mb-lg-0">
+                    <li class="nav-item">
+                        <a id="locationLink" class="nav-link text-light px-2" href="#">📍Fetching location...</a>
+                        {{-- <li class="nav-item dropdown">
+                        <a class="nav-link text-light px-2 dropdown-toggle" href="#" id="locationDropdown"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            🔍
+                            Location
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="locationDropdown" id="locationMenu">
+                            <li><a class="dropdown-item" href="#" id="useCurrentLocation">📍 Use Current
+                                    Location</a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#" id="popularCities">🏙️ Most Popular Cities</a>
+                            </li>
+                            <!-- Popular cities will be dynamically added here -->
+                        </ul>
+                    </li> --}}
+                    <li class="nav-item">
+                        <a class="nav-link text-light px-2" href="#">📝About Us </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light px-2" href="#foot">📞Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+
+
+            <div class="right " style="z-index:200000;">
+                <ul class="navbar-nav ms-auto mb-1 mb-lg-0">
+                    @auth
+                        <!-- Dashboard and User Dropdown Menu for Logged-in Users -->
+                        <li class="nav-item">
+                            <a class="nav-link text-light px-2" href="#"><i class="bi bi-person-circle"></i></a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-light px-2" href="#" role="button"
+                                data-bs-toggle="dropdown">
+                                {{ Auth::user()->name }}
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li>
+                                    <a class="dropdown-item" href="{{ url('/') }}">Back</a>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li> <!-- Divider Line -->
+                                <li>
+                                    <form method="POST" action="{{ route('logout') }}">
+                                        @csrf
+                                        <button class="dropdown-item" type="submit">
+                                            {{ __('Log Out') }}
+                                        </button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                    @else
+                        <!-- Login and Register Options for Guests -->
+                        <li class="nav-item">
+                            <a class="nav-link text-light px-2" href="#" data-bs-toggle="modal"
+                                data-bs-target="#loginModal">Login</a>
+                        </li>
+
+                        @if (Route::has('register'))
+                            <li class="nav-item dropdown">
+                                <a class="nav-link text-light px-2 dropdown-toggle" href="#" id="navbarDropdown"
+                                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Register
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="#" id="individualRegister">Individual</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('org_request.create') }}">Organisation</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        @endif
+                    @endauth
+                </ul>
+            </div>
+
     </nav>
+
+    <div class="container-fluid py-1 border-bottom bg-seceondary sticky-top"
+        style="z-index:10000; background-color: #fff;">
+        <div class="row align-items-center">
+            <!-- Logo -->
+            <div class="col-md-3 text-start">
+                <img src="/assets/nav_logo.png" alt="Logo" class="img-fluid ms-3" width="180px">
+            </div>
+            <!-- Search Bar -->
+            <div class="col-md-6">
+                <form class="d-flex">
+                    <input class="form-control me-2 rounded-3" type="search" id="searchBox"
+                        placeholder="Search Ex.... 'Delhi'" aria-label="Search">
+                    <button class="btn btn-outline-primary" type="submit">Search</button>
+                </form>
+            </div>
+            <!-- Cart -->
+            <div class="col-md-3 text-end">
+                <a href="#" class="btn btn-outline-secondary text-dark">
+                    <i class="bi bi-cart"></i> Cart
+                </a>
+            </div>
+        </div>
+    </div>
 
     <!-- Main body start  -->
     <main>
-        <h2 class="text-center py-3">POST YOUR BOOK'S</h2>
+        <h2 class="text-center py-3">Sells/Rents YOUR BOOK'S</h2>
         <div class="py-5">
             <div class="row ">
                 <!-- School Category -->
@@ -245,8 +355,8 @@
                 <div class="footer-bottom row text-center py-3">
                     <div class="col-md-12">
                         <p class="text-muted mb-0">© 2025 Kittabi Duniya. All rights reserved.</p>
-                        <p class="text-muted mb-0"><a href="#" class="text-muted">Privacy Policy</a> | <a href="#"
-                                class="text-muted">Terms of Service</a></p>
+                        <p class="text-muted mb-0"><a href="#" class="text-muted">Privacy Policy</a> | <a
+                                href="#" class="text-muted">Terms of Service</a></p>
                     </div>
                 </div>
         </div>
@@ -255,7 +365,46 @@
     <!-- footor ends -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-        </script>
+    </script>
+
+    <script>
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition, showError);
+            } else {
+                document.getElementById("locationLink").innerHTML = "Geolocation not supported";
+            }
+        }
+
+        function showPosition(position) {
+            let lat = position.coords.latitude;
+            let lon = position.coords.longitude;
+
+            // OpenStreetMap Reverse Geocoding API
+            let url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`;
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    let fullLocation = data.display_name || "Unknown Location";
+                    let shortLocation = fullLocation.split(',')[0]; // Extract the first part of the location
+                    let locationLink = document.getElementById("locationLink");
+
+                    // Set the short location as text and full location as title (hover text)
+                    locationLink.innerHTML = `📍 ${shortLocation} |`;
+                    locationLink.setAttribute("title", fullLocation); // Full address on hover
+                })
+                .catch(error => {
+                    document.getElementById("locationLink").innerHTML = "📍 Location not found";
+                });
+        }
+
+        function showError(error) {
+            document.getElementById("locationLink").innerHTML = "📍 Location not available";
+        }
+
+        getLocation(); // Auto-fetch location
+    </script>
 </body>
 
 </html>

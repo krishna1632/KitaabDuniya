@@ -95,7 +95,38 @@ body {
 
 /* ---------------------- End Header ------------------------- */
 
+/* Hero section Starts */
 
+.hero-text {
+  opacity: 0; /* Start with invisible text */
+  transform: translateY(20px); /* Start slightly below */
+  animation: fadeInUp 1.5s ease-out forwards; /* Animation name, duration, and timing */
+}
+
+@keyframes fadeInUp {
+  from {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+.hero-text h1 {
+  animation-delay: 0.5s; /* Delay for the heading */
+}
+
+.hero-text p {
+  animation-delay: 1s; /* Delay for the paragraph */
+}
+
+.hero-text a {
+  animation-delay: 1.5s; /* Delay for the button */
+}
+
+/* Hero section ends */
 
 /* -------------------- Main Section ------------------------*/
 
@@ -124,6 +155,15 @@ body {
   color: #007bff;
 
 }
+
+/* Blink Feature */
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0.8; } /* Mid-point par halka visible rakha */
+  100% { opacity: 1; }
+}
+
+
 
 /* ----------------------------- End (Catagories) ---------------------------- */
 

@@ -29,7 +29,7 @@
                 <ul class="navbar-nav me-auto mb-1 mb-lg-0">
                     <li class="nav-item">
                         <a id="locationLink" class="nav-link text-light px-2" href="#">📍Fetching location...</a>
-                    <li class="nav-item dropdown">
+                        {{-- <li class="nav-item dropdown">
                         <a class="nav-link text-light px-2 dropdown-toggle" href="#" id="locationDropdown"
                             role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             🔍
@@ -46,7 +46,7 @@
                             </li>
                             <!-- Popular cities will be dynamically added here -->
                         </ul>
-                    </li>
+                    </li> --}}
                     <li class="nav-item">
                         <a class="nav-link text-light px-2" href="#">📝About Us </a>
                     </li>
@@ -57,7 +57,7 @@
             </div>
 
 
-            <div class="right">
+            <div class="right " style="z-index:2000;">
                 <ul class="navbar-nav ms-auto mb-1 mb-lg-0">
                     @auth
                         <!-- Dashboard and User Dropdown Menu for Logged-in Users -->
@@ -70,16 +70,22 @@
                                 data-bs-toggle="dropdown">
                                 {{ Auth::user()->name }}
                             </a>
-                            <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="{{ url('/profile') }}">Profile</a></li>
-                                <form method="POST" action="{{ route('logout') }}">
-                                    @csrf
-                                    <x-dropdown-link :href="route('logout')"
-                                        onclick="event.preventDefault();
-                                        this.closest('form').submit();">
-                                        {{ __('Log Out') }}
-                                    </x-dropdown-link>
-                                </form>
+                            <ul class="dropdown-menu dropdown-menu-end" style="background-color: #fff">
+                                <li>
+                                    <a class="dropdown-item" style="color: black !important"
+                                        href="{{ url('/profile') }}">Profile</a>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li> <!-- Divider Line -->
+                                <li>
+                                    <form method="POST" action="{{ route('logout') }}">
+                                        @csrf
+                                        <button class="dropdown-item" type="submit" style="color: black !important">
+                                            {{ __('Log Out') }}
+                                        </button>
+                                    </form>
+                                </li>
                             </ul>
                         </li>
                     @else
@@ -108,7 +114,8 @@
 
     </nav>
 
-    <div class="nav-2 container-fluid py-1 border-bottom bg-seceondary">
+    <div class="nav-2 container-fluid py-1 border-bottom bg-seceondary sticky-top"
+        style="z-index: 1000; background-color: #ffffff; border-bottom: 3px solid black;">
         <div class="row align-items-center">
             <!-- Logo -->
             <div class="col-md-3 text-start">
@@ -135,18 +142,31 @@
         </div>
     </div>
 
-    <div class="container-fluid p-0">
+    {{-- Hero Section Starts --}}
+    <div class="container-fluid p-0 position-relative" style="margin-bottom: 40px">
         <div class="image">
-            <img src="assets/technological.jpg" class="img-fluid w-100 mb-10" style="display: block;"
+            <img src="assets/technological.jpg" class="img-fluid w-100" style="height: 80vh; object-fit: cover;"
                 alt="Technology Banner">
+            <!-- Overlay with Text and Button -->
+            <div class="position-absolute top-50 start-50 translate-middle text-center text-white">
+                <div class="hero-text">
+                    <h1 class="display-4 fw-bold">Welcome to Kitaabi Duniya</h1>
+                    <p class="fs-5">Your Gateway to a World of Books</p>
+                    <a href="#books-collection" class="btn btn-primary btn-lg mt-3">Explore Books</a>
+                </div>
+            </div>
         </div>
     </div>
+    {{-- Hero Section Ends --}}
 
     <!-- *************** Main Section ******************-->
     <main class="">
-        <marquee behavior="scroll" direction="left" style="font-size: 30px; color: #007bff; font-weight: bold;">
-            📚 Order Starts from 1March 2025 ! Grab Your Favorite Books Now And Get Offer's! 🚀
-        </marquee>
+        <center>
+            <div behavior="scroll" direction="left"
+                style="font-size: 30px; color: #007bff; font-weight: bold; animation: blink 2s infinite;">
+                📚 Order Starts from 1 March 2025 ! Grab Your Favorite Books Now And Get Offer's! 🚀
+            </div>
+        </center>
         <div class="categories-section">
             <h2 class="text-center mb-4 fw-bold fs-2" style="color: red;">🏷️ Categories</h2>
             <div class="row">
@@ -216,7 +236,7 @@
         <!-- ----------------FAQ------------------- -->
 
         <div class="container mt-5">
-            <h2 class="text-center text-primary fw-bold mb-4 fs-1">📖Frequently Asked Questions</h2>
+            <h2 class="text-center text-primary fw-bold mb-4 fs-1">📖Frequently Asked Questions ?</h2>
 
             <div class="accordion mx-auto" id="faqAccordion" style="max-width: 800px;">
                 <!-- FAQ Item 1 -->
