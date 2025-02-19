@@ -49,6 +49,10 @@ Route::middleware('auth')->group(function () {
 
     // Sell Routes
     Route::get('/sell', [SellController::class, 'index'])->name('sell.index');
+    Route::get('/sell/create_school', [SellController::class, 'createSchool'])->name('sell.create_school');
+    Route::get('/sell/create_graduation', [SellController::class, 'createGraduation'])->name('sell.create_graduation');
+    Route::get('/sell/create_general', [SellController::class, 'createGeneral'])->name('sell.create_general');
+    Route::get('/sell/create_competitive', [SellController::class, 'createCompetitive'])->name('sell.create_competitive');
 });
 
 require __DIR__ . '/auth.php';
