@@ -68,6 +68,27 @@ document.addEventListener("DOMContentLoaded", function () {
         },
     ];
 
+    const newBooksContainer = document.getElementById("newBooksContainer");
+
+    newBooks.forEach((book) => {
+        const slide = document.createElement("div");
+        slide.classList.add("swiper-slide");
+        slide.innerHTML = `
+            <div class="card">
+                <img src="${book.imgSrc}" class="card-img-top" alt="${book.title}">
+                <div class="card-body">
+                    <h5 class="card-title">${book.title}</h5>
+                    <p class="card-text">
+                        <strong>Price:</strong> <s>₹${book.price.original}</s> ₹${book.price.discounted} <br>
+                        ⭐ ${book.reviews} / 5
+                    </p>
+                </div>
+            </div>
+        `;
+        newBooksContainer.appendChild(slide);
+    });
+
+
     const oldBooks = [
         {
             title: "NCERT Class - 4 Science Book",

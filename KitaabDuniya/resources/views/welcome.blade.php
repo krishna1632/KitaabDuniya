@@ -22,18 +22,18 @@
 
 <body>
     <!-- *************** Header Section **************** -->
-    <nav class="navbar navbar-expand-lg bg-dark py-0">
+    <nav class="navbar navbar-expand-lg py-0" style="background-color: #343a40;">
         <div class="container-fluid">
             <div class="left">
                 <ul class="navbar-nav me-auto mb-1 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link text-light px-2" href="#">Location |</a>
+                        <a class="nav-link text-light px-2" href="#">📍Location |</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light px-2" href="#">About Us |</a>
+                        <a class="nav-link text-light px-2" href="#">📝About Us |</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light px-2" href="#">Contact Us</a>
+                        <a class="nav-link text-light px-2" href="#">📞Contact Us</a>
                     </li>
                 </ul>
             </div>
@@ -127,7 +127,7 @@
     <!-- *************** Main Section ******************-->
     <main class="">
         <div class="categories-section">
-            <h2 class="text-center mb-4 fw-bold fs-2" style="color: red;">Categories</h2>
+            <h2 class="text-center mb-4 fw-bold fs-2" style="color: red;">🏷️ Categories</h2>
             <div class="row">
                 <!-- School Category -->
                 <div class="col-md-3 col-sm-6 mb-4">
@@ -170,7 +170,7 @@
         <!-- *************** Books Collections*************** -->
         <div class="mt-5">
             <div class="container mt-4">
-                <h2 class="text-center mb-4 mt-5 text-danger fs-1 fw-bold">📚 Books Collection</h2>
+                <h2 class="text-center mb-4 fw-bold fs-2" style="color: red;">📚 Books Collection</h2>
 
                 <!-- New Books Section -->
                 <div class="section-header">
