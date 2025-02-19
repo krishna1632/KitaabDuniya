@@ -307,4 +307,68 @@ function toggleFAQ(id) {
 
 
 
+// ***************************Location Fetch **************************
 
+
+// Function to fetch current location
+function fetchCurrentLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                const latitude = position.coords.latitude;
+                const longitude = position.coords.longitude;
+                // Use a reverse geocoding API to get the location name
+                fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`)
+                    .then(response => response.json())
+                    .then(data => {
+                        const locationName = data.locality || data.city || "Unknown Location";
+                        document.getElementById('locationDropdown').innerText = `📍${locationName} |`;
+                    })
+                    .catch(error => {
+                        console.error("Error fetching location name:", error);
+                        alert("Unable to fetch location name.");
+                    });
+            },
+            (error) => {
+                console.error("Error fetching location:", error);
+                alert("Unable to fetch your current location.");
+            }
+        );
+    } else {
+        alert("Geolocation is not supported by this browser.");
+    }
+}
+
+// Function to populate popular cities
+function populatePopularCities() {
+    const popularCities = ["New Delhi", "Mumbai", "Bangalore", "Chennai", "Kolkata"];
+    const locationMenu = document.getElementById('locationMenu');
+
+    // Clear existing popular cities (if any)
+    const existingCities = locationMenu.querySelectorAll('.popular-city');
+    existingCities.forEach(city => city.remove());
+
+    // Add popular cities
+    popularCities.forEach(city => {
+        const cityItem = document.createElement('li');
+        cityItem.classList.add('popular-city'); // Add a class for easy removal
+        cityItem.innerHTML = `<a class="dropdown-item" href="#">${city}</a>`;
+        locationMenu.appendChild(cityItem);
+    });
+}
+
+// Event Listeners
+document.getElementById('useCurrentLocation').addEventListener('click', (e) => {
+    e.preventDefault(); // Prevent default behavior
+    fetchCurrentLocation();
+});
+
+document.getElementById('popularCities').addEventListener('click', (e) => {
+    e.preventDefault(); // Prevent default behavior
+    populatePopularCities();
+});
+
+// Prevent dropdown from closing when clicking inside
+document.getElementById('locationMenu').addEventListener('click', (e) => {
+    e.stopPropagation(); // Stop event from bubbling up
+});

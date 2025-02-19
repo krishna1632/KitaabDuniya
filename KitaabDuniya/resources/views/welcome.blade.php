@@ -24,19 +24,34 @@
     <!-- *************** Header Section **************** -->
     <nav class="navbar navbar-expand-lg py-0" style="background-color: #343a40;">
         <div class="container-fluid">
+
             <div class="left">
                 <ul class="navbar-nav me-auto mb-1 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link text-light px-2" href="#">📍Location |</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link text-light px-2 dropdown-toggle" href="#" id="locationDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            🔍
+                            Location
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="locationDropdown" id="locationMenu">
+                            <li><a class="dropdown-item" href="#" id="useCurrentLocation">📍 Use Current Location</a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#" id="popularCities">🏙️ Most Popular Cities</a></li>
+                            <!-- Popular cities will be dynamically added here -->
+                        </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light px-2" href="#">📝About Us |</a>
+                        <a class="nav-link text-light px-2" href="#">📝About Us </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-light px-2" href="#">📞Contact Us</a>
                     </li>
                 </ul>
             </div>
+
 
             <div class="right">
                 <ul class="navbar-nav ms-auto mb-1 mb-lg-0">
@@ -57,7 +72,7 @@
                                     @csrf
                                     <x-dropdown-link :href="route('logout')"
                                         onclick="event.preventDefault();
-                                                                                                                                                                                                                                        this.closest('form').submit();">
+                                                                                                                                                                                                                                                                this.closest('form').submit();">
 
                                         {{ __('Log Out') }}
                                     </x-dropdown-link>
