@@ -66,31 +66,121 @@ document.addEventListener("DOMContentLoaded", function () {
             price: { original: 140, discounted: 70 },
             reviews: 4.3,
         },
+        {
+            title: "NCERT Class -1 Mridang (English Book)",
+            imgSrc: "assets/Book4.jpg",
+            price: { original: 140, discounted: 70 },
+            reviews: 4.2,
+        },
+        {
+            title: "NCERT Anand Book for Balvatika (Activity Book & Worksheets)",
+            imgSrc: "assets/Book4.jpg",
+            price: { original: 492, discounted: 410 },
+            reviews: 4.5,
+        },
+        {
+            title: "NCERT Class - 2 Joyful (Math Book)",
+            imgSrc: "assets/Book4.jpg",
+            price: { original: 140, discounted: 70 },
+            reviews: 4.8,
+        },
+        {
+            title: "NCERT Class - 2 Mridang (English Book)",
+            imgSrc: "assets/Book4.jpg",
+            price: { original: 140, discounted: 70 },
+            reviews: 4.3,
+        },
+        {
+            title: "NCERT Class -1 Mridang (English Book)",
+            imgSrc: "assets/Book4.jpg",
+            price: { original: 140, discounted: 70 },
+            reviews: 4.2,
+        },
+        {
+            title: "NCERT Anand Book for Balvatika (Activity Book & Worksheets)",
+            imgSrc: "assets/Book4.jpg",
+            price: { original: 492, discounted: 410 },
+            reviews: 4.5,
+        },
+        {
+            title: "NCERT Class - 2 Joyful (Math Book)",
+            imgSrc: "assets/Book4.jpg",
+            price: { original: 140, discounted: 70 },
+            reviews: 4.8,
+        },
+        {
+            title: "NCERT Class - 2 Mridang (English Book)",
+            imgSrc: "assets/Book4.jpg",
+            price: { original: 140, discounted: 70 },
+            reviews: 4.3,
+        },
+        {
+            title: "NCERT Class -1 Mridang (English Book)",
+            imgSrc: "assets/Book4.jpg",
+            price: { original: 140, discounted: 70 },
+            reviews: 4.2,
+        },
+        {
+            title: "NCERT Anand Book for Balvatika (Activity Book & Worksheets)",
+            imgSrc: "assets/Book4.jpg",
+            price: { original: 492, discounted: 410 },
+            reviews: 4.5,
+        },
+        {
+            title: "NCERT Class - 2 Joyful (Math Book)",
+            imgSrc: "assets/Book4.jpg",
+            price: { original: 140, discounted: 70 },
+            reviews: 4.8,
+        },
+        {
+            title: "NCERT Class - 2 Mridang (English Book)",
+            imgSrc: "assets/Book4.jpg",
+            price: { original: 140, discounted: 70 },
+            reviews: 4.3,
+        },
     ];
-
-    const newBooksContainer = document.getElementById("newBooksContainer");
-
-    newBooks.forEach((book) => {
-        const slide = document.createElement("div");
-        slide.classList.add("swiper-slide");
-        slide.innerHTML = `
-            <div class="card">
-                <img src="${book.imgSrc}" class="card-img-top" alt="${book.title}">
-                <div class="card-body">
-                    <h5 class="card-title">${book.title}</h5>
-                    <p class="card-text">
-                        <strong>Price:</strong> <s>₹${book.price.original}</s> ₹${book.price.discounted} <br>
-                        ⭐ ${book.reviews} / 5
-                    </p>
-                </div>
-            </div>
-        `;
-        newBooksContainer.appendChild(slide);
-    });
-
 
     const oldBooks = [
         {
+            title: "NCERT Class - 4 Science Book",
+            imgSrc: "assets/Book4.jpg",
+            reviews: 4.7,
+        },
+        {
+            title: "NCERT Class - 5 Hindi Book",
+            imgSrc: "assets/Book4.jpg",
+            reviews: 4.9,
+        },
+        {
+            title: "NCERT Class - 6 Mathematics Book",
+            imgSrc: "assets/Book4.jpg",
+            reviews: 4.5,
+        },
+        {
+            title: "NCERT Class - 6 Mathematics Book",
+            imgSrc: "assets/Book4.jpg",
+            reviews: 4.6,
+        },
+        {
+            title: "NCERT Class - 4 Science Book",
+            imgSrc: "assets/Book4.jpg",
+            reviews: 4.7,
+        },
+        {
+            title: "NCERT Class - 5 Hindi Book",
+            imgSrc: "assets/Book4.jpg",
+            reviews: 4.9,
+        },
+        {
+            title: "NCERT Class - 6 Mathematics Book",
+            imgSrc: "assets/Book4.jpg",
+            reviews: 4.5,
+        },
+        {
+            title: "NCERT Class - 6 Mathematics Book",
+            imgSrc: "assets/Book4.jpg",
+            reviews: 4.6,
+        }, {
             title: "NCERT Class - 4 Science Book",
             imgSrc: "assets/Book4.jpg",
             reviews: 4.7,
@@ -136,26 +226,22 @@ document.addEventListener("DOMContentLoaded", function () {
         container.innerHTML = booksArray
             .map(
                 (book) => `
-                <div class="col">
-                    <div class="card book-card h-100 shadow">
-                        ${book.price.discounted < book.price.original ? '<div class="sale-badge">SALE</div>' : ""}
-                        <img src="${book.imgSrc}" class="card-img-top book-image" alt="Book Image">
-                        <div class="card-body text-center">
-                            <h5 class="book-title" style="white-space: nowrap;
-                               overflow: hidden;
-                               text-overflow: ellipsis;">${book.title}</h5>
-                            <div class="mb-2">
-                                <span class="text-danger fw-bold">₹${book.price.discounted.toFixed(2)}</span>
-                                <del class="text-muted">₹${book.price.original.toFixed(2)}</del>
-                            </div>
-                            <div class="mb-2 star-icons">
-                                ${generateStars(book.reviews)}
-                                <span class="text-muted">(${book.reviews})</span>
-                            </div>
-                            <button class="btn btn w-100" data-bs-toggle="tooltip" data-bs-placement="top" title="Click to add this item to cart" style="background-color:orange;">
-                                ADD TO CART
-                            </button>
+                <div class="book-card">
+                    ${book.price.discounted < book.price.original ? '<div class="sale-badge">SALE</div>' : ""}
+                    <img src="${book.imgSrc}" class="card-img-top book-image" alt="Book Image">
+                    <div class="card-body text-center">
+                        <h5 class="book-title">${book.title}</h5>
+                        <div class="mb-2">
+                            <span class="text-danger fw-bold">₹${book.price.discounted.toFixed(2)}</span>
+                            <del class="text-muted">₹${book.price.original.toFixed(2)}</del>
                         </div>
+                        <div class="mb-2 star-icons">
+                            ${generateStars(book.reviews)}
+                            <span class="text-muted">(${book.reviews})</span>
+                        </div>
+                        <button class="btn btn w-100" data-bs-toggle="tooltip" data-bs-placement="top" title="Click to add this item to cart">
+                            ADD TO CART
+                        </button>
                     </div>
                 </div>
             `
@@ -170,15 +256,13 @@ document.addEventListener("DOMContentLoaded", function () {
         container.innerHTML = booksArray
             .map(
                 (book) => `
-                <div class="col">
-                    <div class="card book-card h-100 shadow">
-                        <img src="${book.imgSrc}" class="card-img-top book-image" alt="Book Image">
-                        <div class="card-body text-center">
-                            <h5 class="book-title">${book.title}</h5>
-                            <div class="mb-2 star-icons">
-                                ${generateStars(book.reviews)}
-                                <span class="text-muted">(${book.reviews})</span>
-                            </div>
+                <div class="book-card">
+                    <img src="${book.imgSrc}" class="card-img-top book-image" alt="Book Image">
+                    <div class="card-body text-center">
+                        <h5 class="book-title">${book.title}</h5>
+                        <div class="mb-2 star-icons">
+                            ${generateStars(book.reviews)}
+                            <span class="text-muted">(${book.reviews})</span>
                         </div>
                     </div>
                 </div>
@@ -191,8 +275,7 @@ document.addEventListener("DOMContentLoaded", function () {
     renderOldBooks("oldBooksContainer", oldBooks);
 });
 
-// ---------------------- Enable Bootstrap Tooltips ----------------------
-
+// Enable Bootstrap Tooltips
 document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((tooltipTriggerEl) => {
         new bootstrap.Tooltip(tooltipTriggerEl);

@@ -57,7 +57,7 @@
                                     @csrf
                                     <x-dropdown-link :href="route('logout')"
                                         onclick="event.preventDefault();
-                                                                                                                                                                                                                                    this.closest('form').submit();">
+                                                                                                                                                                                                                                        this.closest('form').submit();">
 
                                         {{ __('Log Out') }}
                                     </x-dropdown-link>
@@ -170,14 +170,14 @@
         <!-- *************** Books Collections*************** -->
         <div class="mt-5">
             <div class="container mt-4">
-                <h2 class="text-center mb-4 fw-bold fs-2" style="color: red;">📚 Books Collection</h2>
+                <h2 class="text-center mb-4 mt-5 text-danger fs-1 fw-bold">📚 Books Collection</h2>
 
                 <!-- New Books Section -->
                 <div class="section-header">
                     <h4 class="mb-3 text-primary fw-bold">🔥 New Books</h4>
                 </div>
                 <div class="container mt-4">
-                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4" id="newBooksContainer"></div>
+                    <div class="scrolling-wrapper-flex" id="newBooksContainer"></div>
                 </div>
 
                 <!-- Most Readable Books -->
@@ -185,11 +185,10 @@
                     <h4 class="mb-3 text-success fw-bold">📖 Most Readable Books</h4>
                 </div>
                 <div class="container mt-4">
-                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4" id="oldBooksContainer"></div>
+                    <div class="scrolling-wrapper-flex" id="oldBooksContainer"></div>
                 </div>
             </div>
         </div>
-
 
 
 
