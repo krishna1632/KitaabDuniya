@@ -57,7 +57,7 @@
                                     @csrf
                                     <x-dropdown-link :href="route('logout')"
                                         onclick="event.preventDefault();
-                                                                                                                                                                            this.closest('form').submit();">
+                                                                                                                                                                                        this.closest('form').submit();">
 
                                         {{ __('Log Out') }}
                                     </x-dropdown-link>
@@ -102,7 +102,7 @@
                     <input class="form-control me-2 rounded-3" type="search" id="searchBox"
                         placeholder="Search Ex.... 'Delhi'" aria-label="Search">
                     <button class="btn btn-outline-primary" type="submit">Search</button>
-                    <a href="{{ route('sell.index') }}" class="sell-btn" >Sell</a>
+                    <a href="{{ route('sell.index') }}" class="sell-btn">Sell</a>
 
                 </form>
 
@@ -189,10 +189,6 @@
                 </div>
             </div>
         </div>
-
-
-
-
 
 
 
@@ -330,7 +326,7 @@
                 <!-- Footer Bottom -->
                 <div class="footer-bottom row text-center py-3">
                     <div class="col-md-12">
-                        <p class="text-muted mb-0">© 2025 Kittabi Duniya. All rights reserved.</p>
+                        <p class="text-muted mb-0">© 2025 Kitaabi Duniya. All rights reserved.</p>
                         <p class="text-muted mb-0"><a href="#" class="text-muted">Privacy Policy</a> | <a href="#"
                                 class="text-muted">Terms of Service</a></p>
                     </div>
