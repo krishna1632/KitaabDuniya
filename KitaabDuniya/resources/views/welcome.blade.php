@@ -57,7 +57,7 @@
                                     @csrf
                                     <x-dropdown-link :href="route('logout')"
                                         onclick="event.preventDefault();
-                                                                                                                                                                                        this.closest('form').submit();">
+                                                                                                                                                                                                                                    this.closest('form').submit();">
 
                                         {{ __('Log Out') }}
                                     </x-dropdown-link>
@@ -101,8 +101,8 @@
                 <form class="d-flex">
                     <input class="form-control me-2 rounded-3" type="search" id="searchBox"
                         placeholder="Search Ex.... 'Delhi'" aria-label="Search">
-                    <button class="btn btn-outline-primary" type="submit">Search</button>
-                    <a href="{{ route('sell.index') }}" class="sell-btn">Sell</a>
+                    <button class="btn btn-outline-primary " type="submit">Search</button>
+                    <a href="{{ route('sell.index') }}" class="sell-btn custom-btn">➕SELL</a></>
 
                 </form>
 

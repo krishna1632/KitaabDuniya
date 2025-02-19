@@ -19,25 +19,59 @@ body {
   box-sizing: border-box;
 }
 
-/* ---------------------- start Header ------------------------- */
+/* ---------------------- start Header(sellButton) ------------------------- */
 
-.sell-btn {
-  background: linear-gradient(45deg, #ff6600, #ff3300);
-  color: white;
-  font-weight: bold;
-  border: none;
-  padding: 12px 24px;
+/* .sell-btn {
+  width: auto;
+  background: linear-gradient(45deg, #ff6600be, #ff3300);
+  color: rgb(17, 17, 17);
+  font-weight: 900;
+  border: 5px solid rgb(225, 98, 13);
+  padding: 2px 18px;
   border-radius: 50px;
-  /* Fully rounded */
-  font-size: 18px;
+  font-size: 20px;
+
   transition: 0.3s ease-in-out;
 }
 
 .sell-btn:hover {
-  background: linear-gradient(45deg, #ff3300, #cc0000);
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(45deg, #ff330090, #cc0000);
+  box-shadow: 0px 4px 10px rgba(249, 94, 23, 0.826);
+} */
+
+.custom-btn {
+  position: relative;
+  left: 260px;
+
+  padding: 2px 10px;
+  width: auto;
+  height: 30px;
+  margin: 5px;
+  border-radius: 25px;
+  background-color: white;
+  color: #3700aed4;
+  font-size: 16px;
+  font-weight: 900;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+
 }
 
+.custom-btn::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  background: linear-gradient(45deg, #ff7e5f, #feb47b, #86a8e7, #7f7fd5);
+  border-radius: 25px;
+  z-index: -1;
+}
 
 /* ---------------------- End Header ------------------------- */
 
@@ -357,6 +391,3 @@ body {
 
 
 /* -------------------------End Footer Section-------------------------- */
-
-
-
