@@ -127,16 +127,15 @@
                 <form class="d-flex">
                     <input class="form-control me-2 rounded-3" type="search" id="searchBox"
                         placeholder="Search Ex.... 'Delhi'" aria-label="Search">
-                    <button class="btn btn-outline-primary " type="submit">Search</button>
-                    <a href="{{ route('sell.index') }}" class="sell-btn custom-btn">➕SELL</a></>
-
+                    <button class="btn btn-outline-primary" type="submit">Search</button>
                 </form>
-
             </div>
 
-            <!-- Cart -->
+            <!-- Cart and Sell Button -->
             <div class="col-md-3 text-end">
-                <a href="#" class="btn btn-outline-secondary text-dark">
+                <a href="{{ route('sell.index') }}" class="sell-btn custom-btn ">➕SELL</a>
+
+                <a href="#" class="btn btn-outline-secondary text-dark me-2">
                     <i class="bi bi-cart"></i> Cart
                 </a>
             </div>
