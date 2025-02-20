@@ -16,6 +16,9 @@
         </thead>
         <tbody>
             @foreach ($organisationRequests as $request)
+                @php
+                    $userExists = \App\Models\User::where('email', $request->email)->exists();
+                @endphp
                 <tr>
                     <td>{{ $request->name }}</td>
                     <td>{{ $request->email }}</td>
@@ -31,13 +34,18 @@
                     </td>
                     <td>
                         <!-- Add User Button -->
-                        <a href="{{ route('org_request.addUser', $request->id) }}" class="btn btn-primary">Add User</a>
+                        <a href="{{ route('org_request.addUser', $request->id) }}" 
+                           class="btn btn-primary add-user-btn {{ $userExists ? 'disabled-btn' : '' }}"
+                           {{ $userExists ? 'disabled' : '' }}>
+                            Add User
+                        </a>
                         <a href="#" class="btn btn-danger">Send Mail</a>
                     </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
+    
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     @if (session('success'))
@@ -50,4 +58,11 @@
             });
         </script>
     @endif
+
+    <style>
+        .disabled-btn {
+            cursor: not-allowed !important;  /* 🚫 Yeh cursor apply karega */
+            opacity: 0.6;
+        }
+    </style>
 @endsection

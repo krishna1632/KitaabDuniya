@@ -88,18 +88,18 @@
         </div>
     </li> --}}
 
-    <!-- Nav Item - Charts -->
+    <!-- Nav Item - Organization Request -->
     <li class="nav-item">
-        <a class="nav-link" href="{{route('org_request.index')}}">
+        <a class="nav-link" href="{{ route('org_request.index') }}">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Organization Request</span></a>
     </li>
 
-    <!-- Nav Item - Tables -->
+    <!-- Nav Item - Approve Book -->
     <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="{{ route('approve_book.index') }}">
             <i class="fas fa-fw fa-table"></i>
-            <span>Tables</span></a>
+            <span>Approve Book</span></a>
     </li>
 
 </ul>

@@ -1,9 +1,12 @@
 <?php
 
+use App\Http\Controllers\BookApproveController;
+use App\Http\Controllers\GraduationController;
 use App\Http\Controllers\OrganisationRequestController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\SellController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -49,10 +52,21 @@ Route::middleware('auth')->group(function () {
 
     // Sell Routes
     Route::get('/sell', [SellController::class, 'index'])->name('sell.index');
-    Route::get('/sell/create_school', [SellController::class, 'createSchool'])->name('sell.create_school');
-    Route::get('/sell/create_graduation', [SellController::class, 'createGraduation'])->name('sell.create_graduation');
-    Route::get('/sell/create_general', [SellController::class, 'createGeneral'])->name('sell.create_general');
-    Route::get('/sell/create_competitive', [SellController::class, 'createCompetitive'])->name('sell.create_competitive');
+    // Route::get('/sell/create_graduation', [SellController::class, 'createGraduation'])->name('sell.create_graduation');
+    // Route::get('/sell/create_general', [SellController::class, 'createGeneral'])->name('sell.create_general');
+    // Route::get('/sell/create_competitive', [SellController::class, 'createCompetitive'])->name('sell.create_competitive');
+
+    // Schools Routes
+    Route::get('/schools/create', [SchoolController::class, 'create'])->name('schools.create');
+    Route::post('/schools', [SchoolController::class, 'store'])->name('schools.store');
+
+    // Graduation routes
+    Route::get('/graduations/create', [GraduationController::class, 'create'])->name('graduations.create');
+    Route::post('/graduations', [GraduationController::class, 'store'])->name('graduations.store');
+
+    // Approve Book routes
+    Route::get('/approve_book', [BookApproveController::class, 'index'])->name('approve_book.index');
+    Route::post('/approve-book/{id}', [BookApproveController::class, 'approveBook'])->name('approve.book');
 });
 
 require __DIR__ . '/auth.php';

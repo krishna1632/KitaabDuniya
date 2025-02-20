@@ -17,33 +17,9 @@ class SellController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function createSchool()
+    public function create()
     {
-        return view('sell.create_school');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function createGraduation()
-    {
-        return view('sell.create_graduation');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function createGeneral()
-    {
-        return view('sell.create_general');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function createCompetitive()
-    {
-        return view('sell.create_competitive');
+        // 
     }
 
     /**

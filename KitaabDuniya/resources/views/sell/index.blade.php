@@ -250,7 +250,7 @@
         <div class="py-5">
             <div class="row ">
                 <!-- School Category -->
-                <a href="{{ route('sell.create_school') }}" class="col-md-3 col-sm-6 mb-4"
+                <a href="{{ route('schools.create') }}" class="col-md-3 col-sm-6 mb-4"
                     style="text-decoration: none">
                     <div class="category-card text-center p-4 shadow-sm rounded-lg">
                         <i class="bi bi-book fs-1 text-primary mb-3"></i>
@@ -260,7 +260,7 @@
                 </a>
 
                 <!-- Graduation Category -->
-                <a href="{{ route('sell.create_graduation') }}" class="col-md-3 col-sm-6 mb-4 "
+                <a href="{{ route('graduations.create') }}" class="col-md-3 col-sm-6 mb-4 "
                     style="text-decoration: none">
                     <div class="category-card text-center p-4 shadow-sm rounded-lg">
                         <i class="bi bi-mortarboard fs-1 text-success mb-3"></i>
@@ -270,7 +270,7 @@
                 </a>
 
                 <!-- General Category -->
-                <a href="{{ route('sell.create_general') }}" class="col-md-3 col-sm-6 mb-4 "
+                <a href="#" class="col-md-3 col-sm-6 mb-4 "
                     style="text-decoration: none">
                     <div class="category-card text-center p-4 shadow-sm rounded-lg">
                         <i class="bi bi-globe fs-1 text-warning mb-3"></i>
@@ -280,7 +280,7 @@
                 </a>
 
                 <!-- Competitive Category -->
-                <a href="{{ route('sell.create_competitive') }}" class="col-md-3 col-sm-6 mb-4 "
+                <a href="#" class="col-md-3 col-sm-6 mb-4 "
                     style="text-decoration: none">
                     <div class="category-card text-center p-4 shadow-sm rounded-lg">
                         <i class="bi bi-trophy fs-1 text-danger mb-3"></i>

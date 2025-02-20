@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\OrganisationRequest;
 use App\Models\User;
-
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class OrganisationRequestController extends Controller
 {
@@ -75,7 +76,7 @@ class OrganisationRequestController extends Controller
         }
 
         // Create the user
-        User::create([
+        $user = User::create([
             'name' => $organisationRequest->name,
             'email' => $organisationRequest->email,
             'phone' => $organisationRequest->phone,
@@ -83,6 +84,10 @@ class OrganisationRequestController extends Controller
             'gender' => $organisationRequest->gender,
             'password' => Hash::make('default_password'),
         ]);
+
+
+        // Assign 'Organisation' role using Spatie
+        $user->assignRole('Organisation');
 
         // Optionally, delete the organisation request after adding the user
         // $organisationRequest->delete();
