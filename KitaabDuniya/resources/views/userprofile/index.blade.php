@@ -263,6 +263,9 @@
                         <li class="list-group-item list-hover"><a href="#"
                                 class="text-decoration-none d-block">📦 My
                                 Orders</a></li>
+                        <li class="list-group-item list-hover"><a href="{{route('sales.index')}}"
+                                class="text-decoration-none d-block">📦 My
+                                Sales</a></li>
                         <li class="list-group-item list-hover"><a href="#"
                                 class="text-decoration-none d-block">🛒
                                 Cart</a></li>

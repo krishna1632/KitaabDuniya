@@ -128,7 +128,12 @@
                     <input class="form-control me-2 rounded-3" type="search" id="searchBox"
                         placeholder="Search Ex.... 'Delhi'" aria-label="Search">
                     <button class="btn btn-outline-primary" type="submit">Search</button>
+
                 </form>
+
+
+                <div id="suggestions" class="list-group" style="z-index: 900000"></div> <!-- Suggestions List -->
+
             </div>
 
             <!-- Cart and Sell Button -->
@@ -567,6 +572,45 @@
         }
 
         getLocation(); // Auto-fetch location
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let searchBox = document.getElementById("searchBox");
+            let suggestionsDiv = document.getElementById("suggestions");
+
+            searchBox.addEventListener("input", function () {
+                let query = searchBox.value.trim(); // Extra spaces remove kare
+
+                if (query.length > 1) {
+                    fetch(`/search_books?query=${query}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            suggestionsDiv.innerHTML = ""; // Purane suggestions hatao
+
+                            if (data.length === 0) {
+                                let noResult = document.createElement("div");
+                                noResult.classList.add("list-group-item");
+                                noResult.textContent = "No books found";
+                                suggestionsDiv.appendChild(noResult);
+                                return;
+                            }
+
+                            data.forEach(book => {
+                                let suggestionItem = document.createElement("a");
+                                suggestionItem.href = `/search_books/${book.type}/${book.id}`;
+                                suggestionItem.classList.add("list-group-item",
+                                    "list-group-item-action");
+                                suggestionItem.textContent = `${book.name} (${book.type})`;
+                                suggestionsDiv.appendChild(suggestionItem);
+                            });
+                        })
+                        .catch(error => console.error("Error fetching books:", error));
+                } else {
+                    suggestionsDiv.innerHTML = "";
+                }
+            });
+        });
     </script>
 </body>
 
