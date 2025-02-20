@@ -16,16 +16,16 @@ class BookApproveController extends Controller
     public function index()
     {
         $schoolBooks = School::all();
-        // $graduationBooks = Graduation::all();
-        // $generalBooks = General::all();
-        // $competitiveBooks = Competitive::all();
+        $graduationBooks = Graduation::all();
+        $generalBooks = General::all();
+        $competitiveBooks = Competitive::all();
 
         // Combine all books into a single array
         $allBooks = collect()
-            ->merge($schoolBooks);
-        // ->merge($graduationBooks)
-        // ->merge($generalBooks)
-        // ->merge($competitiveBooks);
+            ->merge($schoolBooks)
+            ->merge($graduationBooks)
+            ->merge($generalBooks)
+            ->merge($competitiveBooks);
 
         return view('approve_book.index', compact('allBooks'));
     }

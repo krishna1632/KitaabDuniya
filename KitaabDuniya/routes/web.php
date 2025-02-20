@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\BookApproveController;
+use App\Http\Controllers\CompetitiveController;
+use App\Http\Controllers\GeneralController;
 use App\Http\Controllers\GraduationController;
 use App\Http\Controllers\OrganisationRequestController;
 use App\Http\Controllers\ProfileController;
@@ -63,6 +65,14 @@ Route::middleware('auth')->group(function () {
     // Graduation routes
     Route::get('/graduations/create', [GraduationController::class, 'create'])->name('graduations.create');
     Route::post('/graduations', [GraduationController::class, 'store'])->name('graduations.store');
+
+    // General routes
+    Route::get('/generals/create', [GeneralController::class, 'create'])->name('generals.create');
+    Route::post('/generals', [GeneralController::class, 'store'])->name('generals.store');
+
+    // Competitive routes
+    Route::get('/competitives/create', [CompetitiveController::class, 'create'])->name('competitives.create');
+    Route::post('/competitives', [CompetitiveController::class, 'store'])->name('competitives.store');
 
     // Approve Book routes
     Route::get('/approve_book', [BookApproveController::class, 'index'])->name('approve_book.index');
