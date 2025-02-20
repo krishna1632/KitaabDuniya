@@ -25,7 +25,12 @@ class MySalesController extends Controller
         $competitiveBooks = Competitive::where('userId', $userId)->where('status', 1)->get();
 
         // Merge all books into a single collection
-        $books = $schoolBooks->merge($generalBooks)->merge($graduationBooks)->merge($competitiveBooks)->values();
+        $books = collect()
+            ->merge($schoolBooks)
+            ->merge($generalBooks)
+            ->merge($graduationBooks)
+            ->merge($competitiveBooks)
+            ->all();
 
         // dd($books);
         // dd($schoolBooks, $generalBooks, $graduationBooks, $competitiveBooks);

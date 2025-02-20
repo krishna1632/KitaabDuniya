@@ -56,39 +56,39 @@
                 </tr>
             </thead>
             <tbody>
-                @if ($books->isEmpty())
+                {{-- @if ($books->isEmpty())
                     <tr>
                         <td colspan="5" class="text-center text-muted">No books available.</td>
                     </tr>
-                @else
-                    @foreach ($books as $index => $book)
-                        <tr>
-                            <td>{{ $index + 1 }}</td>
-                            <td>{{ $book->name }}</td>
-                            <td>
-                                @if ($book instanceof \App\Models\School)
-                                    <span class="badge bg-primary">School</span>
-                                @elseif($book instanceof \App\Models\General)
-                                    <span class="badge bg-secondary">General</span>
-                                @elseif($book instanceof \App\Models\Graduation)
-                                    <span class="badge bg-info">Graduation</span>
-                                @elseif($book instanceof \App\Models\Competitive)
-                                    <span class="badge bg-warning text-dark">Competitive</span>
-                                @else
-                                    <span class="badge bg-light text-dark">Unknown</span>
-                                @endif
-                            </td>
-                            <td>₹{{ number_format($book->price, 2) }}</td>
-                            <td>
-                                @if ($book->is_sold == 1)
-                                    <span class="badge bg-success">✅ Sold</span>
-                                @else
-                                    <span class="badge bg-danger">❌ Still not sold</span>
-                                @endif
-                            </td>
-                        </tr>
-                    @endforeach
-                @endif
+                @else --}}
+                @foreach ($books as $index => $book)
+                    <tr>
+                        <td>{{ $index + 1 }}</td>
+                        <td>{{ $book->name }}</td>
+                        <td>
+                            @if ($book instanceof \App\Models\School)
+                                <span class="badge bg-primary">School</span>
+                            @elseif($book instanceof \App\Models\General)
+                                <span class="badge bg-secondary">General</span>
+                            @elseif($book instanceof \App\Models\Graduation)
+                                <span class="badge bg-info">Graduation</span>
+                            @elseif($book instanceof \App\Models\Competitive)
+                                <span class="badge bg-warning text-dark">Competitive</span>
+                            @else
+                                <span class="badge bg-light text-dark">Unknown</span>
+                            @endif
+                        </td>
+                        <td>₹{{ number_format($book->price, 2) }}</td>
+                        <td>
+                            @if ($book->is_sold == 1)
+                                <span class="badge bg-success">✅ Sold</span>
+                            @else
+                                <span class="badge bg-danger">❌ Still not sold</span>
+                            @endif
+                        </td>
+                    </tr>
+                @endforeach
+                {{-- @endif --}}
             </tbody>
         </table>
     </div>

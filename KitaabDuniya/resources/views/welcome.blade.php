@@ -98,8 +98,8 @@
 
                         @if (Route::has('register'))
                             <li class="nav-item dropdown">
-                                <a class="nav-link text-light px-2 dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="nav-link text-light px-2 dropdown-toggle" href="#" id="navbarDropdown"
+                                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Register
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -127,11 +127,11 @@
                 <form class="d-flex">
                     <input class="form-control me-2 rounded-3" type="search" id="searchBox"
                         placeholder="Search Ex.... 'Delhi'" aria-label="Search">
-                    <button class="btn btn-outline-primary " type="submit">Search</button>
-                    <a href="{{ route('sell.index') }}" class="sell-btn custom-btn">➕SELL</a></>
-
+                    <button class="btn btn-outline-primary" type="submit">Search</button>
+                    <a href="{{ route('sell.index') }}" class="sell-btn custom-btn">➕SELL</a>
                 </form>
 
+                <div id="suggestions" class="list-group" style="z-index: 900000"></div> <!-- Suggestions List -->
             </div>
 
             <!-- Cart -->
@@ -386,15 +386,16 @@
                 <div class="footer-bottom row text-center py-3">
                     <div class="col-md-12">
                         <p class="text-muted mb-0">© 2025 Kitaabi Duniya. All rights reserved.</p>
-                        <p class="text-muted mb-0"><a href="#" class="text-muted">Privacy Policy</a> | <a href="#"
-                                class="text-muted">Terms of Service</a></p>
+                        <p class="text-muted mb-0"><a href="#" class="text-muted">Privacy Policy</a> | <a
+                                href="#" class="text-muted">Terms of Service</a></p>
                     </div>
                 </div>
         </div>
     </footer>
 
     <!-- Bootstrap Modal -->
-    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -428,15 +429,18 @@
                             <label class="form-label">Gender</label>
                             <div class="d-flex gap-3">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="gender" value="male" required>
+                                    <input class="form-check-input" type="radio" name="gender" value="male"
+                                        required>
                                     <label class="form-check-label">Male</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="gender" value="female" required>
+                                    <input class="form-check-input" type="radio" name="gender" value="female"
+                                        required>
                                     <label class="form-check-label">Female</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="gender" value="other" required>
+                                    <input class="form-check-input" type="radio" name="gender" value="other"
+                                        required>
                                     <label class="form-check-label">Other</label>
                                 </div>
                             </div>
@@ -482,16 +486,16 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-        </script>
+    </script>
     <script>
-        $(document).ready(function () {
-            $('#loginForm').on('submit', function (e) {
+        $(document).ready(function() {
+            $('#loginForm').on('submit', function(e) {
                 e.preventDefault();
                 $.ajax({
                     url: $(this).attr('action'),
                     method: $(this).attr('method'),
                     data: $(this).serialize(),
-                    success: function (response) {
+                    success: function(response) {
                         // Handle success response
                         if (response.success) {
                             window.location.href = "{{ route('dashboard') }}";
@@ -499,7 +503,7 @@
                             alert('Login failed');
                         }
                     },
-                    error: function (xhr) {
+                    error: function(xhr) {
                         // Handle error
                         alert('An error occurred');
                     }
@@ -509,7 +513,7 @@
     </script>
 
     <script>
-        document.getElementById('individualRegister').addEventListener('click', function (event) {
+        document.getElementById('individualRegister').addEventListener('click', function(event) {
             event.preventDefault();
             var registerModal = new bootstrap.Modal(document.getElementById('registerModal'));
             registerModal.show();
@@ -568,6 +572,45 @@
         }
 
         getLocation(); // Auto-fetch location
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let searchBox = document.getElementById("searchBox");
+            let suggestionsDiv = document.getElementById("suggestions");
+
+            searchBox.addEventListener("input", function() {
+                let query = searchBox.value.trim(); // Extra spaces remove kare
+
+                if (query.length > 1) {
+                    fetch(`/search_books?query=${query}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            suggestionsDiv.innerHTML = ""; // Purane suggestions hatao
+
+                            if (data.length === 0) {
+                                let noResult = document.createElement("div");
+                                noResult.classList.add("list-group-item");
+                                noResult.textContent = "No books found";
+                                suggestionsDiv.appendChild(noResult);
+                                return;
+                            }
+
+                            data.forEach(book => {
+                                let suggestionItem = document.createElement("a");
+                                suggestionItem.href = `/search_books/${book.type}/${book.id}`;
+                                suggestionItem.classList.add("list-group-item",
+                                    "list-group-item-action");
+                                suggestionItem.textContent = `${book.name} (${book.type})`;
+                                suggestionsDiv.appendChild(suggestionItem);
+                            });
+                        })
+                        .catch(error => console.error("Error fetching books:", error));
+                } else {
+                    suggestionsDiv.innerHTML = "";
+                }
+            });
+        });
     </script>
 </body>
 

@@ -10,6 +10,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SchoolController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SellController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -81,6 +82,11 @@ Route::middleware('auth')->group(function () {
 
     // Sales Routes
     Route::get('/sales/index', [MySalesController::class, 'index'])->name('sales.index');
+
+    // Search book routes
+    Route::get('/search_books', [SearchController::class, 'searchBooks'])->name('books.search');
+    Route::get('/search_books/{type}/{id}', [SearchController::class, 'show'])->name('search_books.show');
+
 });
 
 require __DIR__ . '/auth.php';
