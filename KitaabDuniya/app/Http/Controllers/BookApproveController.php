@@ -15,28 +15,31 @@ class BookApproveController extends Controller
      */
     public function index()
     {
-        $schoolBooks = School::all();
-        $graduationBooks = Graduation::all();
-        $generalBooks = General::all();
-        $competitiveBooks = Competitive::all();
+        $schoolBooks = School::with('user')->orderBy('created_at', 'desc')->get();
+        $graduationBooks = Graduation::with('user')->orderBy('created_at', 'desc')->get();
+        $generalBooks = General::with('user')->orderBy('created_at', 'desc')->get();
+        $competitiveBooks = Competitive::with('user')->orderBy('created_at', 'desc')->get();
 
-        // Combine all books into a single array
+        // Combine all books and sort by latest uploaded
         $allBooks = collect()
             ->merge($schoolBooks)
             ->merge($graduationBooks)
             ->merge($generalBooks)
-            ->merge($competitiveBooks);
+            ->merge($competitiveBooks)
+            ->sortByDesc('created_at');
 
         return view('approve_book.index', compact('allBooks'));
     }
+
+
 
     public function approveBook(Request $request, $id)
     {
         $models = [
             'school' => School::class,
             'graduation' => Graduation::class,
-            // 'competitive' => Competitive::class,
-            // 'general' => General::class,
+            'competitive' => Competitive::class,
+            'general' => General::class,
         ];
 
         $type = strtolower($request->input('type'));

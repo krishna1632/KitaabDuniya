@@ -66,6 +66,7 @@ class SchoolController extends Controller
             'photos' => json_encode($photoPaths),
             'description' => $request->description,
             'status' => 0,
+            'is_sold' => 0,
         ]);
 
         return redirect('/')->with('success', 'Book uploaded successfully!');

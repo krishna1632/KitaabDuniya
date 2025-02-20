@@ -15,6 +15,7 @@
                         <th>Book Name</th>
                         <th>Details</th>
                         <th>Price</th>
+                        <th>Uploaded By</th>
                         <th>Uploaded Photos</th>
                         <th>Action</th>
                     </tr>
@@ -49,6 +50,10 @@
                                 @endif
                             </td>
                             <td class="fw-bold text-success">₹{{ $book->price }}</td>
+                            <td>
+                                {{ $book->user ? $book->user->name : 'Unknown' }}
+                            </td>
+                            
                             <td>
                                 <button class="btn btn-primary btn-sm" data-bs-toggle="modal"
                                     data-bs-target="#photoModal{{ $book->id }}">

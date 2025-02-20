@@ -4,6 +4,7 @@ use App\Http\Controllers\BookApproveController;
 use App\Http\Controllers\CompetitiveController;
 use App\Http\Controllers\GeneralController;
 use App\Http\Controllers\GraduationController;
+use App\Http\Controllers\MySalesController;
 use App\Http\Controllers\OrganisationRequestController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PermissionController;
@@ -77,6 +78,9 @@ Route::middleware('auth')->group(function () {
     // Approve Book routes
     Route::get('/approve_book', [BookApproveController::class, 'index'])->name('approve_book.index');
     Route::post('/approve-book/{id}', [BookApproveController::class, 'approveBook'])->name('approve.book');
+
+    // Sales Routes
+    Route::get('/sales/index', [MySalesController::class, 'index'])->name('sales.index');
 });
 
 require __DIR__ . '/auth.php';

@@ -120,14 +120,14 @@
                 <select name="semester" class="form-control" required>
                     <option value="">Choose Semester</option>
                     @for ($i = 1; $i <= 8; $i++)
-                        <option>Semester {{ $i }}</option>
+                        <option>{{ $i }}</option>
                     @endfor
                 </select>
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Select Board</label>
-                <select name="university" class="form-control" required>
+                <select name="university" id="universitySelect" class="form-control" required>
                     <option value="">Select University</option>
                     <option value="du">DU</option>
                     <option value="bhu">BHU</option>
@@ -135,6 +135,17 @@
                     <option value="others">Others</option>
                 </select>
             </div>
+
+            <!-- Others University Input (Initially Hidden) -->
+            <div class="mb-3 d-none" id="otherUniversityDiv">
+                <label class="form-label">Enter University Name</label>
+                <input type="text" name="other_university" id="otherUniversityInput" class="form-control"
+                    placeholder="Enter university name">
+                <small class="text-danger">Enter a valid university name</small>
+            </div>
+
+
+
 
             <div class="mb-3">
                 <label class="form-label">Author/Publication Name</label>
@@ -185,6 +196,20 @@
                     };
                     reader.readAsDataURL(file);
                 });
+            }
+        });
+    </script>
+    <script>
+        document.getElementById("universitySelect").addEventListener("change", function() {
+            let otherUniversityDiv = document.getElementById("otherUniversityDiv");
+            let otherUniversityInput = document.getElementById("otherUniversityInput");
+
+            if (this.value === "others") {
+                otherUniversityDiv.classList.remove("d-none"); // Show input field
+                otherUniversityInput.setAttribute("required", "required"); // Make it required
+            } else {
+                otherUniversityDiv.classList.add("d-none"); // Hide input field
+                otherUniversityInput.removeAttribute("required"); // Remove required attribute
             }
         });
     </script>
