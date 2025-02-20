@@ -233,7 +233,7 @@
             </div>
         </div>
     </div>
-
+    {{-- End header section --}}
 
 
     <main class="container mt-4">
@@ -378,7 +378,6 @@
     </script>
 
 
-    <!-- *************** Footer Section ****************** -->
     <!-- *************** Footer Section ****************** -->
     <footer class="footer" id="foot">
         <div class="container">

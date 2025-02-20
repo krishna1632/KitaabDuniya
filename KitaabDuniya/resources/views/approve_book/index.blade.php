@@ -28,7 +28,7 @@
                             <td>
                                 @if (isset($book->class))
                                     🏫 School
-                                @elseif(isset($book->course))
+                                @elseif(isset($book->semester))
                                     🎓 Graduation
                                 @elseif(isset($book->exam))
                                     🏆 Competitive
@@ -40,12 +40,12 @@
                             <td>
                                 @if (isset($book->class))
                                     Class: {{ $book->class }} <br> Board: {{ $book->board }}
-                                @elseif(isset($book->course))
-                                    Course: {{ $book->course }}
+                                @elseif(isset($book->semester))
+                                    Semester: {{ $book->semester }} <br> University: {{ $book->university }}
                                 @elseif(isset($book->exam))
                                     Exam: {{ $book->exam }}
                                 @else
-                                    Category: {{ $book->category }}
+                                    Author: {{ $book->author }}
                                 @endif
                             </td>
                             <td class="fw-bold text-success">₹{{ $book->price }}</td>

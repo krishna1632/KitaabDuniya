@@ -4,44 +4,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sell </title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
-
+    <title>Book Listing Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <style>
         body {
-            overflow-x: hidden;
-        }
-
-        .cursor-pointer {
-            cursor: pointer;
+            background: #f4f4f4;
+            font-family: 'Poppins', sans-serif;
         }
 
         .custom-navbar {
-            height: 50px;
-            background-color: #f7f8f9;
-            box-shadow: 10px 10px 50px rgba(0, 0, 0, 0.05);
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
         }
 
         .custom-navbar a {
-            font-weight: 900;
-            padding-left: 20px;
-            font-size: 25px;
-            color: black;
+            font-size: 24px;
+            color: #333;
+            text-decoration: none;
         }
 
-        .custom-navbar a:hover {
+        .form-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-container h2 {
+            text-align: center;
+            font-weight: bold;
             color: #333;
-            font-size: 30px;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: #444;
+        }
+
+        .btn-submit {
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            border: none;
+            padding: 10px;
+            font-size: 18px;
+            color: white;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .btn-submit:hover {
+            background: linear-gradient(to right, #00f2fe, #4facfe);
+        }
+
+        .upload-button {
+            background: #007bff;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: inline-block;
+            transition: 0.3s;
+        }
+
+        .upload-button:hover {
+            background: #0056b3;
+        }
+
+        #imagePreview {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        #imagePreview img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            padding: 3px;
+        }
+
+        #fileError {
+            color: red;
+            font-size: 14px;
+            display: none;
         }
 
         .footer {
@@ -243,58 +294,48 @@
             </div>
         </div>
     </div>
+    {{-- End header section --}}
 
-    <!-- Main body start  -->
-    <main>
-        <h2 class="text-center py-3">Sells/Rents YOUR BOOK'S</h2>
-        <div class="py-5">
-            <div class="row ">
-                <!-- School Category -->
-                <a href="{{ route('schools.create') }}" class="col-md-3 col-sm-6 mb-4"
-                    style="text-decoration: none">
-                    <div class="category-card text-center p-4 shadow-sm rounded-lg">
-                        <i class="bi bi-book fs-1 text-primary mb-3"></i>
-                        <h4 class="mb-2 text-black">School</h4>
-                        <p class="text-muted">All books from 1st to 12th standard</p>
-                    </div>
-                </a>
+    <div class="form-container">
+        <h2>Book Listing</h2>
+        <p class="text-center">General Books / <a href="/sell">change</a></p>
 
-                <!-- Graduation Category -->
-                <a href="{{ route('graduations.create') }}" class="col-md-3 col-sm-6 mb-4 "
-                    style="text-decoration: none">
-                    <div class="category-card text-center p-4 shadow-sm rounded-lg">
-                        <i class="bi bi-mortarboard fs-1 text-success mb-3"></i>
-                        <h4 class="mb-2 text-black">Graduation</h4>
-                        <p class="text-muted">All books for graduation courses</p>
-                    </div>
-                </a>
-
-                <!-- General Category -->
-                <a href="{{route('generals.create')}}" class="col-md-3 col-sm-6 mb-4 "
-                    style="text-decoration: none">
-                    <div class="category-card text-center p-4 shadow-sm rounded-lg">
-                        <i class="bi bi-globe fs-1 text-warning mb-3"></i>
-                        <h4 class="mb-2 text-black">General</h4>
-                        <p class="text-muted">All general books</p>
-                    </div>
-                </a>
-
-                <!-- Competitive Category -->
-                <a href="{{route('competitives.create')}}" class="col-md-3 col-sm-6 mb-4 "
-                    style="text-decoration: none">
-                    <div class="category-card text-center p-4 shadow-sm rounded-lg">
-                        <i class="bi bi-trophy fs-1 text-danger mb-3"></i>
-                        <h4 class="mb-2 text-black">Competitive</h4>
-                        <p class="text-muted">All books for competitive exams</p>
-                    </div>
-                </a>
+        <form action="{{ route('generals.store') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="mb-3">
+                <label class="form-label">Book Name</label>
+                <input type="text" name="name" class="form-control" placeholder="Enter book name" required>
             </div>
-        </div>
-    </main>
-    <!-- Main body ends -->
 
-    <!-- *************** Footer Section ****************** -->
-    <footer class="footer">
+            <div class="mb-3">
+                <label class="form-label">Author/Publication Name</label>
+                <input type="text" name="author" class="form-control" placeholder="Enter author/publication name"
+                    required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Set Price</label>
+                <input type="number" name="price" class="form-control" placeholder="Enter price" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Upload Images (Min 3, Max 5)</label>
+                <input type="file" name="photos[]" id="imageUpload" class="d-none" multiple accept="image/*">
+                <label for="imageUpload" class="upload-button">Choose Files</label>
+                <p id="fileError">Please upload between 3 to 5 images.</p>
+                <div id="imagePreview"></div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Description</label>
+                <textarea name="description" class="form-control" rows="4" placeholder="Enter description" required></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit w-100">Post Now</button>
+        </form>
+    </div>
+
+    <footer class="footer" id="foot">
         <div class="container">
             <!-- Title Line -->
             <div class="title-line text-center mb-4">
@@ -314,7 +355,7 @@
 
             <!-- Footer Links -->
             <footer>
-                <div class="footer-links row text-center mb-4 ">
+                <div class="footer-links row text-center mb-4">
                     <div class="col-md-3 mb-3">
                         <h5 class="text-light mb-3">Quick Links</h5>
                         <ul class="list-unstyled">
@@ -354,7 +395,7 @@
                 <!-- Footer Bottom -->
                 <div class="footer-bottom row text-center py-3">
                     <div class="col-md-12">
-                        <p class="text-muted mb-0">© 2025 Kittabi Duniya. All rights reserved.</p>
+                        <p class="text-muted mb-0">© 2025 Kitaabi Duniya. All rights reserved.</p>
                         <p class="text-muted mb-0"><a href="#" class="text-muted">Privacy Policy</a> | <a
                                 href="#" class="text-muted">Terms of Service</a></p>
                     </div>
@@ -362,11 +403,101 @@
         </div>
     </footer>
 
-    <!-- footor ends -->
+    <script>
+        document.getElementById("imageUpload").addEventListener("change", function() {
+            let files = this.files;
+            let errorMsg = document.getElementById("fileError");
+            let previewContainer = document.getElementById("imagePreview");
+            previewContainer.innerHTML = "";
+
+            if (files.length < 3 || files.length > 5) {
+                errorMsg.style.display = "block";
+                this.value = "";
+            } else {
+                errorMsg.style.display = "none";
+                Array.from(files).forEach(file => {
+                    let reader = new FileReader();
+                    reader.onload = function(e) {
+                        let img = document.createElement("img");
+                        img.src = e.target.result;
+                        previewContainer.appendChild(img);
+                    };
+                    reader.readAsDataURL(file);
+                });
+            }
+        });
+    </script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
+    <script>
+        $(document).ready(function() {
+            $('#loginForm').on('submit', function(e) {
+                e.preventDefault();
+                $.ajax({
+                    url: $(this).attr('action'),
+                    method: $(this).attr('method'),
+                    data: $(this).serialize(),
+                    success: function(response) {
+                        // Handle success response
+                        if (response.success) {
+                            window.location.href = "{{ route('dashboard') }}";
+                        } else {
+                            alert('Login failed');
+                        }
+                    },
+                    error: function(xhr) {
+                        // Handle error
+                        alert('An error occurred');
+                    }
+                });
+            });
+        });
+    </script>
 
+    <script>
+        document.getElementById('individualRegister').addEventListener('click', function(event) {
+            event.preventDefault();
+            var registerModal = new bootstrap.Modal(document.getElementById('registerModal'));
+            registerModal.show();
+        });
+    </script>
+    <script>
+        function toggleFAQ(index) {
+            var answer = document.getElementById('faq' + index);
+            var icon = document.getElementById('icon' + index);
+
+            if (answer.style.display === 'none' || answer.style.display === '') {
+                answer.style.display = 'block';
+                icon.classList.remove('bi-plus-lg');
+                icon.classList.add('bi-dash-lg');
+            } else {
+                answer.style.display = 'none';
+                icon.classList.remove('bi-dash-lg');
+                icon.classList.add('bi-plus-lg');
+            }
+        }
+    </script>
+    <!-- Include SweetAlert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function confirmDelete() {
+            Swal.fire({
+                title: "Are you sure?",
+                text: "This action cannot be undone!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#d33",
+                cancelButtonColor: "#6c757d",
+                confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('delete-form').submit();
+                }
+            });
+        }
+    </script>
     <script>
         function getLocation() {
             if (navigator.geolocation) {
@@ -405,6 +536,7 @@
 
         getLocation(); // Auto-fetch location
     </script>
+
 </body>
 
 </html>
