@@ -47,6 +47,7 @@ body {
   width: auto;
   height: 30px;
   margin: 5px;
+
   border-radius: 25px;
   background-color: white;
   color: #3700aed4;
@@ -62,13 +63,15 @@ body {
 }
 
 .custom-btn::before {
+  border: 5px solid rgba(40, 39, 39, 0.753);
   content: "";
   position: absolute;
   top: -5px;
   left: -5px;
   right: -5px;
   bottom: -5px;
-  background: linear-gradient(45deg, #ff7e5f, #feb47b, #86a8e7, #7f7fd5);
+  /* background: linear-gradient(45deg, #ff00ff, #c0c0c0, #808080, #000000); */
+
   border-radius: 25px;
   z-index: -1;
 }
@@ -79,16 +82,19 @@ body {
 
 
 .dropdown-menu {
-  background-color: #343a40; /* Dark background */
+  background-color: #343a40;
+  /* Dark background */
   border: 1px solid #555;
 }
 
 .dropdown-item {
-  color: #fff !important; /* White text */
+  color: #fff !important;
+  /* White text */
 }
 
 .dropdown-item:hover {
-  background-color: #495057; /* Hover effect */
+  background-color: #495057;
+  /* Hover effect */
 }
 
 
@@ -98,32 +104,39 @@ body {
 /* Hero section Starts */
 
 .hero-text {
-  opacity: 0; /* Start with invisible text */
-  transform: translateY(20px); /* Start slightly below */
-  animation: fadeInUp 1.5s ease-out forwards; /* Animation name, duration, and timing */
+  opacity: 0;
+  /* Start with invisible text */
+  transform: translateY(20px);
+  /* Start slightly below */
+  animation: fadeInUp 1.5s ease-out forwards;
+  /* Animation name, duration, and timing */
 }
 
 @keyframes fadeInUp {
   from {
-      opacity: 0;
-      transform: translateY(20px);
+    opacity: 0;
+    transform: translateY(20px);
   }
+
   to {
-      opacity: 1;
-      transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
 .hero-text h1 {
-  animation-delay: 0.5s; /* Delay for the heading */
+  animation-delay: 0.5s;
+  /* Delay for the heading */
 }
 
 .hero-text p {
-  animation-delay: 1s; /* Delay for the paragraph */
+  animation-delay: 1s;
+  /* Delay for the paragraph */
 }
 
 .hero-text a {
-  animation-delay: 1.5s; /* Delay for the button */
+  animation-delay: 1.5s;
+  /* Delay for the button */
 }
 
 /* Hero section ends */
@@ -158,9 +171,18 @@ body {
 
 /* Blink Feature */
 @keyframes blink {
-  0% { opacity: 1; }
-  50% { opacity: 0.8; } /* Mid-point par halka visible rakha */
-  100% { opacity: 1; }
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.8;
+  }
+
+  /* Mid-point par halka visible rakha */
+  100% {
+    opacity: 1;
+  }
 }
 
 
@@ -317,7 +339,7 @@ body {
 .scrolling-wrapper-flex {
   -ms-overflow-style: none;
   scrollbar-width: none;
- 
+
 }
 
 

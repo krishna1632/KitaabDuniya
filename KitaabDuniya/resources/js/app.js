@@ -322,7 +322,7 @@ function fetchCurrentLocation() {
                     .then(response => response.json())
                     .then(data => {
                         const locationName = data.locality || data.city || "Unknown Location";
-                        document.getElementById('locationDropdown').innerText = `📍${locationName} |`;
+                        document.getElementById('locationDropdown').innerText = `📍${locationName} `;
                     })
                     .catch(error => {
                         console.error("Error fetching location name:", error);
