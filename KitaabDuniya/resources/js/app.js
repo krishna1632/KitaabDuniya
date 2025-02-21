@@ -303,10 +303,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-
-
-
-
 // For faq toggle 
 
 function toggleFAQ(id) {
