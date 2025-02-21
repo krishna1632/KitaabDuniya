@@ -24,8 +24,9 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+    Route::get('/userprofile', [ProfileController::class, 'index'])->name('userprofile.index');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     // Permissions Routes
@@ -83,10 +84,10 @@ Route::middleware('auth')->group(function () {
     // Sales Routes
     Route::get('/sales/index', [MySalesController::class, 'index'])->name('sales.index');
 
-    // Search book routes
-    Route::get('/search_books', [SearchController::class, 'searchBooks'])->name('books.search');
-    Route::get('/search_books/{type}/{id}', [SearchController::class, 'show'])->name('search_books.show');
 
 });
+// Search book routes
+Route::get('/search_books', [SearchController::class, 'searchBooks'])->name('books.search');
+Route::get('/search_books/{type}/{id}', [SearchController::class, 'show'])->name('search_books.show');
 
 require __DIR__ . '/auth.php';
