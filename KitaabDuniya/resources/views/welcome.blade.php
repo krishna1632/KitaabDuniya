@@ -122,13 +122,23 @@
             <div class="col-md-3 text-start">
                 <img src="/assets/nav_logo.png" alt="Logo" class="img-fluid ms-3" width="180px">
             </div>
-            <!-- Search Bar -->
+
             <div class="col-md-6">
                 <form class="d-flex">
+                    <!-- Search Bar -->
                     <input class="form-control me-2 rounded-3" type="search" id="searchBox"
                         placeholder="Search Ex.... 'Delhi'" aria-label="Search">
+
+                    {{-- Search button --}}
                     <button class="btn btn-outline-primary" type="submit">Search</button>
+
+                    {{-- Sell Button --}}
                     <a href="{{ route('sell.index') }}" class="sell-btn custom-btn">➕SELL</a>
+
+                    <!-- Language Toggle Button -->
+                    <div style="display: flex; align-items: center; cursor: pointer;" id="translateBtn">
+                        <span id="langText">Hindi</span><span>/</span><span>English</span>
+                    </div>
                 </form>
 
                 <div id="suggestions" class="list-group" style="z-index: 900000"></div> <!-- Suggestions List -->
