@@ -141,14 +141,9 @@
                     </div>
                 </form>
 
-                <div id="suggestions" class="list-group" style="z-index: 900000"></div> <!-- Suggestions List -->
-            </div>
 
-            <!-- Cart -->
-            <div class="col-md-3 text-end">
-                <a href="#" class="btn btn-outline-secondary text-dark">
-                    <i class="bi bi-cart"></i> Cart
-                </a>
+                <div id="suggestions" class="list-group" style="z-index: 900000"></div> <!-- Suggestions List -->
+
             </div>
         </div>
     </div>
