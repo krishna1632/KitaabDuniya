@@ -145,6 +145,13 @@
                 <div id="suggestions" class="list-group" style="z-index: 900000"></div> <!-- Suggestions List -->
 
             </div>
+
+            <!-- Cart and Sell Button -->
+            <div class="col-md-3 text-end">
+                <a href="#" class="btn btn-outline-secondary text-dark me-2">
+                    <i class="bi bi-cart"></i> Cart
+                </a>
+            </div>
         </div>
     </div>
 
