@@ -63,7 +63,7 @@
                     @auth
                         <!-- Dashboard and User Dropdown Menu for Logged-in Users -->
                         <li class="nav-item">
-                            <a class="nav-link text-light px-2" href="#"><i class="bi bi-person-circle"></i></a>
+                            <a class="nav-link text-light px-2" href="{{ url('/profile') }}"><i class="bi bi-person-circle"></i></a>
                         </li>
 
                         <li class="nav-item dropdown">
@@ -132,9 +132,7 @@
                     {{-- Search button --}}
                     <button class="btn btn-outline-primary" type="submit">Search</button>
 
-                    <div style="display: flex; align-items: center; cursor: pointer;" id="translateBtn">
-                        <span id="langText">Hindi</span><span>/</span><span>English</span>
-                    </div>
+                   
 
                 </form>
 
@@ -192,25 +190,26 @@
             <h2 class="text-center mb-4 fw-bold fs-2" style="color: red;">🏷️ Categories</h2>
             <div class="row">
                 <!-- School Category -->
-                <div class="col-md-3 col-sm-6 mb-4">
-                    <div class="category-card text-center p-4 shadow-sm rounded-lg">
-                        <i class="bi bi-book fs-1 text-primary mb-3"></i>
-                        <h4 class="mb-2">School</h4>
-                        <p class="text-muted">All books from 1st to 12th standard</p>
-                    </div>
-                </div>
+                <div class="col-md-3 col-sm-6 mb-4 cursor-pointer" data-href="{{ route('scategories.index') }}">
+    <div class="category-card text-center p-4 shadow-sm rounded-lg">
+        <i class="bi bi-book fs-1 text-primary mb-3"></i>
+        <h4 class="mb-2">School</h4>
+        <p class="text-muted">All books from 1st to 12th standard</p>
+    </div>
+</div>
 
-                <!-- Graduation Category -->
-                <div class="col-md-3 col-sm-6 mb-4">
-                    <div class="category-card text-center p-4 shadow-sm rounded-lg">
-                        <i class="bi bi-mortarboard fs-1 text-success mb-3"></i>
-                        <h4 class="mb-2">Graduation</h4>
-                        <p class="text-muted">All books for graduation courses</p>
-                    </div>
-                </div>
+<!-- Graduation Category -->
+<div class="col-md-3 col-sm-6 mb-4 cursor-pointer" data-href="{{ route('gcategories.index') }}">
+    <div class="category-card text-center p-4 shadow-sm rounded-lg">
+        <i class="bi bi-mortarboard fs-1 text-success mb-3"></i>
+        <h4 class="mb-2">Graduation</h4>
+        <p class="text-muted">All books for graduation courses</p>
+    </div>
+</div>
+
 
                 <!-- General Category -->
-                <div class="col-md-3 col-sm-6 mb-4">
+                <div class="col-md-3 col-sm-6 mb-4 cursor-pointer" data-href="{{ route('gecategories.index') }}">
                     <div class="category-card text-center p-4 shadow-sm rounded-lg">
                         <i class="bi bi-globe fs-1 text-warning mb-3"></i>
                         <h4 class="mb-2">General</h4>
@@ -219,7 +218,7 @@
                 </div>
 
                 <!-- Competitive Category -->
-                <div class="col-md-3 col-sm-6 mb-4">
+                <div class="col-md-3 col-sm-6 mb-4 cursor-pointer"data-href="{{ route('ccategories.index') }}">
                     <div class="category-card text-center p-4 shadow-sm rounded-lg">
                         <i class="bi bi-trophy fs-1 text-danger mb-3"></i>
                         <h4 class="mb-2">Competitive</h4>
@@ -658,6 +657,22 @@
                 }
             });
         });
+
+        document.addEventListener('DOMContentLoaded', function () {
+    // All divs with the class 'cursor-pointer'
+    const categoryDivs = document.querySelectorAll('.cursor-pointer');
+
+    categoryDivs.forEach(function(categoryDiv) {
+        categoryDiv.addEventListener('click', function() {
+            // Get the route URL from the data-href attribute
+            const route = categoryDiv.getAttribute('data-href');
+            // Redirect to the route
+            window.location.href = route;
+        });
+    });
+});
+
+
     </script>
 </body>
 

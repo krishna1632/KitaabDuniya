@@ -13,6 +13,10 @@ use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SellController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\SchoolCategoriesController;
+use App\Http\Controllers\GraduationCategoriesController;
+use App\Http\Controllers\GeneralCategoriesController;
+use App\Http\Controllers\CompetitiveCategoriesController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -89,5 +93,10 @@ Route::middleware('auth')->group(function () {
 // Search book routes
 Route::get('/search_books', [SearchController::class, 'searchBooks'])->name('books.search');
 Route::get('/search_books/{type}/{id}', [SearchController::class, 'show'])->name('search_books.show');
+Route::get('/search graduation book', [GraduationCategoriesController::class, 'index'])->name('gcategories.index');
+Route::get('/search school books', [SchoolCategoriesController::class, 'index'])->name('scategories.index');
+Route::get('/search general books', [GeneralCategoriesController::class, 'index'])->name('gecategories.index');
+Route::get('/search competitive books', [CompetitiveCategoriesController::class, 'index'])->name('ccategories.index');
+
 
 require __DIR__ . '/auth.php';

@@ -164,96 +164,6 @@
     .btn-primary:hover {
         background: #0069d9;
     }
-
-    body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f8f9fa;
-        }
-
-        .register-container {
-            max-width: 1200px;
-            margin: 50px auto;
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .register-container h2 {
-            text-align: center;
-            margin-bottom: 30px;
-            color: #333;
-            font-weight: 600;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-control {
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            padding: 10px;
-            transition: all 0.3s ease;
-        }
-
-        .form-control:focus {
-            border-color: #007bff;
-            box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
-        }
-
-        .btn-primary {
-            background-color: #007bff;
-            border: none;
-            border-radius: 8px;
-            padding: 10px 20px;
-            font-size: 16px;
-            transition: all 0.3s ease;
-        }
-
-        .btn-primary:hover {
-            background-color: #0056b3;
-            transform: scale(1.05);
-        }
-
-        a {
-            color: #007bff;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        a:hover {
-            color: #0056b3;
-            text-decoration: underline;
-        }
-
-        .form-check {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .form-check-input {
-            margin: 0;
-        }
-
-        .form-control[type="file"] {
-            padding: 5px;
-        }
-
-        /* Floating Animation for Form
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
-        .register-container {
-            animation: float 3s ease-in-out infinite;
-        } */
     </style>
 </head>
 
@@ -377,88 +287,122 @@
     {{-- End header section --}}
 
 
-     <!-- Main Content -->
-     <main class="container mt-4">
-        <div class="row">
-            <div class="col-12">
-                <div class="register-container">
-                    <h2>Register</h2>
-                    <form id="registerForm" method="POST" action="{{ route('org_request.store') }}" enctype="multipart/form-data">
-                        @csrf
+    <main class="container mt-4">
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-2 sidebar" >
+            <h3>Filters</h3>
+            <!-- Class Checkbox -->
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="classCheckbox">
+                <label class="form-check-label" for="classCheckbox">Class</label>
+            </div>
+            <!-- Rent Checkbox -->
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="rentCheckbox">
+                <label class="form-check-label" for="rentCheckbox">Rent</label>
+            </div>
+            <!-- Buy Checkbox -->
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="buyCheckbox">
+                <label class="form-check-label" for="buyCheckbox">Buy</label>
+            </div>
+            <!-- Price Range Slider -->
+            <h4 class="mt-3">Price</h4>
+            <input type="range" class="form-range" id="priceRange" min="50" max="3000" step="50">
+            <p>Selected Price: <span id="selectedPrice">50</span> Rs</p>
+        </div>
 
-                        <div class="row">
-                            <!-- Full Name -->
-                            <div class="col-md-3 form-group">
-                                <label for="name" class="form-label">Full Name</label>
-                                <input type="text" class="form-control" id="name" name="name" required>
-                            </div>
-
-                            <!-- Email Address -->
-                            <div class="col-md-3 form-group">
-                                <label for="email" class="form-label">Email Address</label>
-                                <input type="email" class="form-control" id="email" name="email" required>
-                            </div>
-
-                            <!-- Phone Number -->
-                            <div class="col-md-3 form-group">
-                                <label for="phone" class="form-label">Phone Number</label>
-                                <input type="text" class="form-control" id="phone" name="phone" required>
-                            </div>
-
-                            <!-- Address -->
-                            <div class="col-md-3 form-group">
-                                <label for="address" class="form-label">Address</label>
-                                <input type="text" class="form-control" id="address" name="address" required>
-                            </div>
-
-                            <!-- Gender -->
-                            <div class="col-md-3 form-group">
-                                <label class="form-label">Gender</label>
-                                <div class="d-flex gap-3">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="gender" value="male" required>
-                                        <label class="form-check-label">Male</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="gender" value="female" required>
-                                        <label class="form-check-label">Female</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="gender" value="other" required>
-                                        <label class="form-check-label">Other</label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Organization License -->
-                            <div class="col-md-3 form-group">
-                                <label for="org_licence" class="form-label">Organization License</label>
-                                <input type="file" class="form-control" id="org_licence" name="org_licence">
-                            </div>
-
-                            <!-- Password -->
-                            <div class="col-md-3 form-group">
-                                <label for="password" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="password" name="password" required>
-                            </div>
-
-                            <!-- Confirm Password -->
-                            <div class="col-md-3 form-group">
-                                <label for="password_confirmation" class="form-label">Confirm Password</label>
-                                <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required>
-                            </div>
-                        </div>
-
-                        <!-- Submit Button -->
-                        <div class="d-flex justify-content-between mt-4">
-                            <a href="{{ route('login') }}" class="text-decoration-none">Already registered?</a>
-                            <button type="submit" class="btn btn-primary">Register</button>
-                        </div>
-                    </form>
+        <!-- Content -->
+        <div class="col-md-10">
+            <!-- Filter Chips Section (Hidden by Default) -->
+            <div id="filterChips" class="mb-3" style="display: none;">
+                <h5>Filter by Class:</h5>
+                <div class="d-flex flex-wrap gap-2">
+                    <!-- Class Filter Chips -->
+                    <button class="btn btn-outline-secondary btn-sm" data-class="1">Class 1</button>
+                    <button class="btn btn-outline-secondary btn-sm" data-class="2">Class 2</button>
+                    <button class="btn btn-outline-secondary btn-sm" data-class="3">Class 3</button>
+                    <button class="btn btn-outline-secondary btn-sm" data-class="4">Class 4</button>
+                    <button class="btn btn-outline-secondary btn-sm" data-class="5">Class 5</button>
+                    <button class="btn btn-outline-secondary btn-sm" data-class="6">Class 6</button>
+                    <button class="btn btn-outline-secondary btn-sm" data-class="7">Class 7</button>
+                    <button class="btn btn-outline-secondary btn-sm" data-class="8">Class 8</button>
+                    <button class="btn btn-outline-secondary btn-sm" data-class="9">Class 9</button>
+                    <button class="btn btn-outline-secondary btn-sm" data-class="10">Class 10</button>
+                    <button class="btn btn-outline-secondary btn-sm" data-class="11">Class 11</button>
+                    <button class="btn btn-outline-secondary btn-sm" data-class="12">Class 12</button>
                 </div>
             </div>
+
+            <!-- Content Section -->
+            <h3>Showing 4 results</h3>
+            <div class="row">
+                <!-- Book Card 1 -->
+                <div class="col-md-3 mb-4">
+    <div class="card book-card">
+        <img src="assets/Book4.jpg" class="card-img-top book-img" alt="Computer Science Book">
+        <div class="card-body">
+            <h5 class="card-title">Computer Science</h5>
+            <p class="card-text">Author: <span class="text-primary">Virat Kohli</span></p>
+            <p class="price-tag">&#8377;250.00</p>
+            <div class="btn-group">
+                <button class="btn btn-success">🛒 Add to Cart</button>
+                <button class="btn btn-primary">⚡ Buy Now</button>
+            </div>
         </div>
-    </main>
+    </div>
+</div>
+
+                <!-- Book Card 2 -->
+                <div class="col-md-3 mb-4">
+    <div class="card book-card">
+        <img src="assets/Book4.jpg" class="card-img-top book-img" alt="Computer Science Book">
+        <div class="card-body">
+            <h5 class="card-title">Rich Dad Poor Dad</h5>
+            <p class="card-text">Author: <span class="text-primary">M. Starc</span></p>
+            <p class="price-tag">&#8377;250.00</p>
+            <div class="btn-group">
+                <button class="btn btn-success">🛒 Add to Cart</button>
+                <button class="btn btn-primary">⚡ Buy Now</button>
+            </div>
+        </div>
+    </div>
+</div>
+                <!-- Book Card 3 -->
+                <div class="col-md-3 mb-4">
+    <div class="card book-card">
+        <img src="assets/Book4.jpg" class="card-img-top book-img" alt="Computer Science Book">
+        <div class="card-body">
+            <h5 class="card-title">C++</h5>
+            <p class="card-text">Author: <span class="text-primary">Praduman K</span></p>
+            <p class="price-tag">&#8377;250.00</p>
+            <div class="btn-group">
+                <button class="btn btn-success">🛒 Add to Cart</button>
+                <button class="btn btn-primary">⚡ Buy Now</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+                <!-- Book Card 4 -->
+                <div class="col-md-3 mb-4">
+    <div class="card book-card">
+        <img src="assets/Book4.jpg" class="card-img-top book-img" alt="Computer Science Book">
+        <div class="card-body">
+            <h5 class="card-title">DBMS</h5>
+            <p class="card-text">Author: <span class="text-primary">R.K. Shinha</span></p>
+            <p class="price-tag">&#8377;350.00</p>
+            <div class="btn-group">
+                <button class="btn btn-success">🛒 Add to Cart</button>
+                <button class="btn btn-primary">⚡ Buy Now</button>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+</main>
+
     
 
 
@@ -642,7 +586,47 @@
 
         
     </script>
-    
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        console.log("DOM fully loaded and parsed");
+
+        const classCheckbox = document.getElementById('classCheckbox');
+        const filterChips = document.getElementById('filterChips');
+        const priceRange = document.getElementById('priceRange');
+        const selectedPrice = document.getElementById('selectedPrice');
+
+        if (!classCheckbox || !filterChips || !priceRange || !selectedPrice) {
+            console.error("One or more elements not found!");
+            return;
+        }
+
+        // Toggle Filter Chips Visibility
+        classCheckbox.addEventListener('change', function () {
+            console.log("Class checkbox clicked");
+            if (this.checked) {
+                filterChips.style.display = 'block';
+            } else {
+                filterChips.style.display = 'none';
+            }
+        });
+
+        // Update Selected Price
+        priceRange.addEventListener('input', function () {
+            console.log("Price range changed");
+            selectedPrice.textContent = this.value;
+        });
+
+        // Add Active Class to Selected Filter Chips
+        const chipButtons = document.querySelectorAll('#filterChips .btn');
+        chipButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                console.log("Filter chip clicked");
+                this.classList.toggle('btn-outline-secondary');
+                this.classList.toggle('btn-primary');
+            });
+        });
+    });
+</script>
 
 </body>
 
