@@ -98,8 +98,8 @@
 
                         @if (Route::has('register'))
                             <li class="nav-item dropdown">
-                                <a class="nav-link text-light px-2 dropdown-toggle" href="#" id="navbarDropdown"
-                                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="nav-link text-light px-2 dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
                                     Register
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -132,9 +132,6 @@
                     {{-- Search button --}}
                     <button class="btn btn-outline-primary" type="submit">Search</button>
 
-                    {{-- Sell Button --}}
-                    <a href="{{ route('sell.index') }}" class="sell-btn custom-btn">➕SELL</a>
-
                     <!-- Language Toggle Button -->
                     <div style="display: flex; align-items: center; cursor: pointer;" id="translateBtn">
                         <span id="langText">Hindi</span><span>/</span><span>English</span>
@@ -148,10 +145,16 @@
 
             <!-- Cart and Sell Button -->
             <div class="col-md-3 text-end">
-                <a href="#" class="btn btn-outline-secondary text-dark me-2">
+
+                <a href="{{ route('sell.index') }}" class="sell-btn custom-btn">➕SELL</a>
+
+                <a href="{{ route('sell.index') }}" class="btn btn-outline-secondary text-dark me-2">
                     <i class="bi bi-cart"></i> Cart
                 </a>
             </div>
+
+
+
         </div>
     </div>
 
@@ -406,16 +409,15 @@
                 <div class="footer-bottom row text-center py-3">
                     <div class="col-md-12">
                         <p class="text-muted mb-0">© 2025 Kitaabi Duniya. All rights reserved.</p>
-                        <p class="text-muted mb-0"><a href="#" class="text-muted">Privacy Policy</a> | <a
-                                href="#" class="text-muted">Terms of Service</a></p>
+                        <p class="text-muted mb-0"><a href="#" class="text-muted">Privacy Policy</a> | <a href="#"
+                                class="text-muted">Terms of Service</a></p>
                     </div>
                 </div>
         </div>
     </footer>
 
     <!-- Bootstrap Modal -->
-    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -449,18 +451,15 @@
                             <label class="form-label">Gender</label>
                             <div class="d-flex gap-3">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="gender" value="male"
-                                        required>
+                                    <input class="form-check-input" type="radio" name="gender" value="male" required>
                                     <label class="form-check-label">Male</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="gender" value="female"
-                                        required>
+                                    <input class="form-check-input" type="radio" name="gender" value="female" required>
                                     <label class="form-check-label">Female</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="gender" value="other"
-                                        required>
+                                    <input class="form-check-input" type="radio" name="gender" value="other" required>
                                     <label class="form-check-label">Other</label>
                                 </div>
                             </div>
@@ -506,16 +505,16 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-    </script>
+        </script>
     <script>
-        $(document).ready(function() {
-            $('#loginForm').on('submit', function(e) {
+        $(document).ready(function () {
+            $('#loginForm').on('submit', function (e) {
                 e.preventDefault();
                 $.ajax({
                     url: $(this).attr('action'),
                     method: $(this).attr('method'),
                     data: $(this).serialize(),
-                    success: function(response) {
+                    success: function (response) {
                         // Handle success response
                         if (response.success) {
                             window.location.href = "{{ route('dashboard') }}";
@@ -523,7 +522,7 @@
                             alert('Login failed');
                         }
                     },
-                    error: function(xhr) {
+                    error: function (xhr) {
                         // Handle error
                         alert('An error occurred');
                     }
@@ -533,7 +532,7 @@
     </script>
 
     <script>
-        document.getElementById('individualRegister').addEventListener('click', function(event) {
+        document.getElementById('individualRegister').addEventListener('click', function (event) {
             event.preventDefault();
             var registerModal = new bootstrap.Modal(document.getElementById('registerModal'));
             registerModal.show();
@@ -595,11 +594,11 @@
     </script>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             let searchBox = document.getElementById("searchBox");
             let suggestionsDiv = document.getElementById("suggestions");
 
-            searchBox.addEventListener("input", function() {
+            searchBox.addEventListener("input", function () {
                 let query = searchBox.value.trim(); // Extra spaces remove kare
 
                 if (query.length > 1) {
