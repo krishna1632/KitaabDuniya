@@ -275,12 +275,34 @@ document.addEventListener("DOMContentLoaded", function () {
     renderOldBooks("oldBooksContainer", oldBooks);
 });
 
+function scrollLeft(containerId) {
+    const container = document.getElementById(containerId);
+    if (container) {
+        container.scrollBy({
+            left: -200,
+            behavior: 'smooth'
+        });
+    }
+}
+
+function scrollRight(containerId) {
+    const container = document.getElementById(containerId);
+    if (container) {
+        container.scrollBy({
+            left: 200,
+            behavior: 'smooth'
+        });
+    }
+}
+
 // Enable Bootstrap Tooltips
 document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((tooltipTriggerEl) => {
         new bootstrap.Tooltip(tooltipTriggerEl);
     });
 });
+
+
 
 
 

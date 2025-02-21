@@ -225,16 +225,24 @@
                 <div class="section-header">
                     <h4 class="mb-3 text-primary fw-bold">🔥 New Books</h4>
                 </div>
-                <div class="container mt-4">
+                <div class="container mt-4 position-relative">
+                    <button class="scroll-button scroll-left"
+                        onclick="scrollLeft('newBooksContainer')">&#10094;</button>
                     <div class="scrolling-wrapper-flex" id="newBooksContainer"></div>
+                    <button class="scroll-button scroll-right"
+                        onclick="scrollRight('newBooksContainer')">&#10095;</button>
                 </div>
 
                 <!-- Most Readable Books -->
                 <div class="section-header mt-5">
                     <h4 class="mb-3 text-success fw-bold">📖 Most Readable Books</h4>
                 </div>
-                <div class="container mt-4">
+                <div class="container mt-4 position-relative">
+                    <button class="scroll-button scroll-left"
+                        onclick="scrollLeft('oldBooksContainer')">&#10094;</button>
                     <div class="scrolling-wrapper-flex" id="oldBooksContainer"></div>
+                    <button class="scroll-button scroll-right"
+                        onclick="scrollRight('oldBooksContainer')">&#10095;</button>
                 </div>
             </div>
         </div>

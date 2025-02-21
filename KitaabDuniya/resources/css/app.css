@@ -64,18 +64,15 @@ body {
 
 .dropdown-menu {
   background-color: #343a40;
-  /* Dark background */
   border: 1px solid #555;
 }
 
 .dropdown-item {
   color: #fff !important;
-  /* White text */
 }
 
 .dropdown-item:hover {
   background-color: #495057;
-  /* Hover effect */
 }
 
 
@@ -90,7 +87,6 @@ body {
   transform: translateY(20px);
   /* Start slightly below */
   animation: fadeInUp 1.5s ease-out forwards;
-  /* Animation name, duration, and timing */
 }
 
 @keyframes fadeInUp {
@@ -248,7 +244,49 @@ body {
   width: 50px;
 }
 
-/* -------------------------end Book Collection -------------------------*/
+
+/* ---------------------------- Scrolling feature ---------------------------- */
+
+
+
+.scrolling-wrapper-flex {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 10px;
+  padding: 10px 0;
+}
+
+.scrolling-wrapper-flex .card {
+  flex: 0 0 auto;
+  width: 150px;
+  margin-right: 10px;
+}
+
+.scroll-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 1;
+}
+
+.scroll-left {
+  left: 0;
+}
+
+.scroll-right {
+  right: 0;
+}
+
+/* --------------------------end Scrolling Feature ---------------------------*/
+
+
+/* ------------------------------------------end Book Collection ------------------------------------------*/
 
 
 
