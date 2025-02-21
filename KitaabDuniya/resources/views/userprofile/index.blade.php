@@ -263,7 +263,7 @@
                         <li class="list-group-item list-hover"><a href="#"
                                 class="text-decoration-none d-block">📦 My
                                 Orders</a></li>
-                        <li class="list-group-item list-hover"><a href="{{route('sales.index')}}"
+                        <li class="list-group-item list-hover"><a href="{{ route('sales.index') }}"
                                 class="text-decoration-none d-block">📦 My
                                 Sales</a></li>
                         <li class="list-group-item list-hover"><a href="#"
@@ -301,6 +301,7 @@
                     <hr>
                     <form method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data">
                         @csrf
+                        @method('POST')
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="name" class="form-label"><i class="bi bi-person"></i> Full
