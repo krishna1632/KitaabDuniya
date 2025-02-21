@@ -17,7 +17,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
-
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateInit"></script>
 </head>
 
 <body>
@@ -132,11 +132,13 @@
                     {{-- Search button --}}
                     <button class="btn btn-outline-primary" type="submit">Search</button>
 
-                    <!-- Language Toggle Button -->
                     <div style="display: flex; align-items: center; cursor: pointer;" id="translateBtn">
                         <span id="langText">Hindi</span><span>/</span><span>English</span>
                     </div>
+
                 </form>
+
+
 
 
                 <div id="suggestions" class="list-group" style="z-index: 900000"></div> <!-- Suggestions List -->
@@ -236,7 +238,7 @@
                 <div class="section-header">
                     <h4 class="mb-3 text-primary fw-bold">🔥 New Books</h4>
                 </div>
-                <div class="container mt-4 position-relative">
+                <div class="container mt-4 position-relative" class="scrolling-wrapper-flex">
                     <button class="scroll-button scroll-left"
                         onclick="scrollLeft('newBooksContainer')">&#10094;</button>
                     <div class="scrolling-wrapper-flex" id="newBooksContainer"></div>
@@ -244,11 +246,15 @@
                         onclick="scrollRight('newBooksContainer')">&#10095;</button>
                 </div>
 
+
+
+
+
                 <!-- Most Readable Books -->
                 <div class="section-header mt-5">
                     <h4 class="mb-3 text-success fw-bold">📖 Most Readable Books</h4>
                 </div>
-                <div class="container mt-4 position-relative">
+                <div class="container mt-4 position-relative" class="scrolling-wrapper-flex">
                     <button class="scroll-button scroll-left"
                         onclick="scrollLeft('oldBooksContainer')">&#10094;</button>
                     <div class="scrolling-wrapper-flex" id="oldBooksContainer"></div>
@@ -506,6 +512,28 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
         </script>
+
+    <script>
+        function scrollLeft(containerId) {
+            const container = document.getElementById(containerId);
+            if (container.scrollLeft > 0) {
+                container.scrollBy({
+                    left: -250,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        function scrollRight(containerId) {
+            const container = document.getElementById(containerId);
+            container.scrollBy({
+                left: 250,
+                behavior: 'smooth'
+            });
+        }
+
+    </script>
+
     <script>
         $(document).ready(function () {
             $('#loginForm').on('submit', function (e) {

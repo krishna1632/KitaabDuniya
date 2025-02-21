@@ -394,3 +394,5 @@ document.getElementById('popularCities').addEventListener('click', (e) => {
 document.getElementById('locationMenu').addEventListener('click', (e) => {
     e.stopPropagation(); // Stop event from bubbling up
 });
+
+console.log('Hello');
