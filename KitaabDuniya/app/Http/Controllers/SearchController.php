@@ -89,11 +89,15 @@ class SearchController extends Controller
             abort(404);
         }
 
+        // Decode the photos array and get the first image
+        $photos = json_decode($book->photos, true); // Convert JSON string to array
+        $book->photos = !empty($photos) ? $photos[0] : null; // Get the first image or null if empty
+
         // Common columns available in all tables
         $columns = ['id', 'userId', 'name', 'price', 'photos', 'description', 'status', 'is_sold'];
 
-        // **Use LIKE for better matching (includes similar names)**
-        $searchName = str_replace(' ', '%', $book->name); // Replace spaces with `%` for partial matches
+        // Use LIKE for better matching (includes similar names)
+        $searchName = str_replace(' ', '%', $book->name); // Replace spaces with % for partial matches
 
         $schoolBooks = DB::table('schools')
             ->where('name', 'LIKE', "%{$searchName}%")
@@ -117,6 +121,12 @@ class SearchController extends Controller
             ->union($generalBooks)
             ->union($competitiveBooks)
             ->get();
+
+        // Decode photos for each book and keep only the first image
+        foreach ($allBooks as $book) {
+            $photos = json_decode($book->photos, true);
+            $book->photos = !empty($photos) ? $photos[0] : null;
+        }
 
         return view('search_books.show', compact('allBooks'));
     }

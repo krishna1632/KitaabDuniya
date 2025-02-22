@@ -59,39 +59,73 @@
             background: linear-gradient(to right, #00f2fe, #4facfe);
         }
 
-        .upload-button {
-            background: #007bff;
-            color: #fff;
-            padding: 10px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            display: inline-block;
-            transition: 0.3s;
+        .upload-container {
+            width: 400px;
+            /* margin: auto; */
+            /* text-align: center; */
         }
 
-        .upload-button:hover {
-            background: #0056b3;
-        }
-
-        #imagePreview {
-            display: flex;
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
             gap: 10px;
-            flex-wrap: wrap;
             margin-top: 10px;
         }
 
-        #imagePreview img {
-            width: 80px;
-            height: 80px;
+        .image-box {
+            width: 100px;
+            height: 100px;
+            border: 2px solid #ccc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .image-box img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            border-radius: 5px;
-            border: 1px solid #ddd;
-            padding: 3px;
+        }
+
+        .add-photo {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            border: 2px dashed #aaa;
+        }
+
+        .remove-btn {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            background: red;
+            color: white;
+            border: none;
+            font-size: 12px;
+            cursor: pointer;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .placeholder {
+            width: 100px;
+            height: 100px;
+            border: 2px dashed #ccc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #aaa;
         }
 
         #fileError {
             color: red;
-            font-size: 14px;
             display: none;
         }
 
@@ -319,19 +353,26 @@
             </div>
 
             <div class="mb-3">
-                <label class="form-label">Upload Images (Min 3, Max 5)</label>
-                <input type="file" name="photos[]" id="imageUpload" class="d-none" multiple accept="image/*">
-                <label for="imageUpload" class="upload-button">Choose Files</label>
-                <p id="fileError">Please upload between 3 to 5 images.</p>
-                <div id="imagePreview"></div>
-            </div>
-
-            <div class="mb-3">
                 <label class="form-label">Description</label>
                 <textarea name="description" class="form-control" rows="4" placeholder="Enter description" required></textarea>
             </div>
 
-            <button type="submit" class="btn-submit w-100">Post Now</button>
+            <div class="upload-container">
+                <label class="form-label" style="font-weight: 700 !important;">Upload Photos</label>
+                <p>Note: Add between 3 to 5 photos. You can upload one photo at a time. If you submit without 3 to 5
+                    photos, an error will be shown.</p>
+                <input type="file" name="photos[]" id="imageUpload" class="d-none" accept="image/*">
+                <div class="grid" id="imagePreview">
+                    <div class="image-box add-photo" id="addPhotoBox"
+                        onclick="document.getElementById('imageUpload').click()">
+                        <span>📷+</span>
+                        <p>Add Photo</p>
+                    </div>
+                </div>
+                <p id="fileError">Please upload between 3 to 5 images before submitting.</p>
+            </div>
+
+            <button type="submit" class="btn-submit w-100 mt-5">Post Now</button>
         </form>
     </div>
 
@@ -404,27 +445,41 @@
     </footer>
 
     <script>
-        document.getElementById("imageUpload").addEventListener("change", function() {
-            let files = this.files;
-            let errorMsg = document.getElementById("fileError");
-            let previewContainer = document.getElementById("imagePreview");
-            previewContainer.innerHTML = "";
+        let uploadedImages = [];
+        document.getElementById("imageUpload").addEventListener("change", function(event) {
+            const file = event.target.files[0];
+            const preview = document.getElementById("imagePreview");
+            const fileError = document.getElementById("fileError");
 
-            if (files.length < 3 || files.length > 5) {
-                errorMsg.style.display = "block";
-                this.value = "";
-            } else {
-                errorMsg.style.display = "none";
-                Array.from(files).forEach(file => {
-                    let reader = new FileReader();
-                    reader.onload = function(e) {
-                        let img = document.createElement("img");
-                        img.src = e.target.result;
-                        previewContainer.appendChild(img);
-                    };
-                    reader.readAsDataURL(file);
-                });
+            if (!file) return;
+
+            if (uploadedImages.length >= 5) {
+                alert("You can only upload up to 5 images.");
+                return;
             }
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const imageBox = document.createElement("div");
+                imageBox.classList.add("image-box");
+
+                const img = document.createElement("img");
+                img.src = e.target.result;
+
+                const removeBtn = document.createElement("button");
+                removeBtn.innerText = "x";
+                removeBtn.classList.add("remove-btn");
+                removeBtn.addEventListener("click", function() {
+                    uploadedImages = uploadedImages.filter(imgSrc => imgSrc !== e.target.result);
+                    imageBox.remove();
+                });
+
+                imageBox.appendChild(img);
+                imageBox.appendChild(removeBtn);
+                preview.appendChild(imageBox);
+                uploadedImages.push(e.target.result);
+            };
+            reader.readAsDataURL(file);
         });
     </script>
 
