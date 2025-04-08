@@ -115,6 +115,59 @@
         .youtube i {
             color: #FF0000;
         }
+
+        .price-range {
+            margin: 20px 0;
+        }
+
+        .price-range label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .price-range input[type="range"] {
+            width: 100%;
+        }
+
+        .price-range .range-values {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .price-range .range-values span {
+            font-size: 14px;
+            color: #555;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            -webkit-appearance: none;
+            height: 8px;
+            border-radius: 4px;
+            background: linear-gradient(to right, #007bff 100%, #ddd 0%);
+            outline: none;
+            transition: background 0.15s ease-in-out;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #007bff;
+            cursor: pointer;
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #007bff;
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -245,14 +298,55 @@
                     <hr>
                     <p class="fw-bold">Category</p>
                     <ul class="list-unstyled">
-                        <li><input type="checkbox" id="schoolCheckbox"> School</li>
+                        <li>
+                            <input type="checkbox" id="schoolCheckbox"> School
+                            <!-- Dropdown for class selection (hidden by default) -->
+                            <select id="classSelector" class="form-control mt-2 d-none">
+                                <option value="">Select Class</option>
+                                @for ($i = 1; $i <= 12; $i++)
+                                    <option value="Class {{ $i }}">Class {{ $i }}</option>
+                                @endfor
+                            </select>
+                        </li>
                         <li><input type="checkbox" id="graduationCheckbox"> Graduation</li>
                         <li><input type="checkbox" id="generalCheckbox"> General</li>
                         <li><input type="checkbox" id="competitiveCheckbox"> Competitive</li>
                     </ul>
                     <hr>
-                    <p class="fw-bold">Price</p>
-                    <input type="range" class="form-range" min="0" max="5000">
+                    <div class="price-range">
+                        <label for="priceRange">Price Range</label>
+                        <input type="range" id="priceRange" name="priceRange" min="0" max="1000"
+                            value="1000">
+                        <div class="range-values">
+                            <span id="minValue">₹0</span>
+                            <span id="maxValue">₹1000+</span>
+                        </div>
+
+                        <!-- Min and Max Price Dropdowns -->
+                        <div class="row mt-3">
+                            <div class="col-md-6">
+                                <label for="minPrice">Min Price</label>
+                                <select class="form-control" id="minPrice">
+                                    <option value="0" selected>₹0</option>
+                                    <option value="100">₹100</option>
+                                    <option value="200">₹200</option>
+                                    <option value="500">₹500</option>
+                                    <option value="1000">₹1000</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="maxPrice">Max Price</label>
+                                <select class="form-control" id="maxPrice">
+                                    <option value="100">₹100</option>
+                                    <option value="200">₹200</option>
+                                    <option value="500">₹500</option>
+                                    <option value="1000">₹1000</option>
+                                    <option value="1000+" selected>₹1000+</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
@@ -260,7 +354,7 @@
             <div class="col-md-9 shadow" style="border: 1px solid rgb(209, 207, 207); border-radius: 5px;">
                 <!-- Sort Options -->
                 <div class="d-flex justify-content-between align-items-center mb-3 mt-2">
-                    <h5>Showing {{ count($allBooks) }} results</h5>
+                    <h5>Showing <span id="bookCount">{{ count($allBooks) }}</span> results</h5>
                     <div class="sort-options d-flex gap-3">
                         <a href="#" class="active">Relevance</a>
                         <a href="#">Popularity</a>
@@ -270,11 +364,11 @@
                     </div>
                 </div>
 
-                <div class="row">
+                <div class="row" id="bookGrid">
                     @foreach ($allBooks as $book)
-                        <div class="col-md-4 mb-4">
+                        <div class="col-md-4 mb-4 book-item" data-price="{{ $book->price }}"
+                            data-class="{{ $book->type === 'school' ? $book->class : '' }}">
                             <div class="card shadow-sm book-card">
-                                <!-- Display the first photo or a default image -->
                                 <img src="{{ $book->photos ? asset('storage/' . $book->photos) : asset('default-book.jpg') }}"
                                     class="card-img-top" alt="Book Image">
                                 <hr style="font-weight: 800;">
@@ -477,7 +571,132 @@
         getLocation(); // Auto-fetch location
     </script>
 
-    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const priceRange = document.getElementById('priceRange');
+            const minPrice = document.getElementById('minPrice');
+            const maxPrice = document.getElementById('maxPrice');
+            const minValue = document.getElementById('minValue');
+            const maxValue = document.getElementById('maxValue');
+            const bookGrid = document.getElementById('bookGrid');
+            const bookCount = document.getElementById('bookCount');
+
+            let currentMin = 0;
+            let currentMax = 1000;
+
+            // Function to update slider range and UI
+            function updateRangeSlider() {
+                let selectedMin = parseInt(minPrice.value);
+                let selectedMax = maxPrice.value === "1000+" ? 1000 : parseInt(maxPrice.value);
+
+                if (selectedMin > selectedMax) {
+                    alert("Minimum price cannot be greater than maximum price.");
+                    minPrice.value = currentMin;
+                    maxPrice.value = "1000+";
+                    return;
+                }
+
+                currentMin = selectedMin;
+                currentMax = selectedMax;
+
+                priceRange.min = currentMin;
+                priceRange.max = currentMax;
+                priceRange.value = currentMax;
+
+                minValue.textContent = `₹${currentMin}`;
+                maxValue.textContent = currentMax === 1000 ? "₹1000+" : `₹${currentMax}`;
+
+                updateSliderFill();
+                filterBooks();
+            }
+
+            // Function to update slider fill
+            function updateSliderFill() {
+                let minPercent = ((currentMin - 0) / (1000 - 0)) * 100;
+                let maxPercent = ((currentMax - 0) / (1000 - 0)) * 100;
+                priceRange.style.background =
+                    `linear-gradient(to right, #ddd ${minPercent}%, #007bff ${minPercent}% ${maxPercent}%, #ddd ${maxPercent}%)`;
+            }
+
+            // Function to filter books based on price range
+            function filterBooks() {
+                const books = document.querySelectorAll('.book-item');
+                let visibleCount = 0;
+
+                books.forEach(book => {
+                    const bookPrice = parseFloat(book.getAttribute('data-price'));
+                    if (bookPrice >= currentMin && bookPrice <= currentMax) {
+                        book.style.display = 'block';
+                        visibleCount++;
+                    } else {
+                        book.style.display = 'none';
+                    }
+                });
+
+                bookCount.textContent = visibleCount;
+            }
+
+            // Event listeners for price range changes
+            minPrice.addEventListener('change', updateRangeSlider);
+            maxPrice.addEventListener('change', updateRangeSlider);
+            priceRange.addEventListener('input', function() {
+                currentMax = parseInt(this.value);
+                maxValue.textContent = currentMax === 1000 ? "₹1000+" : `₹${currentMax}`;
+                updateSliderFill();
+                filterBooks();
+            });
+
+            // Initialize slider filled state
+            updateRangeSlider();
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const schoolCheckbox = document.getElementById('schoolCheckbox');
+            const classSelector = document.getElementById('classSelector');
+            const bookGrid = document.getElementById('bookGrid');
+            const bookCount = document.getElementById('bookCount');
+
+            // Show/hide class selector when school checkbox is clicked
+            schoolCheckbox.addEventListener('change', function() {
+                if (this.checked) {
+                    classSelector.classList.remove('d-none'); // Show dropdown
+                } else {
+                    classSelector.classList.add('d-none'); // Hide dropdown
+                    filterBooksByClass(''); // Reset filtering
+                }
+            });
+
+            // Filter books when a class is selected
+            classSelector.addEventListener('change', function() {
+                const selectedClass = this.value;
+                console.log('Selected Class:', selectedClass); // Debugging
+                filterBooksByClass(selectedClass);
+            });
+
+            // Function to filter books by class
+            function filterBooksByClass(selectedClass) {
+                const books = document.querySelectorAll('.book-item');
+                let visibleCount = 0;
+
+                books.forEach(book => {
+                    const bookClass = book.getAttribute('data-class'); // Get the class of the book
+                    console.log('Book Class:', bookClass); // Debugging
+
+                    if (!selectedClass || bookClass === selectedClass) {
+                        book.style.display = 'block'; // Show the book
+                        visibleCount++;
+                    } else {
+                        book.style.display = 'none'; // Hide the book
+                    }
+                });
+
+                bookCount.textContent = visibleCount; // Update the book count
+                console.log('Visible Books:', visibleCount); // Debugging
+            }
+        });
+    </script>
 </body>
 
 </html>

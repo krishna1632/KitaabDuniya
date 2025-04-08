@@ -22,7 +22,7 @@ class SearchController extends Controller
         $schoolBooks = DB::table('schools')
             ->where('name', 'LIKE', "%{$query}%")
             ->where('status', 1) // ✅ Active books only
-            ->select('id', 'name', DB::raw("'school' as type"));
+            ->select('id', 'name', 'class', DB::raw("'school' as type"));
 
         $graduationBooks = DB::table('graduations')
             ->where('name', 'LIKE', "%{$query}%")
